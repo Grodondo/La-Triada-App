@@ -1,0 +1,15 @@
+# Eclipse project files
+.project
+.classpath
+.settings/
+
+# Ignore bin (build) directory
+/bin/
+/target/
+
+# Ignore log files
+*.log
+
+# Ignore IntelliJ project files (if collaborators use IntelliJ)
+*.iml
+.idea/
