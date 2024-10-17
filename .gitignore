@@ -1,6 +1,6 @@
 # Eclipse project files
-.project
-.classpath
+#.project
+#.classpath
 .settings/
 
 # Ignore bin (build) directory
