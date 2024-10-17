@@ -2,6 +2,7 @@
 #.project
 #.classpath
 .settings/
+.metadata/
 
 # Ignore bin (build) directory
 /bin/
@@ -9,6 +10,12 @@
 
 # Ignore log files
 *.log
+
+# Ignore Maven / Gradle wrapper files
+**/mvnw
+**/mvnw.cmd
+**/.mvn/
+build/
 
 # Ignore IntelliJ project files (if collaborators use IntelliJ)
 *.iml
