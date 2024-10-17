@@ -1,17 +1,28 @@
 # Trabajo de Interfaces - La Triada
 
 ## Description
-This is a Java project developed in Eclipse. The application does XYZ.
+Proyecto en Java hecho usando las librerias Swing...
 
 ## Setup Instructions
-1. Clone the repository.
-2. Import the project into Eclipse: `File > Import > Existing Projects into Workspace`.
-3. Run the `App.java` file located in the `src/com/myapp/` folder.
+1. Clona el repositorio en local.
+2. Importa el proyecto en un Workspace de Eclipse: `File > Import > Existing Projects into Workspace`.
+3. Run `App.java` file located in the `src/com/` folder.
 
-## Dependencies
+## Instrucciones temporales de Git
+git clone https://github.com/Grodondo/La-Triada-App.git  ->  Clona el repositorio github en local
+
+git pull origin branch -> 
+    git pull -> primero descarga los cambios del servidor remoto y luego los fusiona con tu rama local actual.
+    origin = https://github.com/Grodondo/La-Triada-App.git
+    branch es el nombre de la rama específica de la cual deseas traer esos cambios.
+
+git push origin branch -> Exactamente igual, pero al reves.
+
+
+## Dependencias
 - JDK 11 or higher.
 
-## Structure -> Intial
+## Estructura -> Para leerla, necesitarás abrirlo en local.
 /LaTriada
 │
 ├── /src                    # Código fuente de la aplicación
