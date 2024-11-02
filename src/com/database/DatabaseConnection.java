@@ -5,14 +5,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.config.AppConfig;
+
 /**
  *  @author Carlos
- *  @version 1.0
+ *  @version 1.01
  */
 public class DatabaseConnection {
-	
-	// Obtiene la ruta del proyecto
-	private static String projectPath = System.getProperty("user.dir");
 	
 	/**
      * Establece una conexión a una base de datos SQLite almacenada en la carpeta "resources/databases" del proyecto. 
@@ -24,14 +23,16 @@ public class DatabaseConnection {
     public static Connection connect(String databaseName) {
         Connection conn = null;
         try {
-
+        	
             // Obtiene el path de la carpeta "resources/databases" del proyecto
-            String dbFolder = projectPath + "/resources/databases"; 
+            String dbFolder = AppConfig.PROJECT_PATH + "/src/resources/databases"; 
 
-            // Se asegura que la carpeta exista, y si no, la crea
+           System.out.println("Attempting connection to SQLite database: " + dbFolder + "/" + databaseName + ".db");
+            
+            // Se asegura que la carpeta exista
             File dbDir = new File(dbFolder);
             if (!dbDir.exists()) {
-                dbDir.mkdirs();  
+                System.out.println("Folder " + AppConfig.PROJECT_PATH + " does not exist.");  
             }
             
             // Crea la conexión a la base de datos
@@ -39,7 +40,7 @@ public class DatabaseConnection {
 
             // Establece la conexión
             conn = DriverManager.getConnection(url);
-            System.out.println("Connection to SQLite has been established at: " + dbFolder + "/sample.db");
+            System.out.println("Connection to SQLite has been established at: " + dbFolder + "/" + databaseName + ".db");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } catch (NullPointerException e) {
@@ -47,4 +48,5 @@ public class DatabaseConnection {
         }
         return conn;
     }
+    
 }

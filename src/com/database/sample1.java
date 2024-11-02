@@ -6,18 +6,6 @@ import java.sql.Statement;
 import java.sql.SQLException;
 
 public class sample1 {
-	public static Connection connect() {
-		Connection conn = null;
-		try {
-			// URL para conectarse a la base de datos SQLite
-			String url = "jdbc:sqlite:./test.db"; // Crea bdd "test.db"
-			conn = DriverManager.getConnection(url);
-			System.out.println("Conexión a SQLite establecida.");
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-		return conn;
-	}
 
 	public static void createTableVehiculos() {
 		// Definir la sentencia SQL
@@ -35,10 +23,9 @@ public class sample1 {
 				+ " alquilado BOOLEAN NOT NULL CHECK(alquilado IN (0, 1))\n" // Alquilado (boolean)
 				+ ");";
 
-		try (Connection conn = connect(); Statement stmt = conn.createStatement()) {
+		try (Connection conn = DatabaseConnection.connect("vehiculos"); Statement stmt = conn.createStatement()) {
 			// Ejecutar la sentencia SQL
 			stmt.execute(sql);
-			System.out.println("Tabla 'vehiculo' creada o ya existe.");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -53,11 +40,10 @@ public class sample1 {
                 + " FOREIGN KEY(matricula) REFERENCES vehiculo(matricula) ON DELETE CASCADE\n"
                 + ");";
 
-        try (Connection conn = connect();
+        try (Connection conn = DatabaseConnection.connect("alquilado");
              Statement stmt = conn.createStatement()) {
             // Ejecutar la sentencia SQL 
             stmt.execute(sql);
-            System.out.println("Tabla 'alquilado' creada o ya existe.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -73,7 +59,7 @@ public class sample1 {
                 + "DELETE FROM alquilado WHERE matricula = NEW.matricula; "
                 + "END;";
 
-        try (Connection conn = connect();
+        try (Connection conn = DatabaseConnection.connect("trigger");
              Statement stmt = conn.createStatement()) {
             // Ejecutar la sentencia SQL 
             stmt.execute(sql);

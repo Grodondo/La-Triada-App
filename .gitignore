@@ -20,3 +20,6 @@ build/
 # Ignore IntelliJ project files (if collaborators use IntelliJ)
 *.iml
 .idea/
+
+# Ignore .db files
+*.db
