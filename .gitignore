@@ -1,6 +1,6 @@
 # Eclipse project files
-#.project
-#.classpath
+.project
+.classpath
 .settings/
 .metadata/
 
@@ -20,6 +20,9 @@ build/
 # Ignore IntelliJ project files (if collaborators use IntelliJ)
 *.iml
 .idea/
+<<<<<<< HEAD
 
 # Ignore .db files
 *.db
+=======
+>>>>>>> ced2b1ba7bb887677e4f9a06f903010b1055e104
