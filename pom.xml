@@ -30,11 +30,6 @@
 		    <version>2.22</version>
 		</dependency>-->
 
-		<dependency>
-			<groupId>org.example</groupId>
-			<artifactId>swing-app</artifactId>
-			<version>1.0.12347</version>
-		</dependency>
     </dependencies>
       
 	<build>

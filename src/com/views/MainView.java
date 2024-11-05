@@ -5,13 +5,8 @@ import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JRootPane;
-import javax.swing.WindowConstants;
 
 import com.config.AppConfig;
-
-import net.miginfocom.swing.MigLayout;
 
 public class MainView extends JFrame{
 	

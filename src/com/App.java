@@ -3,8 +3,8 @@ package com;
 import javax.swing.SwingUtilities;
 
 import com.config.AppConfig;
-import com.database.sample1;
-import com.views.MainView;
+import com.database.*;
+import com.views.*;
 
 public class App {
 
@@ -19,6 +19,7 @@ public class App {
         
         System.out.println(AppConfig.RESOURCES_URL);
 		
+        createDatabase.createTableVehiculos();
         sample1.createTableVehiculos();
         sample1.createTableAlquilados();
         
