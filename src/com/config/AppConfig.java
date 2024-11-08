@@ -1,5 +1,11 @@
 package com.config;
 
+
+/**
+ * This class contains shared constant values that are used in multiple classes.
+ * 
+ * @version 1.0
+ */
 public class AppConfig {
 	public final static String PROJECT_PATH = System.getProperty("user.dir");
 	public final static String RESOURCES_URL = System.getProperty("user.dir") + "\\src\\resources\\";

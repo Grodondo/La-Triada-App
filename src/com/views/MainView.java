@@ -32,6 +32,6 @@ public class MainView extends JFrame{
         
 //        getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
 //        getRootPane().setContentPane(new JPanel(new BorderLayout()));
-        getRootPane().getContentPane().add(new CustomTitleBar(), BorderLayout.NORTH);
+        getRootPane().getContentPane().add(new CustomTitleBar(this), BorderLayout.NORTH);
 	}
 }

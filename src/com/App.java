@@ -19,9 +19,6 @@ public class App {
         
         System.out.println(AppConfig.RESOURCES_URL);
 		
-        createDatabase.createTableVehiculos();
-        sample1.createTableVehiculos();
-        sample1.createTableAlquilados();
         
 	}
 
