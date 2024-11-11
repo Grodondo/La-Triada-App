@@ -15,11 +15,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.SwingConstants;
 
 import com.config.*;
 
@@ -33,11 +35,13 @@ public class CustomTitleBar extends JMenuBar {
 	private static final long serialVersionUID = 1L;
 	private static final int HEIGHT = 100;
 	
-	private JFrame frame;	
+	private JFrame frame;
+	private String titleLabel;
 	
-	public CustomTitleBar(JFrame frame) {
+	public CustomTitleBar(JFrame frame, String titleLabel) {
 
 		this.frame = frame;
+		this.titleLabel = titleLabel;
 		
 		setBackground(CustomColor.BLUE_B);
 
@@ -50,14 +54,14 @@ public class CustomTitleBar extends JMenuBar {
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gbc = new GridBagConstraints();
 
-		 JLabel titleLabel = new JLabel("Swing App", JLabel.CENTER);
+		 JLabel titleLabel = new JLabel(this.titleLabel, JLabel.CENTER);
 		 titleLabel.setForeground(Color.WHITE);
         
 //        JButton closeButton = new JButton("X");
 //        closeButton.addActionListener(e -> System.exit(0));
 		
 		ImageIcon imageIcon = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconoTexto.png"), 6);
-		ImageIcon imageMap = new ImageIcon(AppConfig.RESOURCES_URL + "images\\map.png");
+		ImageIcon imageMap = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconos\\IconoMapa.png"), 6);
 
 		JButton iconButton = new JButton(imageIcon);
 		JButton mapButton = new JButton(imageMap);
@@ -92,6 +96,7 @@ public class CustomTitleBar extends JMenuBar {
 					new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
+							AppConfig.sizeWindow = frame.getSize();
 							frame.dispose();
 							
 							MainView searchView = new MainView();
@@ -107,7 +112,22 @@ public class CustomTitleBar extends JMenuBar {
 			mapButton.setBorderPainted(false);
 			mapButton.setContentAreaFilled(false);
 			mapButton.setFocusPainted(false);
-			mapButton.addActionListener(syso -> System.out.println("Mapa pulsado"));
+			mapButton.addActionListener(new ActionListener() {
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+		                // Create a new JDialog as a separate window
+		                JDialog newWindow = new JDialog(new MainView(), "Map Window", true);
+		                newWindow.setSize(200, 150);
+		                newWindow.setMinimumSize(new Dimension(200, 150));
+		                newWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		                newWindow.setLocationRelativeTo(new MainView());
+
+		                JLabel label = new JLabel("This is a new window", SwingConstants.CENTER);
+		                newWindow.add(label);
+
+		                newWindow.setVisible(true);
+		            }
+		        });
 		}
 		// ======== Boton de compra ========
 		{

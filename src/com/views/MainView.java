@@ -23,7 +23,8 @@ public class MainView extends JFrame{
 	
 	public void initUI() {
         setTitle("La Triada App");
-        setMinimumSize(new Dimension(900, 600));
+        setMinimumSize(AppConfig.MINIMUM_WINDOW_SIZE);
+        setSize(AppConfig.sizeWindow);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setIconImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\icon.png").getImage());
         setLocationRelativeTo(null);
@@ -32,6 +33,6 @@ public class MainView extends JFrame{
         
 //        getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
 //        getRootPane().setContentPane(new JPanel(new BorderLayout()));
-        getRootPane().getContentPane().add(new CustomTitleBar(this), BorderLayout.NORTH);
+        getRootPane().getContentPane().add(new CustomTitleBar(this, "Main view"), BorderLayout.NORTH);
 	}
 }

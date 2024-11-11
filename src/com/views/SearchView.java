@@ -65,15 +65,16 @@ public class SearchView extends JFrame {
 		activeFilters = new HashSet<>();
 		
         setTitle("Vehicle Catalog");
-        setSize(900, 600);
-        setMinimumSize(new Dimension(900, 600));
+        setMinimumSize(AppConfig.MINIMUM_WINDOW_SIZE);
+        setSize(AppConfig.sizeWindow);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
        
         getContentPane().setBackground(backgroundColor);
 
         // Top JMenuBar - Custom Title Bar
-        JMenuBar customTitleBar = new CustomTitleBar(this);
+        JMenuBar customTitleBar = new CustomTitleBar(this, "Vehicle Catalog");
         
         // Left Panel - Filters
         filtersPanel = createFiltersPanel();
@@ -90,6 +91,31 @@ public class SearchView extends JFrame {
         add(carListPanel, BorderLayout.CENTER);
 	}
 
+	   private void applyFilter(String filter) {
+	    	System.out.println("Applying filter: " + filter + " - " + activeFilters);
+	    	this.activeFilters.add(filter);
+	    	this.appliedFiltersPanel.add(createFilterTag(filter));
+	    	
+	        appliedFiltersPanel.revalidate();
+	        appliedFiltersPanel.repaint();
+	    }
+	    
+		private void removeFilter(String filter) {
+			activeFilters.remove(filter);
+
+		    // Recorre los componentes del panel de filtros aplicados y elimina el que tenga el texto del filtro
+		    for (Component comp : appliedFiltersPanel.getComponents()) {
+		        if (comp instanceof JButton && ((JButton) comp).getText().equalsIgnoreCase(filter)) {
+		            appliedFiltersPanel.remove(comp);
+		            break;
+		        }
+		    }
+		    
+			appliedFiltersPanel.revalidate();
+	       	appliedFiltersPanel.repaint();
+		}
+	
+	
     private JPanel createFiltersPanel() {    	
         JPanel filtersPanel = new JPanel();
         filtersPanel.setLayout(new BoxLayout(filtersPanel, BoxLayout.Y_AXIS));
@@ -115,9 +141,15 @@ public class SearchView extends JFrame {
     	sectionPanel.setBackground(this.backgroundColor);
     	sectionPanel.setBorder(new LineBorder(Color.WHITE, 1));
     	
-    	final ImageIcon imageIconCar = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconCar.png"), 6);
-    	final ImageIcon imageIconBike = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconBike.png"), 6);
-    	final ImageIcon imageIconTruck = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconTruck.png"), 6);
+    	// Icon images
+    	final ImageIcon imageIconCar = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconos\\CocheBlanco.png"), 8);
+    	final ImageIcon imageIconBike = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconos\\MotoBlanco.png"), 8);
+    	final ImageIcon imageIconTruck = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconos\\CamionBlanco.png"), 8);
+		
+    	// Selected icon images
+    	final ImageIcon selectedImageIconCar = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconos\\CocheNegro.png"), 8);
+    	final ImageIcon selectedImageIconBike = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconos\\MotoNegro.png"), 8);
+    	final ImageIcon selectedImageIconTruck = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconos\\CamionNegro.png"), 8);
 		
     	// -------------- buttonIconCar --------------
     	{
@@ -125,8 +157,8 @@ public class SearchView extends JFrame {
 	    	buttonIconCar.setContentAreaFilled(false);
 	    	buttonIconCar.setBorderPainted(false);
 	    	
-	    	buttonIconCar.setIcon(imageIconCar);          // Icono para no seleccionado
-	    	buttonIconCar.setSelectedIcon(imageIconBike);    // Icono para seleccionado
+	    	buttonIconCar.setIcon(imageIconCar);         
+	    	buttonIconCar.setSelectedIcon(selectedImageIconCar);    
 	    	
 			buttonIconCar.addActionListener(e -> {
 				   if (buttonIconCar.isSelected()) {
@@ -144,8 +176,8 @@ public class SearchView extends JFrame {
         	buttonIconBike.setContentAreaFilled(false);
         	buttonIconBike.setBorderPainted(false);
 	    	
-        	buttonIconBike.setIcon(imageIconCar);          // Icono para no seleccionado
-        	buttonIconBike.setSelectedIcon(imageIconBike);    // Icono para seleccionado
+        	buttonIconBike.setIcon(imageIconBike);          
+        	buttonIconBike.setSelectedIcon(selectedImageIconBike); 
 	    	
         	buttonIconBike.addActionListener(e -> {
 				   if (buttonIconBike.isSelected()) {
@@ -163,8 +195,8 @@ public class SearchView extends JFrame {
     		buttonIconTruck.setContentAreaFilled(false);
     		buttonIconTruck.setBorderPainted(false);
 	    	
-    		buttonIconTruck.setIcon(imageIconCar);          // Icono para no seleccionado
-    		buttonIconTruck.setSelectedIcon(imageIconBike);    // Icono para seleccionado
+    		buttonIconTruck.setIcon(imageIconTruck);       
+    		buttonIconTruck.setSelectedIcon(selectedImageIconTruck);   
 	    	
     		buttonIconTruck.addActionListener(e -> {
 				   if (buttonIconTruck.isSelected()) {
@@ -206,6 +238,15 @@ public class SearchView extends JFrame {
             checkBox.setForeground(Color.WHITE);
             checkBox.setBackground(new Color(42, 63, 90));
             checkBox.setFont(new Font("Arial", Font.PLAIN, 14));
+            
+			checkBox.addActionListener(e -> {
+				if (checkBox.isSelected()) {
+					applyFilter(checkBox.getText());
+				} else {
+					removeFilter(checkBox.getText());
+				}
+			});
+            
             optionsPanel.add(checkBox);
         }
 
@@ -213,29 +254,6 @@ public class SearchView extends JFrame {
         return sectionPanel;
     }
 
-    private void applyFilter(String filter) {
-    	System.out.println("Applying filter: " + filter + " - " + activeFilters);
-    	this.activeFilters.add(filter);
-    	this.appliedFiltersPanel.add(createFilterTag(filter));
-    	
-        appliedFiltersPanel.revalidate();
-        appliedFiltersPanel.repaint();
-    }
-    
-	private void removeFilter(String filter) {
-		activeFilters.remove(filter);
-
-	    // Recorre los componentes del panel de filtros aplicados y elimina el que tenga el texto del filtro
-	    for (Component comp : appliedFiltersPanel.getComponents()) {
-	        if (comp instanceof JButton && ((JButton) comp).getText().equalsIgnoreCase(filter)) {
-	            appliedFiltersPanel.remove(comp);
-	            break;
-	        }
-	    }
-	    
-		appliedFiltersPanel.revalidate();
-       	appliedFiltersPanel.repaint();
-	}
     
     private JPanel createAppliedFiltersPanel() {
         appliedFiltersPanel = new JPanel();
@@ -255,6 +273,22 @@ public class SearchView extends JFrame {
         filterButton.setBackground(Color.WHITE);
         filterButton.setForeground(new Color(42, 63, 90));
         filterButton.setBorder(new LineBorder(Color.WHITE, 1, true));
+        
+        filterButton.addActionListener(e -> {
+            removeFilter(text);
+            switch (text) {
+            case "car":
+            	buttonIconCar.setSelected(false);
+            	break;
+            case "bike":
+				buttonIconBike.setSelected(false);
+				break;
+            case "truck":
+            	buttonIconTruck.setSelected(false);
+            	break;
+            }
+        });
+        
         return filterButton;
     }
 
