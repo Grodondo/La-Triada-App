@@ -116,16 +116,19 @@ public class CustomTitleBar extends JMenuBar {
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
 		                // Create a new JDialog as a separate window
-		                JDialog newWindow = new JDialog(new MainView(), "Map Window", true);
-		                newWindow.setSize(200, 150);
-		                newWindow.setMinimumSize(new Dimension(200, 150));
-		                newWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		                newWindow.setLocationRelativeTo(new MainView());
-
-		                JLabel label = new JLabel("This is a new window", SwingConstants.CENTER);
-		                newWindow.add(label);
-
-		                newWindow.setVisible(true);
+//		                JDialog newWindow = new JDialog(new MainView(), "Map Window", true);
+//		                newWindow.setSize(200, 150);
+//		                newWindow.setMinimumSize(new Dimension(200, 150));
+//		                newWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//		                newWindow.setLocationRelativeTo(new MainView());
+//
+//		                JLabel label = new JLabel("This is a new window", SwingConstants.CENTER);
+//		                newWindow.add(label);
+//
+//		                newWindow.setVisible(true);
+		            	MapView searchView = new MapView();
+		            	//searchView.setDefaultCloseOperation(ABORT);
+						searchView.setVisible(true);
 		            }
 		        });
 		}
