@@ -30,9 +30,16 @@ import javax.swing.JFrame;
 
 import com.config.AppConfig;
 
-
+/**
+ * @author: Carlos Arroyo Caballero
+ * @version: 1.0
+ * Creates a map view with markers for Madrid and Barcelona
+ */
 public class MapView extends JFrame {
 	
+	/**
+	 * Default constructor
+	 */
 	public MapView() {
 		initComponents();
 
@@ -42,8 +49,13 @@ public class MapView extends JFrame {
 
 	}
 	
+	/**
+	 * Creates the map viewer with markers for Madrid and Barcelona
+	 * 
+	 * @return the map viewer
+	 */
 	private JXMapViewer createMap() {
-		   // Create a map viewer
+		// Create a map viewer
         JXMapViewer mapViewer = new JXMapViewer();
 
         // Set up the tile factory (OpenStreetMap)
@@ -89,6 +101,9 @@ public class MapView extends JFrame {
 
 	}
 
+	/**
+	 * Initialize the JFrame components
+	 */
 	private void initComponents() {
 		setTitle("Mapa interactivo de la Triada");
 		setMinimumSize(new Dimension(200, 150));
@@ -98,6 +113,9 @@ public class MapView extends JFrame {
 		setLocationRelativeTo(null);
 	}
 	
+	/**
+	 * Custom Waypoint class to represent a marker on the map
+	 */
 	private class CustomWaypoint implements Waypoint {
 		private final GeoPosition position;
 		

@@ -28,6 +28,13 @@ import javax.swing.border.LineBorder;
 import com.config.AppConfig;
 import com.config.SharedMethods;
 
+/**
+ * Search view for the vehicle catalog
+ * 
+ * @author Carlos Arroyo Caballero
+ * @version 1.0
+ * @see CustomTitleBar
+ */
 public class SearchView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -39,10 +46,18 @@ public class SearchView extends JFrame {
 
 	private final Color backgroundColor = new Color(42, 63, 90); // Dark blue background
 
+	/**
+	 * Default constructor
+	 */
 	public SearchView() {
 		setup();
 	}
 
+	/**
+	 * Constructor with a type of vehicle to filter
+	 * 
+	 * @param type The type of vehicle to filter
+	 */
 	public SearchView(String type) {
 		setup();
 		switch (type) {
@@ -62,12 +77,16 @@ public class SearchView extends JFrame {
 
 	}
 
+	/**
+	 * Sets up the JFrame and its components
+	 */
 	private void setup() {
 		activeFilters = new HashSet<>();
 
 		setTitle("Vehicle Catalog");
 		setMinimumSize(AppConfig.MINIMUM_WINDOW_SIZE);
 		setSize(AppConfig.sizeWindow);
+		setIconImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\icon.png").getImage());
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
@@ -92,6 +111,13 @@ public class SearchView extends JFrame {
 		add(carListPanel, BorderLayout.CENTER);
 	}
 
+	
+	/**
+	 * Applies a filter to the active filters set and adds a tag to the applied filters panel
+	 * 
+	 * 
+	 * @param filter The filter to apply
+	 */
 	private void applyFilter(String filter) {
 		System.out.println("Applying filter: " + filter + " - " + activeFilters);
 		this.activeFilters.add(filter);
@@ -101,11 +127,15 @@ public class SearchView extends JFrame {
 		appliedFiltersPanel.repaint();
 	}
 
+	/**
+	 * Removes a filter from the active filters set and the applied filters panel
+	 * 
+	 * @param filter The filter to remove
+	 */
 	private void removeFilter(String filter) {
 		activeFilters.remove(filter);
 
-		// Recorre los componentes del panel de filtros aplicados y elimina el que tenga
-		// el texto del filtro
+		// Recorre los componentes del panel de filtros aplicados y elimina el que tenga el texto del filtro
 		for (Component comp : appliedFiltersPanel.getComponents()) {
 			if (comp instanceof JButton && ((JButton) comp).getText().equalsIgnoreCase(filter)) {
 				appliedFiltersPanel.remove(comp);
@@ -117,6 +147,12 @@ public class SearchView extends JFrame {
 		appliedFiltersPanel.repaint();
 	}
 
+	/**
+	 * Creates a JPanel with a text filter input and a button to add the filter
+	 * 
+	 * @param title The title of the text filter
+	 * @return The JPanel with the text filter input and button
+	 */
 	private JPanel createTextFilterPanel(String title) {
 	    JPanel textFilterPanel = new JPanel();
 	    textFilterPanel.setBackground(this.backgroundColor);
@@ -186,15 +222,25 @@ public class SearchView extends JFrame {
 	    return textFilterPanel;
 	}
 
+	/**
+	 * Creates the JPanel that will contain all other JPanels with the filter options
+	 * 
+	 * @return The JPanel with the filter options
+	 * @see createFilterSectionImages
+	 * @see createFilterSection
+	 * @see createTextFilterPanel
+	 */
 	private JPanel createFiltersPanel() {
 		JPanel filtersPanel = new JPanel();
 		filtersPanel.setLayout(new BoxLayout(filtersPanel, BoxLayout.Y_AXIS));
 
+		// Title label
 		JLabel title = new JLabel("FILTROS");
 		title.setForeground(Color.WHITE);
 		title.setFont(new Font("Arial", Font.BOLD, 20));
 		title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+		// Filter sections
 		filtersPanel.add(title);
 		filtersPanel.add(createFilterSectionImages());
 		filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault" }));
@@ -206,6 +252,11 @@ public class SearchView extends JFrame {
 		return filtersPanel;
 	}
 
+	/**
+	 * Creates a JPanel with the filter options for car, bike and truck as image checkBoxes
+	 * 
+	 * @return The JPanel with the filter options for car, bike and truck
+	 */
 	private JPanel createFilterSectionImages() {
 		JPanel sectionPanel = new JPanel(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -246,7 +297,7 @@ public class SearchView extends JFrame {
 			});
 		}
 
-		// -------------- buttonIconCar --------------
+		// -------------- buttonIconBike --------------
 		{
 			buttonIconBike = new JCheckBox(imageIconBike);
 			buttonIconBike.setContentAreaFilled(false);
@@ -264,7 +315,7 @@ public class SearchView extends JFrame {
 			});
 		}
 
-		// -------------- buttonIconCar --------------
+		// -------------- buttonIconTruck --------------
 		{
 			buttonIconTruck = new JCheckBox(imageIconTruck);
 			buttonIconTruck.setContentAreaFilled(false);
@@ -293,6 +344,13 @@ public class SearchView extends JFrame {
 		return sectionPanel;
 	}
 
+	/**
+	 * Creates a JPanel with a title and a list of options as checkboxes to apply filters
+	 * 
+	 * @param title   The title of the section
+	 * @param options The list of options to display as checkboxes
+	 * @return The JPanel with the title and checkboxes
+	 */
 	private JPanel createFilterSection(String title, String[] options) {
 		JPanel sectionPanel = new JPanel();
 		sectionPanel.setLayout(new BorderLayout());
@@ -329,6 +387,13 @@ public class SearchView extends JFrame {
 		return sectionPanel;
 	}
 
+	/**
+	 * Creates a JPanel with the title "Filtros Aplicados" and the tags for all the active filters
+	 *
+	 * 
+	 * @return The JPanel with the title and tags for the active filters
+	 * @see createFilterTag
+	 */
 	private JPanel createAppliedFiltersPanel() {
 		appliedFiltersPanel = new JPanel();
 		appliedFiltersPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -341,6 +406,13 @@ public class SearchView extends JFrame {
 		return appliedFiltersPanel;
 	}
 
+	/**
+	 * Creates a JButton with the text of the filter and the functionality to remove
+	 * the filter when clicked
+	 * 
+	 * @param text The text of the filter
+	 * @return The JButton with the text of the filter
+	 */
 	private JButton createFilterTag(String text) {
 		JButton filterButton = new JButton(text + "");
 		filterButton.setFont(new Font("Arial", Font.BOLD, 14));
@@ -366,6 +438,12 @@ public class SearchView extends JFrame {
 		return filterButton;
 	}
 
+	/**
+	 * Creates a JPanel with example car entries
+	 * 
+	 * @return The JPanel with the example car entries
+	 * @see createCarEntry
+	 */
 	private JPanel createCarListPanel() {
 
 		// Top Panel - Applied Filters
@@ -385,6 +463,15 @@ public class SearchView extends JFrame {
 		return carListPanel;
 	}
 
+	/**
+	 * Creates a JPanel with the information of a car entry
+	 * 
+	 * @param title     The title of the car
+	 * @param type      The type of the car
+	 * @param fuel      The fuel type of the car
+	 * @param imagePath The path to the image of the car
+	 * @return The JPanel with the car information
+	 */
 	private JPanel createCarEntry(String title, String type, String fuel, String imagePath) {
 		JPanel carPanel = new JPanel();
 		carPanel.setLayout(new BorderLayout());

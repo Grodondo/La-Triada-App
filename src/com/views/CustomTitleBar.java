@@ -27,17 +27,26 @@ import com.config.*;
 
 import resources.CustomColor;
 
+/**
+ * Custom title bar for the App
+ * 
+ * @author Carlos Arroyo Caballero
+ * @version 1.0
+ */
 public class CustomTitleBar extends JMenuBar {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private static final int HEIGHT = 100;
 	
 	private JFrame frame;
 	private String titleLabel;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param frame      the frame to which the title bar is added
+	 * @param titleLabel the title of the frame
+	 */
 	public CustomTitleBar(JFrame frame, String titleLabel) {
 
 		this.frame = frame;
@@ -49,6 +58,9 @@ public class CustomTitleBar extends JMenuBar {
 
 	}
 
+	/**
+	 * Creates all of the components of the title bar
+	 */
 	private void initComponents() {
 		
 		 setLayout(new GridBagLayout());

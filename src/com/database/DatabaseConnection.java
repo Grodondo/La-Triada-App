@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import com.config.AppConfig;
 
 /**
- *  @author Carlos
+ *  @author: Carlos Arroyo Caballero
  *  @version 1.01
  */
 public class DatabaseConnection {
@@ -48,5 +48,20 @@ public class DatabaseConnection {
         }
         return conn;
     }
-    
+
+	/**
+	 * Cierra la conexión a la base de datos.
+	 * 
+	 * @param conn la conexión a la base de datos que se desea cerrar.
+	 */
+        public static void closeConnection(Connection conn) {
+	        try {
+	            if (conn != null && !conn.isClosed()) {
+	                conn.close();
+	                System.out.println("Connection to Database has been closed.");
+	            }
+	        } catch (SQLException e) {
+	            System.err.println("Error closing connection: " + e.getMessage());
+	        }
+        }
 }
