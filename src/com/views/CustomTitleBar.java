@@ -7,18 +7,23 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.SwingConstants;
 
-import com.config.AppConfig;
+import com.config.*;
 
 import resources.CustomColor;
 
@@ -28,28 +33,20 @@ public class CustomTitleBar extends JMenuBar {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//private static final int WIDTH = 800;
 	private static final int HEIGHT = 100;
 	
+	private JFrame frame;
+	private String titleLabel;
 	
-	public CustomTitleBar() {
+	public CustomTitleBar(JFrame frame, String titleLabel) {
 
+		this.frame = frame;
+		this.titleLabel = titleLabel;
+		
 		setBackground(CustomColor.BLUE_B);
 
 		initComponents();
 
-	}
-	
-	private ImageIcon resizeImage(ImageIcon imageIcon, double size) {
-		Image image = imageIcon.getImage();
-		int width = (int) (imageIcon.getIconWidth() / size);
-		int height = (int) (imageIcon.getIconHeight() / size);
-		
-		Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-		
-		
-		ImageIcon scaledIcon = new ImageIcon(scaledImage);
-		return scaledIcon;
 	}
 
 	private void initComponents() {
@@ -57,14 +54,14 @@ public class CustomTitleBar extends JMenuBar {
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gbc = new GridBagConstraints();
 
-		 JLabel titleLabel = new JLabel("Swing App", JLabel.CENTER);
+		 JLabel titleLabel = new JLabel(this.titleLabel, JLabel.CENTER);
 		 titleLabel.setForeground(Color.WHITE);
         
 //        JButton closeButton = new JButton("X");
 //        closeButton.addActionListener(e -> System.exit(0));
 		
-		ImageIcon imageIcon = resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconoTexto.png"), 6);
-		ImageIcon imageMap = new ImageIcon(AppConfig.RESOURCES_URL + "images\\map.png");
+		ImageIcon imageIcon = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconoTexto.png"), 6);
+		ImageIcon imageMap = SharedMethods.resizeImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\iconos\\IconoMapa.png"), 6);
 
 		JButton iconButton = new JButton(imageIcon);
 		JButton mapButton = new JButton(imageMap);
@@ -91,12 +88,22 @@ public class CustomTitleBar extends JMenuBar {
 		
 		// ======== iconButton ========
 		{
-			iconButton.setSize(100, 100);
 			iconButton.setPreferredSize(new Dimension(200, HEIGHT));
 			iconButton.setBorderPainted(false);
 			iconButton.setContentAreaFilled(false);
 			iconButton.setFocusPainted(false);
-			iconButton.addActionListener(syso -> System.out.println("Icono pulsado"));
+			iconButton.addActionListener(
+					new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							AppConfig.sizeWindow = frame.getSize();
+							frame.dispose();
+							
+							MainView searchView = new MainView();
+							searchView.setVisible(true);
+						}
+	                           
+	                });
 		}
 		
 		// ======== mapButton ========
@@ -105,7 +112,25 @@ public class CustomTitleBar extends JMenuBar {
 			mapButton.setBorderPainted(false);
 			mapButton.setContentAreaFilled(false);
 			mapButton.setFocusPainted(false);
-			mapButton.addActionListener(syso -> System.out.println("Mapa pulsado"));
+			mapButton.addActionListener(new ActionListener() {
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+		                // Create a new JDialog as a separate window
+//		                JDialog newWindow = new JDialog(new MainView(), "Map Window", true);
+//		                newWindow.setSize(200, 150);
+//		                newWindow.setMinimumSize(new Dimension(200, 150));
+//		                newWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//		                newWindow.setLocationRelativeTo(new MainView());
+//
+//		                JLabel label = new JLabel("This is a new window", SwingConstants.CENTER);
+//		                newWindow.add(label);
+//
+//		                newWindow.setVisible(true);
+		            	MapView searchView = new MapView();
+		            	//searchView.setDefaultCloseOperation(ABORT);
+						searchView.setVisible(true);
+		            }
+		        });
 		}
 		// ======== Boton de compra ========
 		{
@@ -122,35 +147,69 @@ public class CustomTitleBar extends JMenuBar {
 			// ---- Compra Coche  ----
 			{
 				buttonBuyCar.setText("Coche");
+				buttonBuyCar.setPreferredSize(new Dimension(220, 40));
 				buttonBuyCar.setFont(new Font("Arial", Font.BOLD, 20));
 				buttonBuyCar.setBackground(CustomColor.BLUE_B);
 				buttonBuyCar.setForeground(Color.WHITE);
-				buttonBuyCar.setPreferredSize(new Dimension(220, 40));
-				//buttonBuyCar.setHorizontalTextPosition(SwingConstants.CENTER);
+
 				
-				menuBuy.addActionListener(e -> e.toString());
+				buttonBuyCar.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						frame.dispose();
+						
+						SearchView searchView = new SearchView("car");
+						searchView.setVisible(true);
+					}
+                           
+                });
+				
 				menuBuy.add(buttonBuyCar);
 			}
 			
 			// ---- Compra Moto ----
-			buttonBuyBike.setText("Moto");
-			buttonBuyBike.setPreferredSize(new Dimension(220, 40));
-			buttonBuyBike.setFont(new Font("Arial", Font.BOLD, 20));
-			buttonBuyBike.setBackground(CustomColor.BLUE_B);
-			buttonBuyBike.setForeground(Color.WHITE);
-			menuBuy.addActionListener(e -> e.toString());
-			menuBuy.add(buttonBuyBike);
+			{
+				buttonBuyBike.setText("Moto");
+				buttonBuyBike.setPreferredSize(new Dimension(220, 40));
+				buttonBuyBike.setFont(new Font("Arial", Font.BOLD, 20));
+				buttonBuyBike.setBackground(CustomColor.BLUE_B);
+				buttonBuyBike.setForeground(Color.WHITE);
+	
+				buttonBuyBike.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						frame.dispose();
+						
+						SearchView searchView = new SearchView("bike");
+						searchView.setVisible(true);
+					}
+	                       
+	            });
+				
+				menuBuy.add(buttonBuyBike);
+			}
 			
 			// ---- Compra camion  ----
-			buttonBuyTruck.setText("Camión");
-			buttonBuyTruck.setPreferredSize(new Dimension(220, 40));
-			buttonBuyTruck.setFont(new Font("Arial", Font.BOLD, 20));
-			buttonBuyTruck.setBackground(CustomColor.BLUE_B);
-			buttonBuyTruck.setForeground(Color.WHITE);
-			menuBuy.addActionListener(e -> e.toString());
-			menuBuy.add(buttonBuyTruck);
+			{
+				buttonBuyTruck.setText("Camión");
+				buttonBuyTruck.setPreferredSize(new Dimension(220, 40));
+				buttonBuyTruck.setFont(new Font("Arial", Font.BOLD, 20));
+				buttonBuyTruck.setBackground(CustomColor.BLUE_B);
+				buttonBuyTruck.setForeground(Color.WHITE);
+	
+	            buttonBuyTruck.addActionListener(new ActionListener() {
+	                @Override
+	                public void actionPerformed(ActionEvent e) {
+	                    frame.dispose();
+	                    
+	                    SearchView searchView = new SearchView("truck");
+	                    searchView.setVisible(true);
+	                }
+	            });
+				
+				menuBuy.add(buttonBuyTruck);
+			}
 		}
-		
 		// ======== Boton de venta ========
 		{
 			sellButton.setPreferredSize(new Dimension(200, HEIGHT));

@@ -9,6 +9,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>La_Triada_App</name>
   
+	<repositories>
+		<repository>
+	        <id>jitpack.io</id>
+	        <url>https://jitpack.io</url>
+	    </repository>
+	</repositories>
+  
     <dependencies>
         <!-- SQLite JDBC Dependency -->
     	<dependency>
@@ -23,13 +30,17 @@
 		    <version>5.10.0</version>
 		    <scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.openstreetmap.jmapviewer/jmapviewer -->
-		<!--<dependency>
-		    <groupId>org.openstreetmap.jmapviewer</groupId>
-		    <artifactId>jmapviewer</artifactId>
-		    <version>2.22</version>
-		</dependency>-->
-
+		<dependency>
+		    <groupId>org.swinglabs</groupId>
+		    <artifactId>swingx</artifactId>
+		    <version>1.6.1</version>
+		</dependency>	
+		<dependency>
+		    <groupId>com.github.msteiger</groupId>
+		    <artifactId>jxmapviewer2</artifactId>
+		 	<version>master-SNAPSHOT</version> <!-- or specify a specific commit/tag ex: 2.5 -->
+		</dependency>
+	
     </dependencies>
       
 	<build>
