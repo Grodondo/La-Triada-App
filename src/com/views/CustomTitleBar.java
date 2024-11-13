@@ -115,17 +115,6 @@ public class CustomTitleBar extends JMenuBar {
 			mapButton.addActionListener(new ActionListener() {
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
-		                // Create a new JDialog as a separate window
-//		                JDialog newWindow = new JDialog(new MainView(), "Map Window", true);
-//		                newWindow.setSize(200, 150);
-//		                newWindow.setMinimumSize(new Dimension(200, 150));
-//		                newWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-//		                newWindow.setLocationRelativeTo(new MainView());
-//
-//		                JLabel label = new JLabel("This is a new window", SwingConstants.CENTER);
-//		                newWindow.add(label);
-//
-//		                newWindow.setVisible(true);
 		            	MapView searchView = new MapView();
 		            	//searchView.setDefaultCloseOperation(ABORT);
 						searchView.setVisible(true);
@@ -156,6 +145,7 @@ public class CustomTitleBar extends JMenuBar {
 				buttonBuyCar.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
+						AppConfig.sizeWindow = frame.getSize();
 						frame.dispose();
 						
 						SearchView searchView = new SearchView("car");
@@ -178,6 +168,7 @@ public class CustomTitleBar extends JMenuBar {
 				buttonBuyBike.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
+						AppConfig.sizeWindow = frame.getSize();
 						frame.dispose();
 						
 						SearchView searchView = new SearchView("bike");
@@ -200,6 +191,7 @@ public class CustomTitleBar extends JMenuBar {
 	            buttonBuyTruck.addActionListener(new ActionListener() {
 	                @Override
 	                public void actionPerformed(ActionEvent e) {
+	                	AppConfig.sizeWindow = frame.getSize();
 	                    frame.dispose();
 	                    
 	                    SearchView searchView = new SearchView("truck");
