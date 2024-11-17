@@ -5,19 +5,18 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.SQLException;
 
+// He cambiado el atributo carrocería de la tabla de vehiculo para que no sea un ENUM, aún tengo que probar a añadir el atributo para las imágenes
+// Imagenes en una carpeta y con un método que las nombre con la matricula 1234ABC.jpg - todas misma extensión
+
 public class createDatabase {
 	/**
      * Establece una conexión a la base de datos SQLite.
      * 
-     * @return Connection objeto que representa la conexión a la base de datos.
+     * @return Connection objeto que representa la conexión a la base de datos
      */
 	public static Connection connect() {
 		Connection conn = null;
 		try {
-			// No crea la bdd mirar - mirar codigo 
-			// Cambiar nombre - createDatabase
-			// Carlos ha hecho cambios - hacer pull
-			// URL para conectarse a la base de datos SQLite
 			Class.forName("org.sqlite.JDBC"); // Cargar el driver JDBC para SQLite
 			String url = "jdbc:sqlite:./test.db"; // Crea bdd "test.db"
 			conn = DriverManager.getConnection(url);
@@ -29,7 +28,7 @@ public class createDatabase {
 	}
 
 	/**
-     * Crea la tabla 'vehiculo' en la base de datos si no existe.
+     * Crea la tabla 'vehiculo' en la base de datos si no existe
      * 
      */
 	public static void createTableVehiculos() {
@@ -39,9 +38,11 @@ public class createDatabase {
 				+ " tipo TEXT NOT NULL CHECK(tipo IN ('coche', 'moto', 'camion')),\n" // Tipo de vehículo
 				+ " marca TEXT NOT NULL,\n" // Marca del vehículo
 				+ " modelo TEXT NOT NULL,\n" // Modelo del vehículo
-				+ " carroceria TEXT NOT NULL CHECK(carroceria IN ('suv', 'berlina', 'compacto')),\n" // Carrocería (ENUM) - hay que añadir tipos
+//				+ " carroceria TEXT NOT NULL CHECK(carroceria IN ('suv', 'berlina', 'compacto')),\n" // Carrocería (ENUM) - hay que añadir tipos
+				+ " carroceria TEXT NOT NULL,\n" // Carrocería
 				+ " combustible TEXT NOT NULL CHECK(combustible IN ('diesel', 'gasolina', 'hibrido', 'electrico')),\n" // Combustible (ENUM)
 				+ " consumo REAL NOT NULL,\n" // Consumo del vehículo (L/100 km)
+				+ " plazas REAL,\n" // Las motos no tienen por qué tenerlo
 				+ " kilometros REAL NOT NULL,\n" // Kilómetros recorridos
 				+ " precio_compra REAL NOT NULL,\n" // Precio de compra
 				+ " precio_alquiler REAL NOT NULL,\n" // Precio de alquiler - hay que automatizar que sea el de venta entre 1000 +/-
@@ -58,7 +59,7 @@ public class createDatabase {
 	}
 	
 	/**
-     * Crea la tabla 'alquilado' en la base de datos si no existe.
+     * Crea la tabla 'alquilado' en la base de datos si no existe
      * 
      */
     public static void createTableAlquilados() {
@@ -82,10 +83,10 @@ public class createDatabase {
 
     /**
      * Crea un trigger llamado 'return_trigger' que elimina un registro de
-     * la tabla 'alquilado' cuando se devuelve un vehículo.
+     * la tabla 'alquilado' cuando se devuelve un vehículo
      * 
      * Este trigger se activa después de actualizar el estado de alquiler
-     * en la tabla 'vehiculo' a false.
+     * en la tabla 'vehiculo' a false
      */
     public static void createReturnTrigger() {
         // Definir el trigger para eliminar de la tabla 'alquilado' cuando se actualiza 'alquilado' en 'vehiculo' a false
