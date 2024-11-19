@@ -5,6 +5,7 @@ import java.awt.Dimension;
 /**
  * This class contains shared constant values that are used in multiple classes.
  * 
+ * @author Carlos Arroyo Caballero
  * @version 1.0
  */
 public class AppConfig {

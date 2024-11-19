@@ -134,8 +134,7 @@ public class SearchView extends JFrame {
 	 */
 	private void removeFilter(String filter) {
 		activeFilters.remove(filter);
-
-		// Recorre los componentes del panel de filtros aplicados y elimina el que tenga el texto del filtro
+		
 		for (Component comp : appliedFiltersPanel.getComponents()) {
 			if (comp instanceof JButton && ((JButton) comp).getText().equalsIgnoreCase(filter)) {
 				appliedFiltersPanel.remove(comp);

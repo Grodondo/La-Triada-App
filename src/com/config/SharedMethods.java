@@ -7,16 +7,17 @@ import javax.swing.ImageIcon;
 /**
  * This class contains shared methods that are used in multiple classes.
  * 
+ * 
  * @version 1.0
  */
 public class SharedMethods {
 
 	
 	/**
-	 * 
+	 * @author Carlos Arroyo Caballero
 	 * @param imageIcon The image to scale
 	 * @param size size to scale.
-	 * @return
+	 * @return The scaled image as ImageIcon
 	 */
 	public static ImageIcon resizeImage(ImageIcon imageIcon, double size) {
 		Image image = imageIcon.getImage();
