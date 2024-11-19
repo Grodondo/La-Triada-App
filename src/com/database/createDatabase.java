@@ -39,14 +39,16 @@ public class createDatabase {
 				+ " marca TEXT NOT NULL,\n" // Marca del vehículo
 				+ " modelo TEXT NOT NULL,\n" // Modelo del vehículo
 //				+ " carroceria TEXT NOT NULL CHECK(carroceria IN ('suv', 'berlina', 'compacto')),\n" // Carrocería (ENUM) - hay que añadir tipos
-				+ " carroceria TEXT NOT NULL,\n" // Carrocería
+				+ " carroceria TEXT NOT ,\n" // Carrocería
 				+ " combustible TEXT NOT NULL CHECK(combustible IN ('diesel', 'gasolina', 'hibrido', 'electrico')),\n" // Combustible (ENUM)
 				+ " consumo REAL NOT NULL,\n" // Consumo del vehículo (L/100 km)
-				+ " plazas REAL,\n" // Las motos no tienen por qué tenerlo
+				+ " plazas INTEGER,\n" // Las motos no tienen por qué tenerlo
 				+ " kilometros REAL NOT NULL,\n" // Kilómetros recorridos
 				+ " precio_compra REAL NOT NULL,\n" // Precio de compra
+				+ " precio_venta REAL NOT NULL,\n" // Precio de compra
 				+ " precio_alquiler REAL NOT NULL,\n" // Precio de alquiler - hay que automatizar que sea el de venta entre 1000 +/-
 				+ " alquilado BOOLEAN NOT NULL CHECK(alquilado IN (0, 1))\n" // Alquilado (boolean)
+				+ " imagen TEXT\n" // Ruta a un archivo JPG
 				+ ");";
 
 		try (Connection conn = connect(); Statement stmt = conn.createStatement()) {

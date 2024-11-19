@@ -67,10 +67,9 @@ public class VehiculoDAO {
                     rs.getString("carroceria"),
                     rs.getString("combustible"),
                     rs.getDouble("consumo"),
-                    rs.getDouble("plazas"),
+                    rs.getInt("plazas"),
                     rs.getDouble("kilometros"),
-                    rs.getDouble("precio_compra"),
-                    rs.getBoolean("alquilado")
+                    rs.getDouble("precio_compra")
                 );
                 vehiculos.add(vehiculo);
             }
