@@ -2,33 +2,24 @@ package com.views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.util.HashSet;
-import java.util.Set;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import com.config.AppConfig;
-import com.config.SharedMethods;
 import com.controllers.Filter;
+import com.models.Filtro;
 
 /**
  * Search view for the vehicle catalog
@@ -66,15 +57,15 @@ public class SearchView extends JFrame {
 		switch (type) {
 		case "car":
 			buttonIconCar.setSelected(true);
-			filter.applyFilter("car");
+			filter.applyFilter(new Filtro("car", "Vehicle"));
 			break;
 		case "bike":
 			buttonIconBike.setSelected(true);
-			filter.applyFilter("bike");
+			filter.applyFilter(new Filtro("bike", "Vehicle"));
 			break;
 		case "truck":
 			buttonIconTruck.setSelected(true);
-			filter.applyFilter("truck");
+			filter.applyFilter(new Filtro("truck", "Vehicle"));
 			break;
 		}
 
@@ -111,14 +102,16 @@ public class SearchView extends JFrame {
 		filtersPanel.setPreferredSize(new Dimension(300, getHeight()));
 		filtersPanel.setBackground(backgroundColor);
 
-		// Center Panel - Car List
-		carListPanel = createCarListPanel();
-		carListPanel.setBackground(backgroundColor);
+//		// Center Panel - Car List
+//		carListPanel = createCarListPanel();
+//		carListPanel.setBackground(backgroundColor);
+		
+		JPanel vehicleListPanel = new VehiclesPanel(appliedFiltersPanel, filter);
 
 		// Add panels to JFrame
 		add(customTitleBar, BorderLayout.NORTH);
 		add(filtersPanel, BorderLayout.WEST);
-		add(carListPanel, BorderLayout.CENTER);
+		add(vehicleListPanel, BorderLayout.CENTER);
 		
 	}
 
@@ -157,9 +150,9 @@ public class SearchView extends JFrame {
 
 		// Example car entries
 		carListPanel.add(appliedFiltersPanel);
-		carListPanel.add(createCarEntry("Toyota Corolla Sedan", "Berlina", "Híbrido", "car_image.png"));
-		carListPanel.add(createCarEntry("Toyota C-HR", "SUV", "Híbrido", "car_image.png"));
-		carListPanel.add(createCarEntry("Toyota Yaris", "Turismo", "Híbrido", "car_image.png"));
+		carListPanel.add(createVehicleEntry("Toyota Corolla Sedan", "Berlina", "Híbrido", "car_image.png"));
+		carListPanel.add(createVehicleEntry("Toyota C-HR", "SUV", "Híbrido", "car_image.png"));
+		carListPanel.add(createVehicleEntry("Toyota Yaris", "Turismo", "Híbrido", "car_image.png"));
 
 		return carListPanel;
 	}
@@ -173,39 +166,74 @@ public class SearchView extends JFrame {
 	 * @param imagePath The path to the image of the car
 	 * @return The JPanel with the car information
 	 */
-	private JPanel createCarEntry(String title, String type, String fuel, String imagePath) {
-		JPanel carPanel = new JPanel();
-		carPanel.setLayout(new BorderLayout());
-		carPanel.setBackground(Color.WHITE);
-		carPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-		carPanel.setPreferredSize(new Dimension(600, 150));
+	   private JPanel createVehicleEntry(String title, String type, String fuel, String imagePath) {
+	        JPanel carPanel = new JPanel();
+	        carPanel.setLayout(new BorderLayout());
+	        carPanel.setBackground(Color.WHITE);
+	        carPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+	        carPanel.setPreferredSize(new Dimension(600, 150));
 
-		JLabel titleLabel = new JLabel(title);
-		titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+	        JLabel titleLabel = new JLabel(title);
+	        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
 
-		JLabel typeLabel = new JLabel(type);
-		typeLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+	        JLabel typeLabel = new JLabel(type);
+	        typeLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 
-		JLabel fuelLabel = new JLabel(fuel);
-		fuelLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+	        JLabel fuelLabel = new JLabel(fuel);
+	        fuelLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 
-		JPanel textPanel = new JPanel();
-		textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-		textPanel.setBackground(Color.WHITE);
-		textPanel.add(titleLabel);
-		textPanel.add(typeLabel);
-		textPanel.add(fuelLabel);
+	        JPanel textPanel = new JPanel();
+	        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
+	        textPanel.setBackground(Color.WHITE);
+	        textPanel.add(titleLabel);
+	        textPanel.add(typeLabel);
+	        textPanel.add(fuelLabel);
 
-		// Placeholder for car image
-		JLabel imageLabel = new JLabel();
-		imageLabel.setIcon(new ImageIcon(imagePath)); // Load your image path here
-		imageLabel.setPreferredSize(new Dimension(100, 100));
+	        JLabel imageLabel = new JLabel();
+	        imageLabel.setIcon(new ImageIcon(imagePath));
+	        imageLabel.setPreferredSize(new Dimension(100, 100));
 
-		carPanel.add(imageLabel, BorderLayout.WEST);
-		carPanel.add(textPanel, BorderLayout.CENTER);
+	        carPanel.add(imageLabel, BorderLayout.WEST);
+	        carPanel.add(textPanel, BorderLayout.CENTER);
 
-		return carPanel;
-	}
+	        // Add a click listener to open another panel
+	        carPanel.addMouseListener(new MouseAdapter() {
+	            @Override
+	            public void mouseClicked(MouseEvent e) {
+	                // Logic to open another JPanel
+	                openDetailsPanel(title, type, fuel, imagePath);
+	            }
+
+	            @Override
+	            public void mouseEntered(MouseEvent e) {
+	                carPanel.setBackground(new Color(230, 230, 250)); // Highlight effect
+	            }
+
+	            @Override
+	            public void mouseExited(MouseEvent e) {
+	                carPanel.setBackground(Color.WHITE); // Revert to original color
+	            }
+	        });
+
+	        return carPanel;
+	    }
+
+	    private void openDetailsPanel(String title, String type, String fuel, String imagePath) {
+	        JFrame detailFrame = new JFrame("Vehicle Details");
+	        detailFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	        detailFrame.setSize(400, 300);
+
+	        JPanel detailsPanel = new JPanel();
+	        detailsPanel.setLayout(new BoxLayout(detailsPanel, BoxLayout.Y_AXIS));
+	        detailsPanel.add(new JLabel("Title: " + title));
+	        detailsPanel.add(new JLabel("Type: " + type));
+	        detailsPanel.add(new JLabel("Fuel: " + fuel));
+	        JLabel imageLabel = new JLabel(new ImageIcon(imagePath));
+	        detailsPanel.add(imageLabel);
+
+	        detailFrame.add(detailsPanel);
+	        detailFrame.setVisible(true);
+	    }
 
 	// -------------- COMPONENTS --------------
 	public static JCheckBox buttonIconCar;

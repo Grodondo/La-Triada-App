@@ -24,6 +24,7 @@ import javax.swing.border.LineBorder;
 import com.config.AppConfig;
 import com.config.SharedMethods;
 import com.controllers.Filter;
+import com.models.Filtro;
 
 
 /**
@@ -40,8 +41,9 @@ public class FiltersPanel extends JPanel{
 	private Color backgroundColor = new Color(42, 63, 90);;
 
 	/**
-	 * Constructor, creates the filter panel
+	 * Constructor, creates the filter panel -  Requires the Filter to be created and stup beforehand
 	 * 
+	 * @param filter The filter to apply
 	 * 
 	 * @see createFilterSectionImages
 	 * @see createFilterSection
@@ -179,7 +181,7 @@ public class FiltersPanel extends JPanel{
 			searchButton.setBorderPainted(false);
 			searchButton.setFocusPainted(false);
 			searchButton.addActionListener(e -> {
-				filter.applyFilter(textField.getText());
+				filter.applyFilter(new Filtro(textField.getText(), title));
 				textField.setText("");
 			});
 
@@ -234,9 +236,9 @@ public class FiltersPanel extends JPanel{
 
 			SearchView.buttonIconCar.addActionListener(e -> {
 				if (SearchView.buttonIconCar.isSelected()) {
-					filter.applyFilter("car");
+					filter.applyFilter(new Filtro("car", "Vehicle"));
 				} else {
-					filter.removeFilter("car");
+					filter.removeFilter(new Filtro("car", "Vehicle"));
 				}
 			});
 		}
@@ -252,9 +254,9 @@ public class FiltersPanel extends JPanel{
 
 			SearchView.buttonIconBike.addActionListener(e -> {
 				if (SearchView.buttonIconBike.isSelected()) {
-					filter.applyFilter("bike");
+					filter.applyFilter(new Filtro("bike", "Vehicle"));
 				} else {
-					filter.removeFilter("bike");
+					filter.removeFilter(new Filtro("bike", "Vehicle"));
 				}
 			});
 		}
@@ -270,9 +272,9 @@ public class FiltersPanel extends JPanel{
 
 			SearchView.buttonIconTruck.addActionListener(e -> {
 				if (SearchView.buttonIconTruck.isSelected()) {
-					filter.applyFilter("truck");
+					filter.applyFilter(new Filtro("truck", "Vehicle"));
 				} else {
-					filter.removeFilter("truck");
+					filter.removeFilter(new Filtro("truck", "Vehicle"));
 				}
 			});
 		}
@@ -319,9 +321,9 @@ public class FiltersPanel extends JPanel{
 
 			checkBox.addActionListener(e -> {
 				if (checkBox.isSelected()) {
-					filter.applyFilter(checkBox.getText());
+					filter.applyFilter(new Filtro(checkBox.getText(), title));
 				} else {
-					filter.removeFilter(checkBox.getText());
+					filter.removeFilter(new Filtro(checkBox.getText(), title));
 				}
 			});
 

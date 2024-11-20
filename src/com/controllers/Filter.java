@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import com.models.Filtro;
 import com.views.SearchView;
 
 /**
@@ -22,7 +23,7 @@ import com.views.SearchView;
  */
 public class Filter {
 
-	private Set<String> activeFilters;
+	private Set<Filtro> activeFilters;
 	private JPanel appliedFiltersPanel;
 	
 	/**
@@ -42,7 +43,11 @@ public class Filter {
 	 * @return True if the filter is applied, false otherwise
 	 */
 	public boolean containsFilter(String filter) {
-		return activeFilters.contains(filter);
+		for (Filtro f : activeFilters) {
+			if (f.getName().equalsIgnoreCase(filter))
+				return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -52,16 +57,16 @@ public class Filter {
 	 * 
 	 * @param filter The filter to apply
 	 */
-	public void applyFilter(String filter) {
-		if (!containsFilter(filter)) {
-			System.out.println("Applying filter: " + filter + " - " + activeFilters);
+	public void applyFilter(Filtro filter) {
+		if (!containsFilter(filter.getName())) {
+			System.out.println("Applying filter: " + filter.getName());
 			this.activeFilters.add(filter);
 			this.appliedFiltersPanel.add(createFilterTag(filter));
 	
 			appliedFiltersPanel.revalidate();
 			appliedFiltersPanel.repaint();
 		}
-		else System.out.println("Filter already exists: " + filter + " - " + activeFilters);
+		else System.out.println("Filter already exists: " + filter.getName());
 	}
 
 	/**
@@ -69,12 +74,12 @@ public class Filter {
 	 * 
 	 * @param filter The filter to remove
 	 */
-	public void removeFilter(String filter) {
-		System.out.println("Removing filter: " + filter + " - " + activeFilters);
+	public void removeFilter(Filtro  filter) {
+		System.out.println("Removing filter: " + filter.getName());
 		activeFilters.remove(filter);
 
 		for (Component comp : appliedFiltersPanel.getComponents()) {
-			if (comp instanceof JButton && ((JButton) comp).getText().equalsIgnoreCase(filter)) {
+			if (comp instanceof JButton && ((JButton) comp).getText().equalsIgnoreCase(filter.getName())) {
 				appliedFiltersPanel.remove(comp);
 				break;
 			}
@@ -91,16 +96,16 @@ public class Filter {
 	 * @param text The text of the filter
 	 * @return The JButton with the text of the filter
 	 */
-	private JButton createFilterTag(String text) {
-		JButton filterButton = new JButton(text + "");
+	private JButton createFilterTag(Filtro filter) {
+		JButton filterButton = new JButton(filter.getName() + "");
 		filterButton.setFont(new Font("Arial", Font.BOLD, 14));
 		filterButton.setBackground(Color.WHITE);
 		filterButton.setForeground(new Color(42, 63, 90));
 		filterButton.setBorder(new LineBorder(Color.WHITE, 1, true));
 
 		filterButton.addActionListener(e -> {
-			removeFilter(text);
-			switch (text) {
+			removeFilter(filter);
+			switch (filter.getName()) {
 			case "car":
 				SearchView.buttonIconCar.setSelected(false);
 				break;
