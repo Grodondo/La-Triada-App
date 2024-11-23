@@ -19,6 +19,7 @@ import com.database.createDatabase;
 import com.models.Filtro;
 import com.models.Vehiculo;
 import com.views.SearchView;
+import com.views.VehiclesPanel;
 
 /**
  * Clase que se encarga de gestionar los filtros aplicados en la vista de búsqueda
@@ -43,6 +44,23 @@ public class Filter {
 		this.appliedFiltersPanel = appliedFiltersPanel;
 		
 	}
+
+	/**
+	 * Añade los paneles de los vehículos filtrados al panel de vehículos
+	 * ({@link VehiclesPanel})
+	 */
+	public void reloadPanelsVehiclesByFilter() {
+		List<Vehiculo> vehicles = this.getVehiclesFiltered();
+		if (vehicles == null) {
+			System.out.println("Vehicles is null");
+		}else {
+			VehiclesPanel.reloadVehicles();
+			for (Vehiculo vehicle : vehicles) {
+				VehiclesPanel.vehiclesPanel.add(VehiclesPanel.createVehicleEntry(vehicle));
+			}
+		}
+	}
+	
 	
 	/**
 	 * Obtiene los vehículos filtrados según los filtros aplicados
@@ -111,8 +129,8 @@ public class Filter {
 	
 			appliedFiltersPanel.revalidate();
 			appliedFiltersPanel.repaint();
-			
-			getVehiclesFiltered();
+
+			reloadPanelsVehiclesByFilter();
 		}
 		else System.out.println("Filter already exists: " + filter.getName());
 	}
@@ -135,6 +153,8 @@ public class Filter {
 	    }
 	    appliedFiltersPanel.revalidate();
 	    appliedFiltersPanel.repaint();
+	    
+	    reloadPanelsVehiclesByFilter();
 	}
 
 	/**

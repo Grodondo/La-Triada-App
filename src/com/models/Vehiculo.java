@@ -1,5 +1,6 @@
 package com.models;
 
+import com.config.AppConfig;
 import com.database.createDatabase;
 
 import java.nio.file.Paths;
@@ -77,7 +78,7 @@ public class Vehiculo {
 		this.alquilado = false;
 
 		// Generar la ruta de la imagen usando la matrícula
-		String directorioImagenes = "./La-Triada-App/src/com/database/imagenes/";
+		String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";
 		this.imagen = Paths.get(directorioImagenes, matricula + ".jpg").toString();
 	}
 
@@ -86,7 +87,7 @@ public class Vehiculo {
 			String combustible, double consumo, Integer plazas, double kilometros, double precioCompra,
 			double precioAlquiler, boolean alquilado) {
 			// Directorio base para las imágenes
-		String directorioImagenes = "./La-Triada-App/src/com/database/imagenes/";
+		String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";
 
 		// Generar la ruta de la imagen usando la matrícula
 		String rutaImagen = Paths.get(directorioImagenes, matricula + ".jpg").toString();

@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,8 +16,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import com.config.AppConfig;
+import com.config.SharedMethods;
 import com.controllers.Filter;
 import com.models.Vehiculo;
 
@@ -31,7 +35,7 @@ import com.models.Vehiculo;
 public class VehiclesPanel extends JPanel{
 
 	//private Filter filter;
-	private JPanel vehiclesPanel;
+	public static JPanel vehiclesPanel;
 	
 	/**
 	 * Constructor - Requires the Filter to be created and stup beforehand
@@ -57,9 +61,6 @@ public class VehiclesPanel extends JPanel{
 //			}
 //		}
 		
-		vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
-		vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
-		vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
 		//____________________________________________________________________________________________________
 		
 	    // Scroll pane para los filtros
@@ -102,15 +103,12 @@ public class VehiclesPanel extends JPanel{
 	    
 	}
 	
-	private void addVehiclesByFilter(Filter filter) {
-		List<Vehiculo> vehicles = filter.getVehiclesFiltered();
-		if (vehicles == null) {
-			System.out.println("Vehicles is null");
-		}else {
-			for (Vehiculo vehicle : vehicles) {
-				vehiclesPanel.add(createVehicleEntry(vehicle));
-			}
-		}
+	
+	public static void reloadVehicles() {
+		vehiclesPanel.removeAll();
+
+		vehiclesPanel.revalidate();
+		vehiclesPanel.repaint();
 	}
 	
 	/**
@@ -122,7 +120,7 @@ public class VehiclesPanel extends JPanel{
 	 * @param imagePath The path to the image of the car
 	 * @return The JPanel with the car information
 	 */
-	   private JPanel createVehicleEntry(Vehiculo vehicle) {
+	public static JPanel createVehicleEntry(Vehiculo vehicle) {
 	        JPanel vehiclePanel = new JPanel();
 	        vehiclePanel.setLayout(new BorderLayout());
 	        vehiclePanel.setBackground(Color.WHITE);
@@ -146,19 +144,35 @@ public class VehiclesPanel extends JPanel{
 	        textPanel.add(fuelLabel);
 	        
 	        
+	        // Imagen del vehículo
 	        JLabel imageLabel = new JLabel();
-	        imageLabel.setIcon(new ImageIcon(vehicle.getRutaImagen()));
-	        imageLabel.setPreferredSize(new Dimension(100, 100));
-
+	        
+	        ImageIcon vehicleIcon = null;
+	        try {
+	        	vehicleIcon = SharedMethods.resizeImage(new ImageIcon(vehicle.getRutaImagen()), 4);
+	        	//vehicleIcon = SharedMethods.resizeImage(new ImageIcon(AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\0987KPT.jpg"), 2);
+	        }
+			catch (Exception e) {
+				vehicleIcon = SharedMethods.resizeImage(new ImageIcon( AppConfig.RESOURCES_URL + "images\\iconos\\CocheNegro.png"), 5);
+			}
+	        System.out.println("Ruta: " + vehicle.getRutaImagen());
+	        System.out.println(AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\0987KPT.jpg");
+	        
+	       
+            imageLabel.setIcon(vehicleIcon);
+	        imageLabel.setPreferredSize(new Dimension(200, 100));
+	        imageLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+	        
+	        
+	        // Añade los elementos al panel
 	        vehiclePanel.add(imageLabel, BorderLayout.WEST);
 	        vehiclePanel.add(textPanel, BorderLayout.CENTER);
 
-	        // click listener to open another panel
+	        // click listener para abrir el panel de detalles
 	        vehiclePanel.addMouseListener(new MouseAdapter() {
 	            @Override
 	            public void mouseClicked(MouseEvent e) {
-	                // Logic to open another JPanel
-	                openDetailsPanel(vehicle);
+	                //openDetailsPanel(vehicle);
 	            }
 
 	            @Override

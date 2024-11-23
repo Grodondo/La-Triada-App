@@ -33,8 +33,8 @@ public class SearchView extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel appliedFiltersPanel;
-	private JPanel carListPanel;
 	private JPanel filtersPanel;
+	public static JPanel vehicleListPanel;
 	
 	private Filter filter;
 
@@ -103,7 +103,7 @@ public class SearchView extends JFrame {
 		filtersPanel.setPreferredSize(new Dimension(300, getHeight()));
 		filtersPanel.setBackground(backgroundColor);
 		
-		JPanel vehicleListPanel = new VehiclesPanel(appliedFiltersPanel);
+		vehicleListPanel = new VehiclesPanel(appliedFiltersPanel);
 
 		// Add panels to JFrame
 		add(customTitleBar, BorderLayout.NORTH);
