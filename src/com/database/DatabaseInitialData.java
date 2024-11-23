@@ -31,8 +31,10 @@ import com.models.Vehiculo;
 public class DatabaseInitialData {
 	public static void main(String[] args) {
 		// Usados solo para correcciones
-		/* createDatabase.EliminarTabla("alquilado");
-		createDatabase.EliminarTabla("vehiculo"); */
+		/* 
+		createDatabase.EliminarTabla("alquilado");
+		createDatabase.EliminarTabla("vehiculo"); 
+		*/
 
 		createDatabase.createTableVehiculos();
 		createDatabase.createTableAlquilados();

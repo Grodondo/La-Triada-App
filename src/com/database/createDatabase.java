@@ -109,7 +109,7 @@ public class createDatabase {
 				+ " kilometros REAL NOT NULL,\n" // Kilómetros recorridos
 				+ " precio_compra REAL NOT NULL,\n" // Precio de compra
 				+ " precio_venta REAL NOT NULL,\n" // Precio de compra
-				+ " precio_alquiler REAL NOT NULL,\n" // Precio de alquiler - hay que automatizar que sea el de venta entre 1000 +/-
+				+ " precio_alquiler REAL NOT NULL,\n" // Precio de alquiler 
 				+ " alquilado BOOLEAN NOT NULL CHECK(alquilado IN (0, 1)), \n" // Alquilado (boolean)
 				+ " imagen TEXT \n" // Ruta a un archivo JPG
 				+ ");";
@@ -150,7 +150,7 @@ public class createDatabase {
 		// Definir la sentencia SQL
 		String sql = "CREATE TABLE IF NOT EXISTS alquilado (\n" + " matricula TEXT PRIMARY KEY,\n" // Matrícula única, foreign key desde vehiculo
 				+ " fecha_inicio TEXT NOT NULL,\n" // Fecha de inicio del alquiler
-				+ " fecha_fin TEXT,\n" // Fecha de fin
+				+ " fecha_fin TEXT NOT NULL,\n" // Fecha de fin
 				+ " FOREIGN KEY(matricula) REFERENCES vehiculo(matricula) ON DELETE CASCADE\n" + ");";
 
 		try (Connection conn = connect(); Statement stmt = conn.createStatement()) {
