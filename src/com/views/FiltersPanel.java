@@ -28,7 +28,9 @@ import com.models.Filtro;
 
 
 /**
- * Search view for the vehicle catalog
+ * Vista de búsqueda para el catálogo de vehículos
+ * 
+ * Es importante que todos los elementos de la vista se hayan añadido con el tipo correspondiente al de la BD
  * 
  * @author Carlos Arroyo Caballero
  * @see CustomTitleBar
@@ -75,10 +77,9 @@ public class FiltersPanel extends JPanel{
 	    // Añadir los diferentes paneles de filtros
 	    filtersPanel.add(createFilterSectionImages());
 	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault" }));
+	    filtersPanel.add(createFilterSection("Combustible", new String[] { "diesel", "gasolina", "hibrido", "electrico" }));
 	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault" }));
-	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault" }));
-	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault" }));
-	    filtersPanel.add(createTextFilterPanel("Modelo"));
+	    filtersPanel.add(createTextFilterPanel("Plazas"));
 	    filtersPanel.add(createFilterSection("Modelo", new String[] {}));
 	    filtersPanel.add(createFilterSection("Carroceria", new String[] {}));
 	    filtersPanel.add(createFilterSection("Combustible", new String[] {}));
@@ -181,7 +182,7 @@ public class FiltersPanel extends JPanel{
 			searchButton.setBorderPainted(false);
 			searchButton.setFocusPainted(false);
 			searchButton.addActionListener(e -> {
-				filter.applyFilter(new Filtro(textField.getText(), title));
+				filter.applyFilter(new Filtro(textField.getText(), title.toLowerCase()));
 				textField.setText("");
 			});
 
@@ -236,9 +237,9 @@ public class FiltersPanel extends JPanel{
 
 			SearchView.buttonIconCar.addActionListener(e -> {
 				if (SearchView.buttonIconCar.isSelected()) {
-					filter.applyFilter(new Filtro("car", "Vehicle"));
+					filter.applyFilter(new Filtro("coche", "tipo"));
 				} else {
-					filter.removeFilter(new Filtro("car", "Vehicle"));
+					filter.removeFilter(new Filtro("coche", "tipo"));
 				}
 			});
 		}
@@ -254,9 +255,9 @@ public class FiltersPanel extends JPanel{
 
 			SearchView.buttonIconBike.addActionListener(e -> {
 				if (SearchView.buttonIconBike.isSelected()) {
-					filter.applyFilter(new Filtro("bike", "Vehicle"));
+					filter.applyFilter(new Filtro("moto", "tipo"));
 				} else {
-					filter.removeFilter(new Filtro("bike", "Vehicle"));
+					filter.removeFilter(new Filtro("moto", "tipo"));
 				}
 			});
 		}
@@ -272,9 +273,9 @@ public class FiltersPanel extends JPanel{
 
 			SearchView.buttonIconTruck.addActionListener(e -> {
 				if (SearchView.buttonIconTruck.isSelected()) {
-					filter.applyFilter(new Filtro("truck", "Vehicle"));
+					filter.applyFilter(new Filtro("camion", "tipo"));
 				} else {
-					filter.removeFilter(new Filtro("truck", "Vehicle"));
+					filter.removeFilter(new Filtro("camion", "tipo"));
 				}
 			});
 		}
@@ -321,9 +322,9 @@ public class FiltersPanel extends JPanel{
 
 			checkBox.addActionListener(e -> {
 				if (checkBox.isSelected()) {
-					filter.applyFilter(new Filtro(checkBox.getText(), title));
+					filter.applyFilter(new Filtro(checkBox.getText(), title.toLowerCase()));
 				} else {
-					filter.removeFilter(new Filtro(checkBox.getText(), title));
+					filter.removeFilter(new Filtro(checkBox.getText(), title.toLowerCase()));
 				}
 			});
 

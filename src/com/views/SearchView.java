@@ -57,15 +57,15 @@ public class SearchView extends JFrame {
 		switch (type) {
 		case "car":
 			buttonIconCar.setSelected(true);
-			filter.applyFilter(new Filtro("car", "Vehicle"));
+			filter.applyFilter(new Filtro("coche", "tipo"));
 			break;
 		case "bike":
 			buttonIconBike.setSelected(true);
-			filter.applyFilter(new Filtro("bike", "Vehicle"));
+			filter.applyFilter(new Filtro("moto", "tipo"));
 			break;
 		case "truck":
 			buttonIconTruck.setSelected(true);
-			filter.applyFilter(new Filtro("truck", "Vehicle"));
+			filter.applyFilter(new Filtro("camion", "tipo"));
 			break;
 		}
 
@@ -103,7 +103,7 @@ public class SearchView extends JFrame {
 		filtersPanel.setPreferredSize(new Dimension(300, getHeight()));
 		filtersPanel.setBackground(backgroundColor);
 		
-		JPanel vehicleListPanel = new VehiclesPanel(appliedFiltersPanel, filter);
+		JPanel vehicleListPanel = new VehiclesPanel(appliedFiltersPanel);
 
 		// Add panels to JFrame
 		add(customTitleBar, BorderLayout.NORTH);

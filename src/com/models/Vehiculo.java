@@ -114,6 +114,11 @@ public class Vehiculo {
 			pstmt.setBoolean(13, alquilado);
 			pstmt.setString(14, rutaImagen); // Ruta generada de la imagen
 
+			System.out.printf(
+				    "Inserting: matricula=%s, tipo=%s, marca=%s, modelo=%s, carroceria=%s, combustible=%s, consumo=%.2f, plazas=%s, kilometros=%.2f, precioCompra=%.2f, precioVenta=%.2f, precioAlquiler=%.2f, alquilado=%b, imagen=%s%n",
+				    matricula, tipo, marca, modelo, carroceria, combustible, consumo, plazas, kilometros, precioCompra,
+				    precioCompra * 1.33, precioAlquiler, alquilado, rutaImagen);
+			
 			pstmt.executeUpdate();
 			System.out.println("Vehículo insertado correctamente: " + matricula);
 		} catch (SQLException e) {
@@ -250,5 +255,26 @@ public class Vehiculo {
 		return imagen;
 	}
 	
+	
+	/**
+	 * Muestra los datos del vehículo en la consola.
+	 */
+	public void debugMostrarDatos() {
+		System.out.println("Matrícula: " + matricula);
+		System.out.println("Tipo: " + tipo);
+		System.out.println("Marca: " + marca);
+		System.out.println("Modelo: " + modelo);
+		System.out.println("Carrocería: " + carroceria);
+		System.out.println("Combustible: " + combustible);
+		System.out.println("Consumo: " + consumo);
+		System.out.println("Plazas: " + plazas);
+		System.out.println("Kilómetros: " + kilometros);
+		System.out.println("Precio de compra: " + precioCompra);
+		System.out.println("Precio de venta: " + precioVenta);
+		System.out.println("Precio de alquiler: " + precioAlquiler);
+		System.out.println("Alquilado: " + alquilado);
+		System.out.println("Ruta de la imagen: " + imagen);
+		System.out.println("-------------------------------------------------");
+	}
 	
 }

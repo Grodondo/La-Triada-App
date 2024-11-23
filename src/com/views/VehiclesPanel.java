@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -21,7 +22,7 @@ import com.models.Vehiculo;
 
 
 /**
- * Panel to display a list of vehicles
+ * Panel que contiene la lista de vehículos
  * 
  * @author Carlos Arroyo Caballero
  * @version 1.0
@@ -29,8 +30,8 @@ import com.models.Vehiculo;
  */
 public class VehiclesPanel extends JPanel{
 
-	private Filter filter;
-	
+	//private Filter filter;
+	private JPanel vehiclesPanel;
 	
 	/**
 	 * Constructor - Requires the Filter to be created and stup beforehand
@@ -38,29 +39,27 @@ public class VehiclesPanel extends JPanel{
 	 * @param appliedFiltersPanel The panel with the applied filters
 	 * @param filter              The filter to apply
 	 */
-	public VehiclesPanel(JPanel appliedFiltersPanel, Filter filter) {
-		this.filter = filter;
+	public VehiclesPanel(JPanel appliedFiltersPanel) {
+		//this.filter = filter;
 
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-		JPanel vehiclesPanel = new JPanel();
+		vehiclesPanel = new JPanel();
 		vehiclesPanel.setLayout(new BoxLayout(vehiclesPanel, BoxLayout.Y_AXIS));
 		
-		//____________________________________________________________________________________________________
-		//vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
-		//vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
-		//vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
+//		List<Vehiculo> vehicles = filter.getVehiclesFiltered();
+//		if (vehicles == null) {
+//			System.out.println("Vehicles is null");
+//		}else {
+//			for (Vehiculo vehicle : vehicles) {
+//				vehiclesPanel.add(createVehicleEntry(vehicle));
+//			}
+//		}
 		
 		vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
 		vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
 		vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
-		vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
-		vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
-		vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
-		vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
-		vehiclesPanel.add(createVehicleEntry(new Vehiculo("1234ABC", "Turismo", "Toyota", "Yaris", "Berlina", "Híbrido", 4.5, 5, 10000, 20000)));
-		
 		//____________________________________________________________________________________________________
 		
 	    // Scroll pane para los filtros
@@ -104,7 +103,14 @@ public class VehiclesPanel extends JPanel{
 	}
 	
 	private void addVehiclesByFilter(Filter filter) {
-		
+		List<Vehiculo> vehicles = filter.getVehiclesFiltered();
+		if (vehicles == null) {
+			System.out.println("Vehicles is null");
+		}else {
+			for (Vehiculo vehicle : vehicles) {
+				vehiclesPanel.add(createVehicleEntry(vehicle));
+			}
+		}
 	}
 	
 	/**

@@ -3,9 +3,9 @@ package com.config;
 import java.awt.Dimension;
 
 /**
- * This class contains shared constant values that are used in multiple classes.
+ * Esta clase es responsable de almacenar la configuración de la aplicación.
  * 
- * @author Carlos Arroyo Caballero
+ * @author [Carlos Arroyo Caballero]
  * @version 1.0
  */
 public class AppConfig {

@@ -6,6 +6,14 @@ import com.config.AppConfig;
 import com.database.*;
 import com.views.*;
 
+
+/**
+ * Clase principal de la aplicación
+ * 
+ * Se encarga de iniciar la aplicación y mostrar la ventana principal.
+ * 
+ * @version 1.0
+ */
 public class App {
 
 	public static void main(String[] args) {

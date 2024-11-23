@@ -4,20 +4,23 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import com.models.Filtro;
+
 /**
- * This class contains shared methods that are used in multiple classes.
+ * Contiene métodos compartidos por varias clases para su reutilización.
  * 
  * 
  * @version 1.0
  */
 public class SharedMethods {
 
-	
 	/**
-	 * @author Carlos Arroyo Caballero
-	 * @param imageIcon The image to scale
-	 * @param size size to scale.
-	 * @return The scaled image as ImageIcon
+	 * @author [Carlos Arroyo Caballero]
+	 * 
+	 * @param imageIcon La imagen a escalar
+	 * @param size Tamaño al que se escalará la imagen
+	 * 
+	 * @return La imagen escalada como un {@link ImageIcon}
 	 */
 	public static ImageIcon resizeImage(ImageIcon imageIcon, double size) {
 		Image image = imageIcon.getImage();
