@@ -3,12 +3,17 @@ package com.views;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
@@ -26,42 +32,28 @@ import com.models.Vehiculo;
 
 
 /**
- * Panel que contiene la lista de vehículos
+ * Panel que contiene la lista de {@link Vehiculo} que se mostrarán en la vista de búsqueda
  * 
- * @author Carlos Arroyo Caballero
+ * @author [Carlos Arroyo Caballero]
  * @version 1.0
  * @see SearchView
  */
 public class VehiclesPanel extends JPanel{
 
-	//private Filter filter;
 	public static JPanel vehiclesPanel;
 	
 	/**
-	 * Constructor - Requires the Filter to be created and stup beforehand
+	 * Constructor - Inicializa el panel de vehículos dentro de un {@link JScrollPane}
 	 * 
-	 * @param appliedFiltersPanel The panel with the applied filters
-	 * @param filter              The filter to apply
+	 * @param appliedFiltersPanel El {@link JPanel} de filtros aplicados
+	 * 
 	 */
 	public VehiclesPanel(JPanel appliedFiltersPanel) {
-		//this.filter = filter;
 
-		
-		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		this.setLayout(new BorderLayout());
 
 		vehiclesPanel = new JPanel();
 		vehiclesPanel.setLayout(new BoxLayout(vehiclesPanel, BoxLayout.Y_AXIS));
-		
-//		List<Vehiculo> vehicles = filter.getVehiclesFiltered();
-//		if (vehicles == null) {
-//			System.out.println("Vehicles is null");
-//		}else {
-//			for (Vehiculo vehicle : vehicles) {
-//				vehiclesPanel.add(createVehicleEntry(vehicle));
-//			}
-//		}
-		
-		//____________________________________________________________________________________________________
 		
 	    // Scroll pane para los filtros
 	    JScrollPane scrollPane = new JScrollPane(vehiclesPanel);
@@ -103,7 +95,9 @@ public class VehiclesPanel extends JPanel{
 	    
 	}
 	
-	
+	/**
+	 * Metodo static: Recarga los paneles de los vehículos, vaciandolos en el proceso
+	 */
 	public static void reloadVehicles() {
 		vehiclesPanel.removeAll();
 
@@ -112,17 +106,17 @@ public class VehiclesPanel extends JPanel{
 	}
 	
 	/**
-	 * Creates a JPanel with the information of a car entry
+	 * Crea un panel con la información del vehículo 
 	 * 
-	 * @param title     The title of the car
-	 * @param type      The type of the car
-	 * @param fuel      The fuel type of the car
-	 * @param imagePath The path to the image of the car
-	 * @return The JPanel with the car information
+	 * @param vehicle El {@link Vehiculo} a mostrar
+	 * @return El {@link JPanel} con la información del vehículo
 	 */
 	public static JPanel createVehicleEntry(Vehiculo vehicle) {
 	        JPanel vehiclePanel = new JPanel();
-	        vehiclePanel.setLayout(new BorderLayout());
+	        
+	        vehiclePanel.setLayout(new GridBagLayout());
+	        GridBagConstraints gbc = new GridBagConstraints();
+	        
 	        vehiclePanel.setBackground(Color.WHITE);
 	        vehiclePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 	        vehiclePanel.setPreferredSize(new Dimension(600, 150));
@@ -138,6 +132,9 @@ public class VehiclesPanel extends JPanel{
 
 	        JPanel textPanel = new RoundedPanel(20);
 	        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
+	        textPanel.setPreferredSize(new Dimension(200, 100));
+	        textPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+	        
 	        textPanel.setBackground(Color.WHITE);
 	        textPanel.add(titleLabel);
 	        textPanel.add(typeLabel);
@@ -150,23 +147,35 @@ public class VehiclesPanel extends JPanel{
 	        ImageIcon vehicleIcon = null;
 	        try {
 	        	vehicleIcon = SharedMethods.resizeImage(new ImageIcon(vehicle.getRutaImagen()), 4);
-	        	//vehicleIcon = SharedMethods.resizeImage(new ImageIcon(AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\0987KPT.jpg"), 2);
 	        }
 			catch (Exception e) {
 				vehicleIcon = SharedMethods.resizeImage(new ImageIcon( AppConfig.RESOURCES_URL + "images\\iconos\\CocheNegro.png"), 5);
 			}
 	        System.out.println("Ruta: " + vehicle.getRutaImagen());
-	        System.out.println(AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\0987KPT.jpg");
 	        
 	       
             imageLabel.setIcon(vehicleIcon);
-	        imageLabel.setPreferredSize(new Dimension(200, 100));
+	        imageLabel.setPreferredSize(new Dimension(180, 100));
 	        imageLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 	        
 	        
 	        // Añade los elementos al panel
-	        vehiclePanel.add(imageLabel, BorderLayout.WEST);
-	        vehiclePanel.add(textPanel, BorderLayout.CENTER);
+//	        vehiclePanel.add(imageLabel, BorderLayout.WEST);
+//	        vehiclePanel.add(textPanel, BorderLayout.CENTER);
+	        
+	        // Configurar imagen
+	        gbc.gridx = 0;
+	        gbc.gridy = 0;
+	        gbc.weightx = 0;
+	        gbc.insets = new Insets(0, 0, 0, 10); // Espacio derecho de 10 píxeles
+	        gbc.fill = GridBagConstraints.NONE; // No expandir
+	        vehiclePanel.add(imageLabel, gbc);
+
+	        // Configurar texto
+	        gbc.gridx = 1;
+	        gbc.weightx = 1.0; 
+	        gbc.fill = GridBagConstraints.HORIZONTAL; // Expandir horizontalmente
+	        vehiclePanel.add(textPanel, gbc);
 
 	        // click listener para abrir el panel de detalles
 	        vehiclePanel.addMouseListener(new MouseAdapter() {
@@ -177,18 +186,36 @@ public class VehiclesPanel extends JPanel{
 
 	            @Override
 	            public void mouseEntered(MouseEvent e) {
-	                vehiclePanel.setBackground(new Color(230, 230, 250)); // Highlight effect
+	                vehiclePanel.setBackground(new Color(230, 230, 250)); // Highlight color
 	            }
 
 	            @Override
 	            public void mouseExited(MouseEvent e) {
-	                vehiclePanel.setBackground(Color.WHITE); // Revert to original color
+	                vehiclePanel.setBackground(Color.WHITE); // Volver al color orinal
 	            }
 	        });
 
 	        return vehiclePanel;
 	    }
-
+		
+	    /**
+	     * El {@link JPanel} que se muestra cuando no hay vehículos disponibles
+	     */
+		public static void createNoVehiclesPanel() {
+		    JPanel noVehiclesPanel = new JPanel();
+		    noVehiclesPanel.setLayout(new BorderLayout());
+		    noVehiclesPanel.setBackground(Color.LIGHT_GRAY); // Fondo opcional
+	
+		    JLabel messageLabel = new JLabel("No hay vehículos disponibles", SwingConstants.CENTER);
+		    messageLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		    messageLabel.setForeground(Color.DARK_GRAY);
+	
+		    noVehiclesPanel.add(messageLabel, BorderLayout.CENTER);
+		    noVehiclesPanel.setPreferredSize(new Dimension(600, 400)); // Ajustar tamaño si necesario
+		    
+		    vehiclesPanel.add(noVehiclesPanel);
+		}
+	
 	   // Serves as an example, will be deleted once the proper one is made
 	    private void openDetailsPanel(Vehiculo vehicle) {
 	        JFrame detailFrame = new JFrame("Vehicle Details");

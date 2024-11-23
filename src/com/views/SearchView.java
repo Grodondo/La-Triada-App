@@ -22,11 +22,13 @@ import com.controllers.Filter;
 import com.models.Filtro;
 
 /**
- * Search view for the vehicle catalog
+ * La vista de busqueda de vehiculos, que contendrá los filtros y la lista de vehículos
  * 
- * @author Carlos Arroyo Caballero
+ * @author [Carlos Arroyo Caballero]
  * @version 1.0
  * @see CustomTitleBar
+ * @see FiltersPanel
+ * @see VehiclesPanel
  */
 public class SearchView extends JFrame {
 
@@ -48,9 +50,9 @@ public class SearchView extends JFrame {
 	}
 
 	/**
-	 * Constructor with a type of vehicle to filter
+	 * Constructor con el filtro aplicado por defecto
 	 * 
-	 * @param type The type of vehicle to filter
+	 * @param type El tipo de vehículo a filtrar
 	 */
 	public SearchView(String type) {
 		setup();
@@ -72,7 +74,7 @@ public class SearchView extends JFrame {
 	}
 
 	/**
-	 * Sets up the JFrame and its components
+	 * Configura e Inicializa la ventana de la aplicación
 	 */
 	private void setup() {
 
@@ -114,11 +116,10 @@ public class SearchView extends JFrame {
 
 
 	/**
-	 * Creates a JPanel with the title "Filtros Aplicados" and the tags for all the
-	 * active filters
+	 * Crea el {@link JPanel} con el título y los tags de los filtros activos
 	 *
 	 * 
-	 * @return The JPanel with the title and tags for the active filters
+	 * @return El {@link JPanel} con los filtros aplicados
 	 * @see createFilterTag
 	 */
 	private JPanel createAppliedFiltersPanel() {

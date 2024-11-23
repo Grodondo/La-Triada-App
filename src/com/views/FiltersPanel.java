@@ -29,10 +29,9 @@ import com.models.Filtro;
 
 /**
  * Vista de búsqueda para el catálogo de vehículos
- * 
  * Es importante que todos los elementos de la vista se hayan añadido con el tipo correspondiente al de la BD
  * 
- * @author Carlos Arroyo Caballero
+ * @author [Carlos Arroyo Caballero]
  * @see CustomTitleBar
  * @version 1.0
  */
@@ -43,9 +42,9 @@ public class FiltersPanel extends JPanel{
 	private Color backgroundColor = new Color(42, 63, 90);;
 
 	/**
-	 * Constructor, creates the filter panel -  Requires the Filter to be created and stup beforehand
+	 * Constructor, crea el panel de filtros con el filtro pasado como parámetro
 	 * 
-	 * @param filter The filter to apply
+	 * @param filter El {@link Filter} que se aplicará a los vehículos
 	 * 
 	 * @see createFilterSectionImages
 	 * @see createFilterSection
@@ -76,9 +75,8 @@ public class FiltersPanel extends JPanel{
 
 	    // Añadir los diferentes paneles de filtros
 	    filtersPanel.add(createFilterSectionImages());
-	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault" }));
+	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault", "Kia" }));
 	    filtersPanel.add(createFilterSection("Combustible", new String[] { "diesel", "gasolina", "hibrido", "electrico" }));
-	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault" }));
 	    filtersPanel.add(createTextFilterPanel("Plazas"));
 	    filtersPanel.add(createFilterSection("Modelo", new String[] {}));
 	    filtersPanel.add(createFilterSection("Carroceria", new String[] {}));
@@ -182,7 +180,7 @@ public class FiltersPanel extends JPanel{
 			searchButton.setBorderPainted(false);
 			searchButton.setFocusPainted(false);
 			searchButton.addActionListener(e -> {
-				filter.applyFilter(new Filtro(textField.getText(), title.toLowerCase()));
+				filter.applyFilter(new Filtro(textField.getText().toLowerCase(), title.toLowerCase()));
 				textField.setText("");
 			});
 
@@ -322,9 +320,9 @@ public class FiltersPanel extends JPanel{
 
 			checkBox.addActionListener(e -> {
 				if (checkBox.isSelected()) {
-					filter.applyFilter(new Filtro(checkBox.getText(), title.toLowerCase()));
+					filter.applyFilter(new Filtro(checkBox.getText().toLowerCase(), title.toLowerCase()));
 				} else {
-					filter.removeFilter(new Filtro(checkBox.getText(), title.toLowerCase()));
+					filter.removeFilter(new Filtro(checkBox.getText().toLowerCase(), title.toLowerCase()));
 				}
 			});
 

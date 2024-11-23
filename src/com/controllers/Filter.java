@@ -51,9 +51,14 @@ public class Filter {
 	 */
 	public void reloadPanelsVehiclesByFilter() {
 		List<Vehiculo> vehicles = this.getVehiclesFiltered();
-		if (vehicles == null) {
+		if (vehicles == null || vehicles.isEmpty()) {
+
+			VehiclesPanel.reloadVehicles();
+			VehiclesPanel.createNoVehiclesPanel();
+	
 			System.out.println("Vehicles is null");
 		}else {
+			
 			VehiclesPanel.reloadVehicles();
 			for (Vehiculo vehicle : vehicles) {
 				VehiclesPanel.vehiclesPanel.add(VehiclesPanel.createVehicleEntry(vehicle));
@@ -131,6 +136,7 @@ public class Filter {
 			appliedFiltersPanel.repaint();
 
 			reloadPanelsVehiclesByFilter();
+			
 		}
 		else System.out.println("Filter already exists: " + filter.getName());
 	}
@@ -155,6 +161,7 @@ public class Filter {
 	    appliedFiltersPanel.repaint();
 	    
 	    reloadPanelsVehiclesByFilter();
+	    
 	}
 
 	/**
@@ -173,13 +180,13 @@ public class Filter {
 		filterButton.addActionListener(e -> {
 			removeFilter(filter);
 			switch (filter.getName()) {
-			case "car":
+			case "coche":
 				SearchView.buttonIconCar.setSelected(false);
 				break;
-			case "bike":
+			case "moto":
 				SearchView.buttonIconBike.setSelected(false);
 				break;
-			case "truck":
+			case "camion":
 				SearchView.buttonIconTruck.setSelected(false);
 				break;
 			}

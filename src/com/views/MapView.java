@@ -31,9 +31,14 @@ import javax.swing.JFrame;
 import com.config.AppConfig;
 
 /**
- * @author: Carlos Arroyo Caballero
+ * Crea un mapa interactivo con marcadores para Madrid y Barcelona
+ * 
+ * @author: [Carlos Arroyo Caballero
  * @version: 1.0
- * Creates a map view with markers for Madrid and Barcelona
+ * 
+ * @see JFrame
+ * @see JXMapViewer
+ * @see CustomWaypoint
  */
 public class MapView extends JFrame {
 	
@@ -50,9 +55,9 @@ public class MapView extends JFrame {
 	}
 	
 	/**
-	 * Creates the map viewer with markers for Madrid and Barcelona
+	 * Crea el mapa interactivo con marcadores para Madrid y Barcelona
 	 * 
-	 * @return the map viewer
+	 * @return El mapa como un {@link JXMapViewer}
 	 */
 	private JXMapViewer createMap() {
 		// Create a map viewer
@@ -102,7 +107,7 @@ public class MapView extends JFrame {
 	}
 
 	/**
-	 * Initialize the JFrame components
+	 * Inicializa los componente de la ventana
 	 */
 	private void initComponents() {
 		setTitle("Mapa interactivo de la Triada");
