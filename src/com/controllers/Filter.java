@@ -27,7 +27,7 @@ public class Filter {
 	private JPanel appliedFiltersPanel;
 	
 	/**
-	 * Constructor
+	 * Constructor - Requires the panel to add the filter tags
 	 * 
 	 * @param appliedFiltersPanel The panel to add the filter tags to
 	 */

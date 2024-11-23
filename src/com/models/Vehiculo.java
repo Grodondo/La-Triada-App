@@ -116,4 +116,62 @@ public class Vehiculo {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public String getCarroceria() {
+		return carroceria;
+	}
+
+	public String getCombustible() {
+		return combustible;
+	}
+
+	public double getConsumo() {
+		return consumo;
+	}
+
+	public Integer getPlazas() {
+		return plazas;
+	}
+
+	public double getKilometros() {
+		return kilometros;
+	}
+
+	public double getPrecioCompra() {
+		return precioCompra;
+	}
+
+	public double getPrecioVenta() {
+		return precioVenta;
+	}
+
+	public double getPrecioAlquiler() {
+		return precioAlquiler;
+	}
+
+	public boolean isAlquilado() {
+		return alquilado;
+	}
+
+	public String getRutaImagen() {
+		return imagen;
+	}
+	
+	
 }

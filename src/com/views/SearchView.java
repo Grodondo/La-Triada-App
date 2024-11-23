@@ -89,6 +89,7 @@ public class SearchView extends JFrame {
 		// Applied Filters Panel - Important to setup before Filters
 		appliedFiltersPanel = createAppliedFiltersPanel();
 		appliedFiltersPanel.setPreferredSize(new Dimension(getWidth(), 50));
+		appliedFiltersPanel.setSize(new Dimension(getWidth(), 50));
 		appliedFiltersPanel.setBackground(this.backgroundColor);
 		
 		// Filters Controller
@@ -101,10 +102,6 @@ public class SearchView extends JFrame {
 		filtersPanel = new FiltersPanel(filter);
 		filtersPanel.setPreferredSize(new Dimension(300, getHeight()));
 		filtersPanel.setBackground(backgroundColor);
-
-//		// Center Panel - Car List
-//		carListPanel = createCarListPanel();
-//		carListPanel.setBackground(backgroundColor);
 		
 		JPanel vehicleListPanel = new VehiclesPanel(appliedFiltersPanel, filter);
 
@@ -137,103 +134,6 @@ public class SearchView extends JFrame {
 		return appliedFiltersPanel;
 	}
 
-	/**
-	 * Creates a JPanel with example car entries
-	 * 
-	 * @return The JPanel with the example car entries
-	 * @see createCarEntry
-	 */
-	private JPanel createCarListPanel() {
-
-		carListPanel = new JPanel();
-		carListPanel.setLayout(new BoxLayout(carListPanel, BoxLayout.Y_AXIS));
-
-		// Example car entries
-		carListPanel.add(appliedFiltersPanel);
-		carListPanel.add(createVehicleEntry("Toyota Corolla Sedan", "Berlina", "Híbrido", "car_image.png"));
-		carListPanel.add(createVehicleEntry("Toyota C-HR", "SUV", "Híbrido", "car_image.png"));
-		carListPanel.add(createVehicleEntry("Toyota Yaris", "Turismo", "Híbrido", "car_image.png"));
-
-		return carListPanel;
-	}
-
-	/**
-	 * Creates a JPanel with the information of a car entry
-	 * 
-	 * @param title     The title of the car
-	 * @param type      The type of the car
-	 * @param fuel      The fuel type of the car
-	 * @param imagePath The path to the image of the car
-	 * @return The JPanel with the car information
-	 */
-	   private JPanel createVehicleEntry(String title, String type, String fuel, String imagePath) {
-	        JPanel carPanel = new JPanel();
-	        carPanel.setLayout(new BorderLayout());
-	        carPanel.setBackground(Color.WHITE);
-	        carPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-	        carPanel.setPreferredSize(new Dimension(600, 150));
-
-	        JLabel titleLabel = new JLabel(title);
-	        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-
-	        JLabel typeLabel = new JLabel(type);
-	        typeLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-
-	        JLabel fuelLabel = new JLabel(fuel);
-	        fuelLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-
-	        JPanel textPanel = new JPanel();
-	        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-	        textPanel.setBackground(Color.WHITE);
-	        textPanel.add(titleLabel);
-	        textPanel.add(typeLabel);
-	        textPanel.add(fuelLabel);
-
-	        JLabel imageLabel = new JLabel();
-	        imageLabel.setIcon(new ImageIcon(imagePath));
-	        imageLabel.setPreferredSize(new Dimension(100, 100));
-
-	        carPanel.add(imageLabel, BorderLayout.WEST);
-	        carPanel.add(textPanel, BorderLayout.CENTER);
-
-	        // Add a click listener to open another panel
-	        carPanel.addMouseListener(new MouseAdapter() {
-	            @Override
-	            public void mouseClicked(MouseEvent e) {
-	                // Logic to open another JPanel
-	                openDetailsPanel(title, type, fuel, imagePath);
-	            }
-
-	            @Override
-	            public void mouseEntered(MouseEvent e) {
-	                carPanel.setBackground(new Color(230, 230, 250)); // Highlight effect
-	            }
-
-	            @Override
-	            public void mouseExited(MouseEvent e) {
-	                carPanel.setBackground(Color.WHITE); // Revert to original color
-	            }
-	        });
-
-	        return carPanel;
-	    }
-
-	    private void openDetailsPanel(String title, String type, String fuel, String imagePath) {
-	        JFrame detailFrame = new JFrame("Vehicle Details");
-	        detailFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	        detailFrame.setSize(400, 300);
-
-	        JPanel detailsPanel = new JPanel();
-	        detailsPanel.setLayout(new BoxLayout(detailsPanel, BoxLayout.Y_AXIS));
-	        detailsPanel.add(new JLabel("Title: " + title));
-	        detailsPanel.add(new JLabel("Type: " + type));
-	        detailsPanel.add(new JLabel("Fuel: " + fuel));
-	        JLabel imageLabel = new JLabel(new ImageIcon(imagePath));
-	        detailsPanel.add(imageLabel);
-
-	        detailFrame.add(detailsPanel);
-	        detailFrame.setVisible(true);
-	    }
 
 	// -------------- COMPONENTS --------------
 	public static JCheckBox buttonIconCar;
