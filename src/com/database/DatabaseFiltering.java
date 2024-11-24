@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.models.Filtro;
@@ -14,23 +15,27 @@ import com.models.Filtro;
 /**
  * Clase para filtrar los resultados de la base de datos.
  * 
- * @author Carlos Arroyo Caballero
+ * @author [Carlos Arroyo Caballero]
  * @version 1.01
  */
 public class DatabaseFiltering {
 	
-	private final static String tablaVehiculos = "vehiculos";
-	private final static String tablaVehiculosAlquilados = "vehiculos_alquilados";
+	private final static String tablaVehiculos = "vehiculo";
+	//private final static String tablaVehiculosAlquilados = "vehiculos_alquilados";
 	
 	/**
 	 * Obtener los resultados filtrados de la base de datos
 	 *
-	 * @param conn la conexión a la base de datos
-	 * @param filters los filtros que se aplicarán a la consulta
-	 * @return la query que devuelve los resultados filtr
+	 * @param conn la {@link Connection} a la base de datos
+	 * @param filters Una lista con los {@link Filtro} que se aplicarán a la consulta
+	 * 
+	 * @return Un {@link ResultSet} con los resultados filtrados
+	 * 
 	 * @throws SQLException si ocurre un error al ejecutar la consulta
 	 */
-	public static ResultSet getFilteredResults(Connection conn, List<Filtro> filters) throws SQLException {
+	public static ResultSet getFilteredResults(Connection conn,  Set<Filtro> filters) throws SQLException {
+		
+		System.out.println("Starting getFilteredResults");
 		
 		// Agrupa los filtros por tipo "column1": ["value1", "value2"].
         Map<String, List<String>> groupedFilters = filters.stream().collect(Collectors.groupingBy(
@@ -61,6 +66,7 @@ public class DatabaseFiltering {
 
         // Convertir la consulta a un String
         String query = queryBuilder.toString();
+        //System.out.println("Query: " + query);
 
         // Crear un PreparedStatement con la consulta
         PreparedStatement statement = conn.prepareStatement(query);
@@ -69,10 +75,12 @@ public class DatabaseFiltering {
         int paramIndex = 1;
         for (Map.Entry<String, List<String>> entry : groupedFilters.entrySet()) {
             for (String value : entry.getValue()) {
+            	//System.out.println("ParamIndex: " + paramIndex + " Value: " + value);
                 statement.setString(paramIndex++, value); 
             }
         }
-
+        
+        System.out.println("Query: " + statement.toString());
         // Ejecutar la consulta
         return statement.executeQuery();
         

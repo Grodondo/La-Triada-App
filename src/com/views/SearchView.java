@@ -2,48 +2,41 @@ package com.views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.util.HashSet;
-import java.util.Set;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import com.config.AppConfig;
-import com.config.SharedMethods;
 import com.controllers.Filter;
+import com.models.Filtro;
 
 /**
- * Search view for the vehicle catalog
+ * La vista de busqueda de vehiculos, que contendrá los filtros y la lista de vehículos
  * 
- * @author Carlos Arroyo Caballero
+ * @author [Carlos Arroyo Caballero]
  * @version 1.0
  * @see CustomTitleBar
+ * @see FiltersPanel
+ * @see VehiclesPanel
  */
 public class SearchView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	private JPanel appliedFiltersPanel;
-	private JPanel carListPanel;
 	private JPanel filtersPanel;
+	public static JPanel vehicleListPanel;
 	
 	private Filter filter;
 
@@ -57,31 +50,31 @@ public class SearchView extends JFrame {
 	}
 
 	/**
-	 * Constructor with a type of vehicle to filter
+	 * Constructor con el filtro aplicado por defecto
 	 * 
-	 * @param type The type of vehicle to filter
+	 * @param type El tipo de vehículo a filtrar
 	 */
 	public SearchView(String type) {
 		setup();
 		switch (type) {
 		case "car":
 			buttonIconCar.setSelected(true);
-			filter.applyFilter("car");
+			filter.applyFilter(new Filtro("coche", "tipo"));
 			break;
 		case "bike":
 			buttonIconBike.setSelected(true);
-			filter.applyFilter("bike");
+			filter.applyFilter(new Filtro("moto", "tipo"));
 			break;
 		case "truck":
 			buttonIconTruck.setSelected(true);
-			filter.applyFilter("truck");
+			filter.applyFilter(new Filtro("camion", "tipo"));
 			break;
 		}
 
 	}
 
 	/**
-	 * Sets up the JFrame and its components
+	 * Configura e Inicializa la ventana de la aplicación
 	 */
 	private void setup() {
 
@@ -98,6 +91,7 @@ public class SearchView extends JFrame {
 		// Applied Filters Panel - Important to setup before Filters
 		appliedFiltersPanel = createAppliedFiltersPanel();
 		appliedFiltersPanel.setPreferredSize(new Dimension(getWidth(), 50));
+		appliedFiltersPanel.setSize(new Dimension(getWidth(), 50));
 		appliedFiltersPanel.setBackground(this.backgroundColor);
 		
 		// Filters Controller
@@ -110,25 +104,22 @@ public class SearchView extends JFrame {
 		filtersPanel = new FiltersPanel(filter);
 		filtersPanel.setPreferredSize(new Dimension(300, getHeight()));
 		filtersPanel.setBackground(backgroundColor);
-
-		// Center Panel - Car List
-		carListPanel = createCarListPanel();
-		carListPanel.setBackground(backgroundColor);
+		
+		vehicleListPanel = new VehiclesPanel(appliedFiltersPanel);
 
 		// Add panels to JFrame
 		add(customTitleBar, BorderLayout.NORTH);
 		add(filtersPanel, BorderLayout.WEST);
-		add(carListPanel, BorderLayout.CENTER);
+		add(vehicleListPanel, BorderLayout.CENTER);
 		
 	}
 
 
 	/**
-	 * Creates a JPanel with the title "Filtros Aplicados" and the tags for all the
-	 * active filters
+	 * Crea el {@link JPanel} con el título y los tags de los filtros activos
 	 *
 	 * 
-	 * @return The JPanel with the title and tags for the active filters
+	 * @return El {@link JPanel} con los filtros aplicados
 	 * @see createFilterTag
 	 */
 	private JPanel createAppliedFiltersPanel() {
@@ -144,68 +135,6 @@ public class SearchView extends JFrame {
 		return appliedFiltersPanel;
 	}
 
-	/**
-	 * Creates a JPanel with example car entries
-	 * 
-	 * @return The JPanel with the example car entries
-	 * @see createCarEntry
-	 */
-	private JPanel createCarListPanel() {
-
-		carListPanel = new JPanel();
-		carListPanel.setLayout(new BoxLayout(carListPanel, BoxLayout.Y_AXIS));
-
-		// Example car entries
-		carListPanel.add(appliedFiltersPanel);
-		carListPanel.add(createCarEntry("Toyota Corolla Sedan", "Berlina", "Híbrido", "car_image.png"));
-		carListPanel.add(createCarEntry("Toyota C-HR", "SUV", "Híbrido", "car_image.png"));
-		carListPanel.add(createCarEntry("Toyota Yaris", "Turismo", "Híbrido", "car_image.png"));
-
-		return carListPanel;
-	}
-
-	/**
-	 * Creates a JPanel with the information of a car entry
-	 * 
-	 * @param title     The title of the car
-	 * @param type      The type of the car
-	 * @param fuel      The fuel type of the car
-	 * @param imagePath The path to the image of the car
-	 * @return The JPanel with the car information
-	 */
-	private JPanel createCarEntry(String title, String type, String fuel, String imagePath) {
-		JPanel carPanel = new JPanel();
-		carPanel.setLayout(new BorderLayout());
-		carPanel.setBackground(Color.WHITE);
-		carPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-		carPanel.setPreferredSize(new Dimension(600, 150));
-
-		JLabel titleLabel = new JLabel(title);
-		titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-
-		JLabel typeLabel = new JLabel(type);
-		typeLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-
-		JLabel fuelLabel = new JLabel(fuel);
-		fuelLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-
-		JPanel textPanel = new JPanel();
-		textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-		textPanel.setBackground(Color.WHITE);
-		textPanel.add(titleLabel);
-		textPanel.add(typeLabel);
-		textPanel.add(fuelLabel);
-
-		// Placeholder for car image
-		JLabel imageLabel = new JLabel();
-		imageLabel.setIcon(new ImageIcon(imagePath)); // Load your image path here
-		imageLabel.setPreferredSize(new Dimension(100, 100));
-
-		carPanel.add(imageLabel, BorderLayout.WEST);
-		carPanel.add(textPanel, BorderLayout.CENTER);
-
-		return carPanel;
-	}
 
 	// -------------- COMPONENTS --------------
 	public static JCheckBox buttonIconCar;

@@ -1,5 +1,6 @@
 package com.models;
 
+import com.config.AppConfig;
 import com.database.createDatabase;
 
 import java.nio.file.Paths;
@@ -77,7 +78,7 @@ public class Vehiculo {
 		this.alquilado = false;
 
 		// Generar la ruta de la imagen usando la matrícula
-		String directorioImagenes = "./La-Triada-App/src/com/database/imagenes/";
+		String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";
 		this.imagen = Paths.get(directorioImagenes, matricula + ".jpg").toString();
 	}
 
@@ -86,7 +87,7 @@ public class Vehiculo {
 			String combustible, double consumo, Integer plazas, double kilometros, double precioCompra,
 			double precioAlquiler, boolean alquilado) {
 			// Directorio base para las imágenes
-		String directorioImagenes = "./La-Triada-App/src/com/database/imagenes/";
+		String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";
 
 		// Generar la ruta de la imagen usando la matrícula
 		String rutaImagen = Paths.get(directorioImagenes, matricula + ".jpg").toString();
@@ -114,6 +115,11 @@ public class Vehiculo {
 			pstmt.setBoolean(13, alquilado);
 			pstmt.setString(14, rutaImagen); // Ruta generada de la imagen
 
+			System.out.printf(
+				    "Inserting: matricula=%s, tipo=%s, marca=%s, modelo=%s, carroceria=%s, combustible=%s, consumo=%.2f, plazas=%s, kilometros=%.2f, precioCompra=%.2f, precioVenta=%.2f, precioAlquiler=%.2f, alquilado=%b, imagen=%s%n",
+				    matricula, tipo, marca, modelo, carroceria, combustible, consumo, plazas, kilometros, precioCompra,
+				    precioCompra * 1.33, precioAlquiler, alquilado, rutaImagen);
+			
 			pstmt.executeUpdate();
 			System.out.println("Vehículo insertado correctamente: " + matricula);
 		} catch (SQLException e) {
@@ -193,4 +199,83 @@ public class Vehiculo {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public String getCarroceria() {
+		return carroceria;
+	}
+
+	public String getCombustible() {
+		return combustible;
+	}
+
+	public double getConsumo() {
+		return consumo;
+	}
+
+	public Integer getPlazas() {
+		return plazas;
+	}
+
+	public double getKilometros() {
+		return kilometros;
+	}
+
+	public double getPrecioCompra() {
+		return precioCompra;
+	}
+
+	public double getPrecioVenta() {
+		return precioVenta;
+	}
+
+	public double getPrecioAlquiler() {
+		return precioAlquiler;
+	}
+
+	public boolean isAlquilado() {
+		return alquilado;
+	}
+
+	public String getRutaImagen() {
+		return imagen;
+	}
+	
+	
+	/**
+	 * Muestra los datos del vehículo en la consola.
+	 */
+	public void debugMostrarDatos() {
+		System.out.println("Matrícula: " + matricula);
+		System.out.println("Tipo: " + tipo);
+		System.out.println("Marca: " + marca);
+		System.out.println("Modelo: " + modelo);
+		System.out.println("Carrocería: " + carroceria);
+		System.out.println("Combustible: " + combustible);
+		System.out.println("Consumo: " + consumo);
+		System.out.println("Plazas: " + plazas);
+		System.out.println("Kilómetros: " + kilometros);
+		System.out.println("Precio de compra: " + precioCompra);
+		System.out.println("Precio de venta: " + precioVenta);
+		System.out.println("Precio de alquiler: " + precioAlquiler);
+		System.out.println("Alquilado: " + alquilado);
+		System.out.println("Ruta de la imagen: " + imagen);
+		System.out.println("-------------------------------------------------");
+	}
+	
 }

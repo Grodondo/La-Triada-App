@@ -3,111 +3,190 @@ package com.controllers;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import com.database.DatabaseFiltering;
+import com.database.createDatabase;
+import com.models.Filtro;
+import com.models.Vehiculo;
 import com.views.SearchView;
+import com.views.VehiclesPanel;
 
 /**
- * Class to manage filters for the search view
+ * Clase que se encarga de gestionar los filtros aplicados en la vista de búsqueda
  * 
  * 
- * @author Carlos Arroyo Caballero
+ * @author [Carlos Arroyo Caballero]
  * @version 1.0
  * @see SearchView
  */
 public class Filter {
 
-	private Set<String> activeFilters;
+	private Set<Filtro> activeFilters;
 	private JPanel appliedFiltersPanel;
 	
 	/**
-	 * Constructor
+	 * Constructor - Requiere el panel al que se añadirán las etiquetas
 	 * 
-	 * @param appliedFiltersPanel The panel to add the filter tags to
+	 * @param appliedFiltersPanel El panel donde se añadirán los {@link JButton} de los {@link Filtro} aplicados
 	 */
 	public Filter(JPanel appliedFiltersPanel) {
 		activeFilters = new HashSet<>();
 		this.appliedFiltersPanel = appliedFiltersPanel;
+		
+	}
+
+	/**
+	 * Añade los paneles de los vehículos filtrados al panel de vehículos
+	 * ({@link VehiclesPanel})
+	 */
+	public void reloadPanelsVehiclesByFilter() {
+		List<Vehiculo> vehicles = this.getVehiclesFiltered();
+		if (vehicles == null || vehicles.isEmpty()) {
+
+			VehiclesPanel.reloadVehicles();
+			VehiclesPanel.createNoVehiclesPanel();
+	
+			System.out.println("Vehicles is null");
+		}else {
+			
+			VehiclesPanel.reloadVehicles();
+			for (Vehiculo vehicle : vehicles) {
+				VehiclesPanel.vehiclesPanel.add(VehiclesPanel.createVehicleEntry(vehicle));
+			}
+		}
+	}
+	
+	
+	/**
+	 * Obtiene los vehículos filtrados según los filtros aplicados
+	 * 
+	 * @return Una lista de {@link Vehiculo} con los vehículos filtrados
+	 */
+	public List<Vehiculo> getVehiclesFiltered() {
+		ResultSet rs = null;
+		List<Vehiculo> vehicles = new ArrayList<Vehiculo>();
+		
+		try {
+			rs = DatabaseFiltering.getFilteredResults(createDatabase.connect(), activeFilters);
+			
+			while(rs.next()) {
+				String matricula = rs.getString("matricula");
+				String tipo = rs.getString("tipo");
+				String marca = rs.getString("marca");
+				String modelo = rs.getString("modelo");
+				String carroceria = rs.getString("carroceria");
+				String combustible = rs.getString("combustible");
+				double consumo = rs.getDouble("consumo");
+				Integer plazas = rs.getInt("plazas");
+				double kilometros = rs.getDouble("kilometros");
+				double precioCompra = rs.getDouble("precio_compra");
+				
+				Vehiculo vehicle = new Vehiculo(matricula, tipo, marca, modelo, carroceria, combustible, consumo, plazas, kilometros, precioCompra);
+				
+				//vehicle.debugMostrarDatos();
+				
+				vehicles.add(vehicle);
+			}
+				
+			System.out.println("Vehicles filtered: " + vehicles.size());
+		} catch (SQLException e) {
+			System.out.println("Error al obtener los resultados filtrados: " + e.getMessage());
+		}
+		
+		return vehicles;
 	}
 	
 	/**
-	 * Checks if a filter is already applied
+	 * Comprueba si un filtro está aplicado
 	 * 
-	 * @param filter The filter to check
-	 * @return True if the filter is applied, false otherwise
+	 * @param filter El nombre del {@link Filtro} a comprobar
+	 * @return True si el filtro está aplicado, false en caso contrario
 	 */
 	public boolean containsFilter(String filter) {
-		return activeFilters.contains(filter);
+		for (Filtro f : activeFilters) {
+			if (f.getName().equalsIgnoreCase(filter))
+				return true;
+		}
+		return false;
 	}
 	
 	/**
-	 * Applies a filter to the active filters set and adds a tag to the applied
-	 * filters panel
+	 * Añade un {@link Filtro} a la lista de filtros activos y al panel de filtros aplicados ({@link appliedFiltersPanel})
+	 * No se añadirá si ya existe
 	 * 
-	 * 
-	 * @param filter The filter to apply
+	 * @param filter El filtro a aplicar
 	 */
-	public void applyFilter(String filter) {
-		if (!containsFilter(filter)) {
-			System.out.println("Applying filter: " + filter + " - " + activeFilters);
+	public void applyFilter(Filtro filter) {
+		if (!containsFilter(filter.getName())) {
+			System.out.println("Applying filter: " + filter.getName());
 			this.activeFilters.add(filter);
 			this.appliedFiltersPanel.add(createFilterTag(filter));
 	
 			appliedFiltersPanel.revalidate();
 			appliedFiltersPanel.repaint();
+
+			reloadPanelsVehiclesByFilter();
+			
 		}
-		else System.out.println("Filter already exists: " + filter + " - " + activeFilters);
+		else System.out.println("Filter already exists: " + filter.getName());
 	}
 
 	/**
-	 * Removes a filter from the active filters set and the applied filters panel
+	 * Elimina un {@link Filtro} de la lista de filtros activos y su {@link JButton} correspondiente
 	 * 
-	 * @param filter The filter to remove
+	 * @param filter El {@link Filtro} a eliminar
 	 */
-	public void removeFilter(String filter) {
-		System.out.println("Removing filter: " + filter + " - " + activeFilters);
-		activeFilters.remove(filter);
+	public void removeFilter(Filtro  filter) {
+		System.out.println("Removing filter: " + filter.getName() + ", hashCode: " + filter.hashCode());
+	    boolean removed = activeFilters.remove(filter);
+	    System.out.println("Filter removed: " + removed);
 
-		for (Component comp : appliedFiltersPanel.getComponents()) {
-			if (comp instanceof JButton && ((JButton) comp).getText().equalsIgnoreCase(filter)) {
-				appliedFiltersPanel.remove(comp);
-				break;
-			}
-		}
-
-		appliedFiltersPanel.revalidate();
-		appliedFiltersPanel.repaint();
+	    for (Component comp : appliedFiltersPanel.getComponents()) {
+	        if (comp instanceof JButton && ((JButton) comp).getText().equalsIgnoreCase(filter.getName())) {
+	            appliedFiltersPanel.remove(comp);
+	            break;
+	        }
+	    }
+	    appliedFiltersPanel.revalidate();
+	    appliedFiltersPanel.repaint();
+	    
+	    reloadPanelsVehiclesByFilter();
+	    
 	}
 
 	/**
-	 * Creates a JButton with the text of the filter and the functionality to remove
-	 * the filter when clicked
-	 * 
-	 * @param text The text of the filter
-	 * @return The JButton with the text of the filter
+	 * Crea el {@link JButton} con el texto del filtro, este será añadido al panel de filtros aplicados ({@link appliedFiltersPanel})
+	 *
+	 * @param filter El filtro que se usará para crear el {@link JButton}
+	 * @return El {@link JButton} creado
 	 */
-	private JButton createFilterTag(String text) {
-		JButton filterButton = new JButton(text + "");
+	private JButton createFilterTag(Filtro filter) {
+		JButton filterButton = new JButton(filter.getName() + "");
 		filterButton.setFont(new Font("Arial", Font.BOLD, 14));
 		filterButton.setBackground(Color.WHITE);
 		filterButton.setForeground(new Color(42, 63, 90));
 		filterButton.setBorder(new LineBorder(Color.WHITE, 1, true));
 
 		filterButton.addActionListener(e -> {
-			removeFilter(text);
-			switch (text) {
-			case "car":
+			removeFilter(filter);
+			switch (filter.getName()) {
+			case "coche":
 				SearchView.buttonIconCar.setSelected(false);
 				break;
-			case "bike":
+			case "moto":
 				SearchView.buttonIconBike.setSelected(false);
 				break;
-			case "truck":
+			case "camion":
 				SearchView.buttonIconTruck.setSelected(false);
 				break;
 			}

@@ -1,112 +1,229 @@
 package com.views;
-
 import javax.swing.*;
 import com.config.AppConfig;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
-public class VenderApp {
+/**
+ * La clase <code>SellView</code> representa la interfaz gráfica de usuario (GUI) 
+ * para la vista de venta de vehículos dentro de la aplicación. 
+ * Permite al usuario seleccionar un vehículo, ingresar detalles de venta y confirmarlos.
+ * * @author [Ismael Martin Boudiab]
+ *  * @version 1.0
+ */
+public class SellView {
 
+    /**
+     * Método principal que inicia la vista de venta de vehículos. 
+     * Configura la ventana de la aplicación, paneles, botones y campos de texto.
+     * 
+     * @param args Argumentos de la línea de comandos (no utilizados).
+     */
     public static void main(String[] args) {
         // Crear el marco de la aplicación
         JFrame frame = new JFrame("La Triada - Vender");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setLayout(new BorderLayout());
 
-        // Crear el panel principal con GridBagLayout
-        JPanel mainPanel = new JPanel(new GridBagLayout());
-        mainPanel.setBackground(new Color(29, 57, 96)); // Color de fondo basado en la imagen
+        // Crear el menú (CustomTitleBar)
+        CustomTitleBar customTitleBar = new CustomTitleBar(frame, "Aplicación de Ventas de Vehículos");
+        frame.setJMenuBar(customTitleBar); // Añadir el menú sin alterar el diseño existente
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10);
-
-        // Crear y configurar el título "VENDER"
+        // Crear un panel principal para contener todo
+        JPanel mainPanel = new JPanel(null); // Usamos diseño absoluto para posicionar elementos manualmente
+        mainPanel.setBackground(new Color(29, 57, 96)); // Fondo azul oscuro
+        frame.add(mainPanel, BorderLayout.CENTER);
+        
+        // Añadir el título "VENDER" fuera de la imagen blanca y encima de ella
         JLabel titleLabel = new JLabel("VENDER");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 36)); // Ajustar el tamaño y estilo de la fuente
-        titleLabel.setForeground(Color.BLACK); // Cambiar a color negro para el texto
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 36)); // Estilo y tamaño de la fuente
+        titleLabel.setForeground(Color.BLACK); // Color del texto
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER); // Alinear horizontalmente al centro
+        titleLabel.setBounds(150, 10, 1250, 50); // Título fuera de la imagen blanca (subido a 10)
+        mainPanel.add(titleLabel);
 
-        // Posicionar el título en la parte superior central
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 2;
-        gbc.anchor = GridBagConstraints.NORTH;
-        gbc.insets = new Insets(20, 0, 20, 0); // Espaciado alrededor del título
-        mainPanel.add(titleLabel, gbc);
-
-        // Crear el panel que contiene la imagen de fondo (cuadro blanco)
-        JPanel backgroundPanel = new JPanel() {
+        // Crear el cuadro blanco como un panel con una imagen de fondo
+        JPanel backgroundPanel = new JPanel(null) { // Usamos diseño absoluto también aquí
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo (cuadro blanco)
-                ImageIcon backgroundImage = new ImageIcon(AppConfig.RESOURCES_URL + "images/blanco.png");
+                // Cargar la imagen del cuadro blanco
+                ImageIcon backgroundImage = new ImageIcon(AppConfig.RESOURCES_URL + "images/blanco.png"); // Cambia la ruta si es necesario
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
-        backgroundPanel.setPreferredSize(new Dimension(1250, 700)); // Tamaño ajustado del cuadro blanco
-        backgroundPanel.setOpaque(false);
-
-        // Configuración de constraints para colocar el backgroundPanel en el centro, movido a la izquierda
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0, 150, 0, 0); // Mover ligeramente a la izquierda
-        mainPanel.add(backgroundPanel, gbc);
-
+        backgroundPanel.setBounds(150, 55, 1250, 620); // Ajusta posición y tamaño del cuadro blanco
+        backgroundPanel.setOpaque(false); // Permite transparencia si fuera necesario
+        mainPanel.add(backgroundPanel);
+        
         // Crear el panel derecho para la imagen de las flechas
         JPanel rightPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon rightImage = new ImageIcon(AppConfig.RESOURCES_URL + "images/flechasSinFondo.png");
+                // Cargar la imagen de las flechas
+                ImageIcon rightImage = new ImageIcon(AppConfig.RESOURCES_URL + "images/flechasSinFondo.png"); // Cambia la ruta si es necesario
                 g.drawImage(rightImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
-        rightPanel.setPreferredSize(new Dimension(250, 600));
-        rightPanel.setOpaque(false);
+        rightPanel.setOpaque(false); // Fondo transparente
+        rightPanel.setBounds(1420, 80, 250, 600); // Ajusta posición inicial de las flechas
+        mainPanel.add(rightPanel);
 
-        // Configuración de constraints para colocar el rightPanel de manera independiente a la derecha
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        gbc.anchor = GridBagConstraints.NORTHEAST;
-        gbc.insets = new Insets(0, 0, 0, -130); // Mover más a la derecha
-        mainPanel.add(rightPanel, gbc);
+        // Crear un panel para los botones de vehículos
+        JPanel buttonContainerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        buttonContainerPanel.setOpaque(false);
+        buttonContainerPanel.setBounds(200, 20, 850, 100);
+        backgroundPanel.add(buttonContainerPanel);
 
-        // Crear un nuevo panel para contener los botones dentro de la imagen blanca
-        JPanel buttonContainerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10)); // FlowLayout para los botones en línea
-        buttonContainerPanel.setOpaque(false); // No cambiar esta línea si no quieres fondo en el panel
+        // Botones de vehículos
+        JButton motoButton = createVehicleButton("MotoNegro.png", "MotoAzul.png");
+        JButton cocheButton = createVehicleButton("CocheNegro.png", "CocheAzul.png");
+        JButton camionButton = createVehicleButton("CamionNegro.png", "CamionAzul.png");
 
-        // Crear y escalar los botones con íconos más grandes y más anchos (120x80 píxeles)
-        JButton motoButton = new JButton(new ImageIcon(new ImageIcon(AppConfig.RESOURCES_URL + "images/MotoNegro.png")
-                .getImage().getScaledInstance(150, 80, Image.SCALE_SMOOTH)));
-        JButton cocheButton = new JButton(new ImageIcon(new ImageIcon(AppConfig.RESOURCES_URL + "images/CocheNegro.png")
-                .getImage().getScaledInstance(150, 80, Image.SCALE_SMOOTH)));
-        JButton camionButton = new JButton(new ImageIcon(new ImageIcon(AppConfig.RESOURCES_URL + "images/CamionNegro.png")
-                .getImage().getScaledInstance(150, 80, Image.SCALE_SMOOTH)));
-
-        // Configurar los botones (sin bordes)
-        motoButton.setBorderPainted(false);
-        motoButton.setContentAreaFilled(false);
-        cocheButton.setBorderPainted(false);
-        cocheButton.setContentAreaFilled(false);
-        camionButton.setBorderPainted(false);
-        camionButton.setContentAreaFilled(false);
-
-        // Añadir los botones al panel de botones
         buttonContainerPanel.add(motoButton);
         buttonContainerPanel.add(cocheButton);
         buttonContainerPanel.add(camionButton);
 
-        // Añadir el panel de botones al panel de fondo blanco
-        backgroundPanel.setLayout(new BorderLayout());
-        backgroundPanel.add(buttonContainerPanel, BorderLayout.CENTER); // Añadir los botones centrados en el backgroundPanel
+        // Crear un panel para los campos de texto
+        JPanel textFieldPanel = new JPanel(null); // Diseño absoluto
+        textFieldPanel.setOpaque(false);
+        textFieldPanel.setBounds(220, 120, 850, 400); // Centrar y ajustar el espacio para los campos (más a la izquierda)
+        backgroundPanel.add(textFieldPanel);
 
-        // Añadir el panel principal al marco
-        frame.add(mainPanel);
+        // Crear un array con los nombres de los placeholders
+        String[] placeholders = {"MATRÍCULA", "MARCA", "MODELO", "CARROCERÍA", 
+                                 "CONSUMO", "COMBUSTIBLE", "KILOMETRAJE", "PRECIO"};
 
-        // Configurar la ventana
+        // Dimensiones y posición inicial
+        int width = 400, height = 50;  // Ancho de cada JTextField
+        int gap = 30;                 // Espaciado vertical entre los campos
+        int xLeft = 0;                // Posición X para la columna izquierda (más a la izquierda)
+        int xRight = 420;             // Posición X para la columna derecha (más a la izquierda)
+        int yStart = 20;              // Posición inicial Y
+
+        // Iterar sobre los placeholders y añadirlos en dos columnas
+        for (int i = 0; i < placeholders.length; i++) {
+            JTextField textField = createPlaceholderTextField(placeholders[i]);
+
+            // Alternar entre la columna izquierda y la derecha
+            int x = (i < 4) ? xLeft : xRight; // Las primeras 4 en la izquierda, las siguientes en la derecha
+            int y = yStart + (i % 4) * (height + gap); // Alinear verticalmente con espaciado
+
+            textField.setBounds(x, y, width, height);
+            textFieldPanel.add(textField);
+        }
+
+        // Crear un panel para el botón Confirmar
+        JPanel confirmButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        confirmButtonPanel.setOpaque(false); // Fondo transparente
+        confirmButtonPanel.setBounds(200, 500, 850, 60); // Ajustado a la parte inferior del panel
+
+        // Crear el botón Confirmar
+        JButton confirmButton = new JButton("Confirmar");
+        confirmButton.setFont(new Font("Arial", Font.BOLD, 22)); // Estilo y tamaño de la fuente
+        confirmButton.setBackground(new Color(29, 57, 96)); // Usar el mismo azul del fondo
+        confirmButton.setForeground(Color.WHITE); // Color del texto
+        confirmButton.setPreferredSize(new Dimension(300, 40)); // Tamaño del botón más ancho
+
+        // Añadir acción al botón Confirmar
+        confirmButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Acción para el botón Confirmar (puedes poner cualquier lógica aquí)
+                System.out.println("Confirmación realizada");
+            }
+        });
+
+        // Añadir el botón al panel
+        confirmButtonPanel.add(confirmButton);
+        backgroundPanel.add(confirmButtonPanel);
+
+        // Mostrar el marco
         frame.setVisible(true);
     }
-}
 
+    /**
+     * Crea un botón de vehículo con funcionalidad de cambio de ícono.
+     * Cuando el botón es presionado, cambia de color de negro a azul y viceversa.
+     * 
+     * @param blackIconPath Ruta de la imagen del ícono negro.
+     * @param blueIconPath Ruta de la imagen del ícono azul.
+     * @return El botón configurado con la funcionalidad de cambio de ícono.
+     */
+    private static JButton createVehicleButton(String blackIconPath, String blueIconPath) {
+        ImageIcon blackIcon = new ImageIcon(new ImageIcon(AppConfig.RESOURCES_URL + "images/" + blackIconPath)
+                .getImage().getScaledInstance(150, 80, Image.SCALE_SMOOTH));
+        ImageIcon blueIcon = new ImageIcon(new ImageIcon(AppConfig.RESOURCES_URL + "images/" + blueIconPath)
+                .getImage().getScaledInstance(150, 80, Image.SCALE_SMOOTH));
+
+        JButton button = new JButton(blackIcon);
+        button.setBorderPainted(false);
+        button.setContentAreaFilled(false);
+        button.setFocusPainted(false);
+
+        // Crear un array para almacenar los botones y permitir solo un botón azul a la vez
+        JButton[] vehicleButtons = new JButton[3];
+
+        button.addActionListener(e -> {
+            // Si el botón ya está azul, lo volvemos a poner negro
+            if (button.getIcon() == blueIcon) {
+                button.setIcon(blackIcon);
+            } else {
+                // Desmarcar todos los otros botones
+                for (JButton otherButton : vehicleButtons) {
+                    if (otherButton != null && otherButton.getIcon() == blueIcon) {
+                        otherButton.setIcon(blackIcon);  // Poner en negro los otros botones
+                    }
+                }
+                // Marcar el botón actual como azul
+                button.setIcon(blueIcon);
+            }
+        });
+
+        // Almacenar el botón en el array
+        vehicleButtons[0] = button;
+
+        return button;
+    }
+
+    /**
+     * Crea un <code>JTextField</code> con un placeholder personalizado.
+     * El placeholder se elimina cuando el campo recibe foco y se restablece si el campo se queda vacío al perder el foco.
+     * 
+     * @param placeholder El texto que se muestra como placeholder.
+     * @return El <code>JTextField</code> configurado con el placeholder.
+     */
+    private static JTextField createPlaceholderTextField(String placeholder) {
+        JTextField textField = new JTextField(placeholder);
+        
+        // Configuración del texto y fondo
+        textField.setFont(new Font("Arial", Font.PLAIN, 18)); // Estilo del texto
+        textField.setForeground(Color.WHITE); // Color del texto (texto blanco)
+        textField.setBackground(new Color(29, 57, 96)); // Fondo azul igual al de la ventana
+        textField.setHorizontalAlignment(SwingConstants.CENTER); // Centrar texto
+
+        // Añadir funcionalidad para eliminar el placeholder al hacer clic
+        textField.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent evt) {
+                if (textField.getText().equals(placeholder)) {
+                    textField.setText("");
+                    textField.setForeground(Color.WHITE); // El texto que se escribe también será blanco
+                }
+            }
+
+            public void focusLost(FocusEvent evt) {
+                if (textField.getText().isEmpty()) {
+                    textField.setForeground(Color.WHITE);
+                    textField.setText(placeholder);
+                }
+            }
+        });
+
+        return textField;
+    }
+}

@@ -24,12 +24,14 @@ import javax.swing.border.LineBorder;
 import com.config.AppConfig;
 import com.config.SharedMethods;
 import com.controllers.Filter;
+import com.models.Filtro;
 
 
 /**
- * Search view for the vehicle catalog
+ * Vista de búsqueda para el catálogo de vehículos
+ * Es importante que todos los elementos de la vista se hayan añadido con el tipo correspondiente al de la BD
  * 
- * @author Carlos Arroyo Caballero
+ * @author [Carlos Arroyo Caballero]
  * @see CustomTitleBar
  * @version 1.0
  */
@@ -40,8 +42,9 @@ public class FiltersPanel extends JPanel{
 	private Color backgroundColor = new Color(42, 63, 90);;
 
 	/**
-	 * Constructor, creates the filter panel
+	 * Constructor, crea el panel de filtros con el filtro pasado como parámetro
 	 * 
+	 * @param filter El {@link Filter} que se aplicará a los vehículos
 	 * 
 	 * @see createFilterSectionImages
 	 * @see createFilterSection
@@ -72,11 +75,9 @@ public class FiltersPanel extends JPanel{
 
 	    // Añadir los diferentes paneles de filtros
 	    filtersPanel.add(createFilterSectionImages());
-	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault" }));
-	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault" }));
-	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault" }));
-	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault" }));
-	    filtersPanel.add(createTextFilterPanel("Modelo"));
+	    filtersPanel.add(createFilterSection("Marca", new String[] { "BMW", "Toyota", "Mercedes", "Renault", "Kia" }));
+	    filtersPanel.add(createFilterSection("Combustible", new String[] { "diesel", "gasolina", "hibrido", "electrico" }));
+	    filtersPanel.add(createTextFilterPanel("Plazas"));
 	    filtersPanel.add(createFilterSection("Modelo", new String[] {}));
 	    filtersPanel.add(createFilterSection("Carroceria", new String[] {}));
 	    filtersPanel.add(createFilterSection("Combustible", new String[] {}));
@@ -179,7 +180,7 @@ public class FiltersPanel extends JPanel{
 			searchButton.setBorderPainted(false);
 			searchButton.setFocusPainted(false);
 			searchButton.addActionListener(e -> {
-				filter.applyFilter(textField.getText());
+				filter.applyFilter(new Filtro(textField.getText().toLowerCase(), title.toLowerCase()));
 				textField.setText("");
 			});
 
@@ -234,9 +235,9 @@ public class FiltersPanel extends JPanel{
 
 			SearchView.buttonIconCar.addActionListener(e -> {
 				if (SearchView.buttonIconCar.isSelected()) {
-					filter.applyFilter("car");
+					filter.applyFilter(new Filtro("coche", "tipo"));
 				} else {
-					filter.removeFilter("car");
+					filter.removeFilter(new Filtro("coche", "tipo"));
 				}
 			});
 		}
@@ -252,9 +253,9 @@ public class FiltersPanel extends JPanel{
 
 			SearchView.buttonIconBike.addActionListener(e -> {
 				if (SearchView.buttonIconBike.isSelected()) {
-					filter.applyFilter("bike");
+					filter.applyFilter(new Filtro("moto", "tipo"));
 				} else {
-					filter.removeFilter("bike");
+					filter.removeFilter(new Filtro("moto", "tipo"));
 				}
 			});
 		}
@@ -270,9 +271,9 @@ public class FiltersPanel extends JPanel{
 
 			SearchView.buttonIconTruck.addActionListener(e -> {
 				if (SearchView.buttonIconTruck.isSelected()) {
-					filter.applyFilter("truck");
+					filter.applyFilter(new Filtro("camion", "tipo"));
 				} else {
-					filter.removeFilter("truck");
+					filter.removeFilter(new Filtro("camion", "tipo"));
 				}
 			});
 		}
@@ -319,9 +320,9 @@ public class FiltersPanel extends JPanel{
 
 			checkBox.addActionListener(e -> {
 				if (checkBox.isSelected()) {
-					filter.applyFilter(checkBox.getText());
+					filter.applyFilter(new Filtro(checkBox.getText().toLowerCase(), title.toLowerCase()));
 				} else {
-					filter.removeFilter(checkBox.getText());
+					filter.removeFilter(new Filtro(checkBox.getText().toLowerCase(), title.toLowerCase()));
 				}
 			});
 
