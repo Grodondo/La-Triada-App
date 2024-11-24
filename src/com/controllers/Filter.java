@@ -48,6 +48,8 @@ public class Filter {
 	/**
 	 * Añade los paneles de los vehículos filtrados al panel de vehículos
 	 * ({@link VehiclesPanel})
+	 * 
+	 * @see VehiclesPanel
 	 */
 	public void reloadPanelsVehiclesByFilter() {
 		List<Vehiculo> vehicles = this.getVehiclesFiltered();
@@ -90,8 +92,9 @@ public class Filter {
 				Integer plazas = rs.getInt("plazas");
 				double kilometros = rs.getDouble("kilometros");
 				double precioCompra = rs.getDouble("precio_compra");
+				boolean alquilado = rs.getBoolean("alquilado");
 				
-				Vehiculo vehicle = new Vehiculo(matricula, tipo, marca, modelo, carroceria, combustible, consumo, plazas, kilometros, precioCompra);
+				Vehiculo vehicle = new Vehiculo(matricula, tipo, marca, modelo, carroceria, combustible, consumo, plazas, kilometros, precioCompra, alquilado);
 				
 				//vehicle.debugMostrarDatos();
 				

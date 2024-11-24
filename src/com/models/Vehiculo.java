@@ -62,7 +62,7 @@ public class Vehiculo {
 
 	// Constructor de la clase Vehiculo.
 	public Vehiculo(String matricula, String tipo, String marca, String modelo, String carroceria, String combustible,
-			double consumo, Integer plazas, double kilometros, double precioCompra) {
+			double consumo, Integer plazas, double kilometros, double precioCompra, boolean alquilado) {
 		this.matricula = matricula;
 		this.tipo = tipo;
 		this.marca = marca;
@@ -75,7 +75,7 @@ public class Vehiculo {
 		this.precioCompra = precioCompra;
 		this.precioVenta = precioCompra + 5000.00;
 		this.precioAlquiler = precioCompra / 1000; // Precio de alquiler calculado
-		this.alquilado = false;
+		this.alquilado = alquilado;
 
 		// Generar la ruta de la imagen usando la matrícula
 		String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";

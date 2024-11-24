@@ -69,7 +69,8 @@ public class VehiculoDAO {
                     rs.getDouble("consumo"),
                     rs.getInt("plazas"),
                     rs.getDouble("kilometros"),
-                    rs.getDouble("precio_compra")
+                    rs.getDouble("precio_compra"),
+                    rs.getBoolean("alquilado")
                 );
                 vehiculos.add(vehiculo);
             }

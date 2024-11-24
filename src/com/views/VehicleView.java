@@ -2,20 +2,22 @@ package com.views;
 
 import javax.swing.*;
 import com.config.AppConfig;
+import com.database.DatabaseManager;
 import com.models.Vehiculo;
 
 import java.awt.*;
 import java.sql.*;
+import java.time.LocalDate;
 import java.io.File;
 
 /**
  * La clase <code>VehicleView</code> es una aplicación gráfica en Java que muestra información de un vehículo
  * y permite visualizar los detalles relacionados con su compra y alquiler.
  * La información se recupera desde una base de datos SQLite y se presenta en una interfaz gráfica utilizando Swing.
- * @author [Ismael Martin Boudiab]
+ * @author [Ismael Martin Boudiab] y [Carlos Arroyo Caballero]
  * @version 1.0
  * 
- * Actualizado por Carlos
+ * 
  */
 public class VehicleView extends JFrame {
 
@@ -70,12 +72,7 @@ public class VehicleView extends JFrame {
         rightPanel.setBounds(1420, 80, 250, 600); 
         mainPanel.add(rightPanel);
 
-        // Obtener datos desde la base de datos
-//        String[] datos = getDatosDesdeBaseDeDatos();
-//        String marcaModelo = datos[0];
-//        String precioCompra = datos[1];
-//        String precioAlquiler = datos[2];
-//        String imagenRuta = datos[8];
+        
         String marcaModelo = vehicle.getMarca();
         String precioCompra = vehicle.getPrecioCompra() + "";
         String precioAlquiler = vehicle.getPrecioAlquiler() + "";
@@ -101,6 +98,12 @@ public class VehicleView extends JFrame {
         buyButton.setForeground(Color.WHITE);
         buyButton.setFont(new Font("Arial", Font.BOLD, 18));
         buyButton.setBounds(900, 270, 200, 50);
+		buyButton.addActionListener(e -> {
+			// Acción al hacer clic en el botón de comprar
+			System.out.println("Comprar vehículo: " + marcaModelo);
+			
+		});
+        
         backgroundPanel.add(buyButton);
 
         JLabel buyPriceLabel = new JLabel(precioCompra);
@@ -114,6 +117,15 @@ public class VehicleView extends JFrame {
         rentButton.setForeground(Color.WHITE);
         rentButton.setFont(new Font("Arial", Font.BOLD, 18));
         rentButton.setBounds(900, 340, 200, 50);
+		rentButton.addActionListener(e -> {
+			// Acción al hacer clic en el botón de alquilar
+			System.out.println("Alquilar vehículo: " + marcaModelo);
+		    LocalDate fechaActual = LocalDate.now();
+		    String fechaFin = fechaActual.plusDays(7).toString();
+			DatabaseManager.introducirVehiculoAlquilado(vehicle, fechaFin);
+			
+		});
+        
         backgroundPanel.add(rentButton);
 
         JLabel rentPriceLabel = new JLabel(precioAlquiler);

@@ -129,6 +129,11 @@ public class VehiclesPanel extends JPanel{
 
 	        JLabel fuelLabel = new JLabel(vehicle.getCombustible());
 	        fuelLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+	        
+	        String alquilado = (vehicle.isAlquilado() ? "Alquilado" : "Disponible");
+	        JLabel alquiladoLabel = new JLabel(alquilado);
+	        fuelLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+
 
 	        JPanel textPanel = new RoundedPanel(20);
 	        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
@@ -139,6 +144,7 @@ public class VehiclesPanel extends JPanel{
 	        textPanel.add(titleLabel);
 	        textPanel.add(typeLabel);
 	        textPanel.add(fuelLabel);
+	        textPanel.add(alquiladoLabel);
 	        
 	        
 	        // Imagen del vehículo
@@ -218,7 +224,7 @@ public class VehiclesPanel extends JPanel{
 		    vehiclesPanel.add(noVehiclesPanel);
 		}
 	
-	   // Serves as an example, will be deleted once the proper one is made
+	   // Deprecated, se ha implementado una nueva vista para los detalles de los vehículos, esta era temporal
 	    private void openDetailsPanel(Vehiculo vehicle) {
 	        JFrame detailFrame = new JFrame("Vehicle Details");
 	        detailFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
