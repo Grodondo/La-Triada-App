@@ -14,7 +14,8 @@ import java.awt.event.FocusEvent;
  * * @author [Ismael Martin Boudiab]
  *  * @version 1.0
  */
-public class SellView {
+public class SellView extends JFrame {
+
 
     /**
      * Método principal que inicia la vista de venta de vehículos. 
@@ -22,21 +23,22 @@ public class SellView {
      * 
      * @param args Argumentos de la línea de comandos (no utilizados).
      */
-    public static void main(String[] args) {
+    public SellView() {
         // Crear el marco de la aplicación
-        JFrame frame = new JFrame("La Triada - Vender");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setLayout(new BorderLayout());
+    	//JFrame frame = new JFrame("La Triada - Vender");
+    	setTitle("La Triada App");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLayout(new BorderLayout());
 
         // Crear el menú (CustomTitleBar)
-        CustomTitleBar customTitleBar = new CustomTitleBar(frame, "Aplicación de Ventas de Vehículos");
-        frame.setJMenuBar(customTitleBar); // Añadir el menú sin alterar el diseño existente
+        CustomTitleBar customTitleBar = new CustomTitleBar(this, "Aplicación de Ventas de Vehículos");
+        setJMenuBar(customTitleBar); // Añadir el menú sin alterar el diseño existente
 
         // Crear un panel principal para contener todo
         JPanel mainPanel = new JPanel(null); // Usamos diseño absoluto para posicionar elementos manualmente
         mainPanel.setBackground(new Color(29, 57, 96)); // Fondo azul oscuro
-        frame.add(mainPanel, BorderLayout.CENTER);
+        add(mainPanel, BorderLayout.CENTER);
         
         // Añadir el título "VENDER" fuera de la imagen blanca y encima de ella
         JLabel titleLabel = new JLabel("VENDER");
@@ -144,9 +146,10 @@ public class SellView {
         backgroundPanel.add(confirmButtonPanel);
 
         // Mostrar el marco
-        frame.setVisible(true);
-    }
+        //frame.setVisible(true);
 
+    }
+    
     /**
      * Crea un botón de vehículo con funcionalidad de cambio de ícono.
      * Cuando el botón es presionado, cambia de color de negro a azul y viceversa.

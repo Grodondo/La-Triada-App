@@ -234,6 +234,19 @@ public class CustomTitleBar extends JMenuBar {
 					sellButton.setBackground(CustomColor.BLUE_B);
 				}
 			});
+			
+			sellButton.addActionListener(
+					new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							AppConfig.sizeWindow = frame.getSize();
+							frame.dispose();
+							
+							SellView sellView = new SellView();
+							sellView.setVisible(true);
+						}
+	                           
+	                });
 		}
 		
 		// ======== Boton de devolver ========
@@ -256,6 +269,19 @@ public class CustomTitleBar extends JMenuBar {
 					devuelveButton.setBackground(CustomColor.BLUE_B);
 				}
 			});
+			
+			devuelveButton.addActionListener(
+					new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							AppConfig.sizeWindow = frame.getSize();
+							frame.dispose();
+							
+							DevolverView devolverView = new DevolverView();
+							devolverView.setVisible(true);
+						}
+	                           
+	                });
 		}
 
 		

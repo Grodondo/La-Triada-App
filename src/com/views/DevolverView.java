@@ -221,10 +221,10 @@ public class DevolverView extends JFrame {
     	 *
     	 * 
     	 */
-    	public static void main(String[] args) {
-	        SwingUtilities.invokeLater(() -> {
-	            DevolverView frame = new DevolverView();
-	            frame.setVisible(true);
-	        });
-	    }
+//    	public static void main(String[] args) {
+//	        SwingUtilities.invokeLater(() -> {
+//	            DevolverView frame = new DevolverView();
+//	            frame.setVisible(true);
+//	        });
+//	    }
 }
