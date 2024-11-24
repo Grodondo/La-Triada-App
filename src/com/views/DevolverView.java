@@ -213,18 +213,4 @@ public class DevolverView extends JFrame {
 	    }
 
 	  
-	
-   
-
-	    /**
-    	 * The main method.
-    	 *
-    	 * 
-    	 */
-//    	public static void main(String[] args) {
-//	        SwingUtilities.invokeLater(() -> {
-//	            DevolverView frame = new DevolverView();
-//	            frame.setVisible(true);
-//	        });
-//	    }
 }

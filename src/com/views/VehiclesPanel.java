@@ -182,6 +182,8 @@ public class VehiclesPanel extends JPanel{
 	            @Override
 	            public void mouseClicked(MouseEvent e) {
 	                //openDetailsPanel(vehicle);
+	            	VehicleView vehicleView = new VehicleView(vehicle);
+	            	vehicleView.setVisible(true);
 	            }
 
 	            @Override

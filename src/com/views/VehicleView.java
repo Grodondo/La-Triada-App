@@ -2,6 +2,8 @@ package com.views;
 
 import javax.swing.*;
 import com.config.AppConfig;
+import com.models.Vehiculo;
+
 import java.awt.*;
 import java.sql.*;
 import java.io.File;
@@ -11,28 +13,33 @@ import java.io.File;
  * y permite visualizar los detalles relacionados con su compra y alquiler.
  * La información se recupera desde una base de datos SQLite y se presenta en una interfaz gráfica utilizando Swing.
  * @author [Ismael Martin Boudiab]
- *  * @version 1.0
+ * @version 1.0
+ * 
+ * Actualizado por Carlos
  */
-public class VehicleView {
+public class VehicleView extends JFrame {
 
+	
     /**
      * Método principal que inicia la aplicación.
      * Crea la ventana principal, configura los paneles y muestra los detalles del vehículo
      * obtenidos desde la base de datos.
      * 
-     * @param args Argumentos de la línea de comandos (no utilizados).
      */
-    public static void main(String[] args) {
-        // Crear el marco de la aplicación
-        JFrame frame = new JFrame("La Triada - Compra/Alquiler");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setLayout(new BorderLayout());
+	public VehicleView(Vehiculo vehicle) {
+		System.out.println("Mostrando vehiculo: " + vehicle.getMatricula());
+		
+        setTitle("La Triada - Compra/Alquiler");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setIconImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\icon.png").getImage());
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLayout(new BorderLayout());
 
         // Crear un panel principal para contener todo
         JPanel mainPanel = new JPanel(null); // Usamos diseño absoluto para posicionar elementos manualmente
+        //mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(new Color(29, 57, 96)); // Fondo azul oscuro
-        frame.add(mainPanel, BorderLayout.CENTER);
+        add(mainPanel, BorderLayout.CENTER);
 
         // Crear el cuadro blanco como un panel con una imagen de fondo
         JPanel backgroundPanel = new JPanel(null) { 
@@ -44,6 +51,7 @@ public class VehicleView {
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
+        //backgroundPanel.setLayout(new BorderLayout());
         backgroundPanel.setBounds(150, 55, 1250, 700); // Ajusta posición y tamaño del cuadro blanco
         backgroundPanel.setOpaque(false); 
         mainPanel.add(backgroundPanel);
@@ -58,18 +66,27 @@ public class VehicleView {
                 g.drawImage(rightImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
-
         rightPanel.setOpaque(false); 
         rightPanel.setBounds(1420, 80, 250, 600); 
         mainPanel.add(rightPanel);
 
         // Obtener datos desde la base de datos
-        String[] datos = getDatosDesdeBaseDeDatos();
-        String marcaModelo = datos[0];
-        String precioCompra = datos[1];
-        String precioAlquiler = datos[2];
-        String imagenRuta = datos[8];
-
+//        String[] datos = getDatosDesdeBaseDeDatos();
+//        String marcaModelo = datos[0];
+//        String precioCompra = datos[1];
+//        String precioAlquiler = datos[2];
+//        String imagenRuta = datos[8];
+        String marcaModelo = vehicle.getMarca();
+        String precioCompra = vehicle.getPrecioCompra() + "";
+        String precioAlquiler = vehicle.getPrecioAlquiler() + "";
+        String imagenRuta = vehicle.getRutaImagen();
+        String carroceria = vehicle.getCarroceria();
+        String kilometros = vehicle.getKilometros() + "";
+        String combustible = vehicle.getCombustible();
+        String matricula = vehicle.getMatricula();
+        String consumo = vehicle.getConsumo() + "";
+        
+        
         // Mostrar el nombre de la marca y modelo en el título
         JLabel titleLabel = new JLabel(marcaModelo);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 50));
@@ -106,31 +123,31 @@ public class VehicleView {
         backgroundPanel.add(rentPriceLabel);
 
         // Mostrar las características del vehículo
-        JLabel carroceriaLabel = new JLabel(datos[3]);
+        JLabel carroceriaLabel = new JLabel(carroceria);
         carroceriaLabel.setFont(new Font("Arial", Font.BOLD, 30));
         carroceriaLabel.setForeground(Color.GRAY);
         carroceriaLabel.setBounds(200, 500, 400, 30);
         backgroundPanel.add(carroceriaLabel);
 
-        JLabel kilometrosLabel = new JLabel(datos[4]);
+        JLabel kilometrosLabel = new JLabel(kilometros);
         kilometrosLabel.setFont(new Font("Arial", Font.BOLD, 30));
         kilometrosLabel.setForeground(Color.GRAY);
         kilometrosLabel.setBounds(200, 540, 400, 30);
         backgroundPanel.add(kilometrosLabel);
 
-        JLabel combustibleLabel = new JLabel(datos[5]);
+        JLabel combustibleLabel = new JLabel(combustible);
         combustibleLabel.setFont(new Font("Arial", Font.BOLD, 30));
         combustibleLabel.setForeground(Color.GRAY);
         combustibleLabel.setBounds(200, 580, 400, 30);
         backgroundPanel.add(combustibleLabel);
 
-        JLabel matriculaLabel = new JLabel(datos[6]);
+        JLabel matriculaLabel = new JLabel(matricula);
         matriculaLabel.setFont(new Font("Arial", Font.BOLD, 30));
         matriculaLabel.setForeground(Color.GRAY);
         matriculaLabel.setBounds(450, 500, 400, 30);
         backgroundPanel.add(matriculaLabel);
 
-        JLabel consumoLabel = new JLabel(datos[7]);
+        JLabel consumoLabel = new JLabel(consumo);
         consumoLabel.setFont(new Font("Arial", Font.BOLD, 30));
         consumoLabel.setForeground(Color.GRAY);
         consumoLabel.setBounds(450, 540, 400, 30);
@@ -150,10 +167,10 @@ public class VehicleView {
         backgroundPanel.revalidate();
         backgroundPanel.repaint();
 
-        // Mostrar el marco
-        frame.setVisible(true);
-    }
-
+	}
+    
+    
+	// Revision de Carlos -> Todo esto sobra, a la clase ya se le va a pasar como parametro un Objeto de la clase Vehiculo, no lo borro por pena.
     /**
      * Recupera los datos del vehículo desde una base de datos SQLite.
      * 
