@@ -7,7 +7,7 @@ import java.awt.geom.RoundRectangle2D;
 /**
  * Crea un {@link JPanel} redondeado con un radio especificado
  * 
- * @author Carlos Arroyo Caballero
+ * @author [Carlos Arroyo Caballero]
  * @see JPanel
  */
 public class RoundedPanel extends JPanel {

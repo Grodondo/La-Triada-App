@@ -28,9 +28,9 @@ import com.config.*;
 import resources.CustomColor;
 
 /**
- * Custom title bar for the App
+ * Barra be busqueda personalizada para la aplicacion
  * 
- * @author Carlos Arroyo Caballero
+ * @author [Carlos Arroyo Caballero]
  * @version 1.0
  */
 public class CustomTitleBar extends JMenuBar {
@@ -42,10 +42,10 @@ public class CustomTitleBar extends JMenuBar {
 	private String titleLabel;
 	
 	/**
-	 * Constructor
+	 * Constructor 
 	 * 
-	 * @param frame      the frame to which the title bar is added
-	 * @param titleLabel the title of the frame
+	 * @param frame      La ventana a la que se le añade la barra de busqueda
+	 * @param titleLabel El tittulo de la barra de busqueda/ventana
 	 */
 	public CustomTitleBar(JFrame frame, String titleLabel) {
 
@@ -59,7 +59,7 @@ public class CustomTitleBar extends JMenuBar {
 	}
 
 	/**
-	 * Creates all of the components of the title bar
+	 *  Inicializa los componentes de la barra de busqueda
 	 */
 	private void initComponents() {
 		

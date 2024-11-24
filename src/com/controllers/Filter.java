@@ -127,7 +127,7 @@ public class Filter {
 	 * @param filter El filtro a aplicar
 	 */
 	public void applyFilter(Filtro filter) {
-		if (!containsFilter(filter.getName())) {
+		if (!containsFilter(filter.getName()) && filter != null) {
 			System.out.println("Applying filter: " + filter.getName());
 			this.activeFilters.add(filter);
 			this.appliedFiltersPanel.add(createFilterTag(filter));

@@ -123,10 +123,10 @@ public class FiltersPanel extends JPanel{
 	}
 	
 	/**
-	 * Creates a JPanel with a text filter input and a button to add the filter
+	 * Crea el {@link JPanel} con el filtro por texto
 	 * 
-	 * @param title The title of the text filter
-	 * @return The JPanel with the text filter input and button
+	 * @param title El titulo del panel de filtro
+	 * @return The {@link JPanel} Con el filtro por texto y el botón de búsqueda
 	 */
 	private JPanel createTextFilterPanel(String title) {
 		JPanel textFilterPanel = new JPanel();
@@ -197,10 +197,9 @@ public class FiltersPanel extends JPanel{
 	
 	
 	/**
-	 * Creates a JPanel with the filter options for car, bike and truck as image
-	 * checkBoxes
+	 * Crea un {@link JPanel} con los iconos de coche, moto y camión para filtrarlos
 	 * 
-	 * @return The JPanel with the filter options for car, bike and truck
+	 * @return El {@link JPanel} con los iconos de coche, moto y camión
 	 */
 	private JPanel createFilterSectionImages() {
 		JPanel sectionPanel = new JPanel(new GridBagLayout());
@@ -290,12 +289,11 @@ public class FiltersPanel extends JPanel{
 	}
 	
 	/**
-	 * Creates a JPanel with a title and a list of options as checkboxes to apply
-	 * filters
+	 * Crea un {@link JPanel} con el título y las opciones como checkboxes
 	 * 
-	 * @param title   The title of the section
-	 * @param options The list of options to display as checkboxes
-	 * @return The JPanel with the title and checkboxes
+	 * @param title   El titulo del panel
+	 * @param options La lista de opciones que se mostrarán como {@link JCheckBox}
+	 * @return El {@link JPanel} con el título y las opciones como checkboxes
 	 */
 	private JPanel createFilterSection(String title, String[] options) {
 		JPanel sectionPanel = new JPanel();
