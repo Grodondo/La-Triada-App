@@ -2,6 +2,11 @@ package com.views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import com.config.AppConfig;
 
 /**
@@ -9,141 +14,149 @@ import com.config.AppConfig;
  * Esta interfaz muestra una ventana maximizada con un banner superior, panel de filtros, y elementos gráficos.
  */
 public class HomeView extends JFrame {
+	   static   JLabel motoCount = new JLabel("3", SwingConstants.CENTER);
+	   static   JLabel carCount = new JLabel("5", SwingConstants.CENTER);
+	   static JLabel truckCount = new JLabel("4", SwingConstants.CENTER);
 
-    private static final long serialVersionUID = 1L;
+	// Configuración de la base de datos
+  public HomeView() {
+	  // Crear el marco principal
+      
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setMinimumSize(AppConfig.MINIMUM_WINDOW_SIZE);
+	  setSize(AppConfig.sizeWindow);
+	  setExtendedState(JFrame.MAXIMIZED_BOTH);
+	  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setLayout(new BorderLayout());
+      
+    
+      
+      // Panel principal con el contenido
+      JPanel mainPanel = new JPanel(new BorderLayout());
+      mainPanel.setBackground(new Color(30, 60, 90)); 
+      
+      // Imagen de fondo superior
+      JLabel backgroundImage = new JLabel(new ImageIcon(AppConfig.RESOURCES_URL + "images/"+"bannerLT.png"));
+      backgroundImage.setHorizontalAlignment(SwingConstants.CENTER);
+      mainPanel.add(backgroundImage, BorderLayout.NORTH);
+      
+      // Panel central con los textos y disponibilidad
+      JPanel centerPanel = new JPanel();
+      centerPanel.setBackground(new Color(50, 70, 110));
+      centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+      
+      JLabel labelBienvenido = new JLabel("BIENVENIDO");
+      labelBienvenido.setForeground(Color.WHITE);
+      labelBienvenido.setFont(new Font("Arial", Font.BOLD, 50));
+      labelBienvenido.setAlignmentX(Component.CENTER_ALIGNMENT);
+      JLabel labelDisponibilidad = new JLabel("DISPONIBILIDAD:");
+      labelDisponibilidad.setForeground(Color.WHITE);
+      labelDisponibilidad.setFont(new Font("Arial", Font.BOLD, 50));
+      labelDisponibilidad.setAlignmentX(Component.CENTER_ALIGNMENT);
+      
+      centerPanel.add(Box.createRigidArea(new Dimension(0, 0)));
+      centerPanel.add(labelBienvenido);
+     centerPanel.add(Box.createRigidArea(new Dimension(0, 0))); 
+      centerPanel.add(labelDisponibilidad);
+      
+      // Panel de los íconos y números
+      JPanel iconPanel = new JPanel(new BorderLayout());
+      iconPanel.setBackground(new Color(50, 70, 110)); 
+     iconPanel.setLayout(new BoxLayout(iconPanel, BoxLayout.X_AXIS));
+    
+    //  iconPanel.setPreferredSize(new Dimension(10, 3)); // Ajusta el tamaño según necesites
+      // Moto
+      JPanel motoPanel = new JPanel(new BorderLayout());
+      motoPanel.setBackground(new Color(50, 70, 110));
+      JLabel motoIcon = new JLabel(scaleIcon(AppConfig.RESOURCES_URL + "images/"+"MotoNegro.png",350, 250)); 
+    
+      motoCount.setForeground(Color.WHITE);
+      motoCount.setFont(new Font("Arial", Font.BOLD, 50));
+      motoPanel.add(motoIcon, BorderLayout.CENTER);
+      motoPanel.add(motoCount, BorderLayout.SOUTH);
+      motoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+      // Coche
+      JPanel carPanel = new JPanel(new BorderLayout());
+      carPanel.setBackground(new Color(50, 70, 110));
+      JLabel carIcon = new JLabel(scaleIcon(AppConfig.RESOURCES_URL + "images/"+"CocheNegro.png", 350, 250)); 
+    
+      carCount.setForeground(Color.WHITE);
+      carCount.setFont(new Font("Arial", Font.BOLD, 50));
+      carPanel.add(carIcon, BorderLayout.CENTER);
+      carPanel.add(carCount, BorderLayout.SOUTH);
+      carPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+      // Camión
+      JPanel truckPanel = new JPanel(new BorderLayout());
+      truckPanel.setBackground(new Color(50, 70, 110));
+      JLabel truckIcon = new JLabel(scaleIcon(AppConfig.RESOURCES_URL + "images/"+"CamionNegro.png", 350, 250));
+      truckCount.setForeground(Color.WHITE);
+      truckCount.setFont(new Font("Arial", Font.BOLD, 50));
+      truckPanel.add(truckIcon, BorderLayout.CENTER);
+      truckPanel.add(truckCount, BorderLayout.SOUTH);
+      truckPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+      
+      iconPanel.add(motoPanel);
+      iconPanel.add(carPanel);
+      iconPanel.add(truckPanel);
+      
+    centerPanel.add(Box.createRigidArea(new Dimension(0, 0))); // Espaciado
+      centerPanel.add(iconPanel);
+      
+      mainPanel.add(centerPanel, BorderLayout.CENTER);
+      
+      
+      JMenuBar CustomTitleBar = new CustomTitleBar(this, "Home");
+	  add(CustomTitleBar, BorderLayout.NORTH);
+      add(mainPanel, BorderLayout.CENTER);
+      
+      // Mostrar la ventana
+     setVisible(true);
+     
+  }
 
-    /**
-     * Constructor de la clase <code>HomeView</code>.
-     * Establece el diseño de la ventana, paneles, imágenes y componentes gráficos.
-     */
-    public HomeView() {
-        setTitle("Aplicación de Ventas de Vehículos");
-        setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizar la ventana
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+    public static void main(String[] args) {
+        // Crear el marco principal
+       HomeView h1 = new HomeView();
+       h1.setVisible(true);
 
-        // Crear panel principal con BorderLayout
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBackground(new Color(44, 73, 104)); // Color de fondo azul de la interfaz
-        setContentPane(mainPanel); // Establecer mainPanel como el contenedor principal
+        // Consultar la base de datos para obtener las cantidades
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+            String query = "SELECT tipo, COUNT(*) as cantidad FROM vehiculo GROUP BY tipo";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
 
-        // Crear el CustomTitleBar (el menú)
-        CustomTitleBar customTitleBar = new CustomTitleBar(this, "Aplicación de Ventas de Vehículos");
-        setJMenuBar(customTitleBar); // Establecer el CustomTitleBar como el menú de la ventana
+            while (resultSet.next()) {
+                String tipoVehiculo = resultSet.getString("tipo");
+                int cantidad = resultSet.getInt("cantidad");
 
-        // Crear panel del banner superior
-        JPanel bannerPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                ImageIcon bannerIcon = new ImageIcon(AppConfig.RESOURCES_URL + "images/bannerLT.png");
-                g.drawImage(bannerIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
-            }
-        };
-        bannerPanel.setOpaque(false);
-        bannerPanel.setPreferredSize(new Dimension(getWidth(), 250)); // Establecer tamaño del banner
-        mainPanel.add(bannerPanel, BorderLayout.NORTH); // Colocar el banner al norte
-
-        // Crear el panel central con imagen de fondo (la imagen negra)
-        JPanel centerPanel = new JPanel() {
-            private ImageIcon backgroundImage = new ImageIcon(AppConfig.RESOURCES_URL + "images/negro.png");
-
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Mantener el tamaño original sin estirarlo
-                int width = getWidth() - 600; // Mantener la imagen centrada y sin estirarse
-                int height = (int) (getHeight() * 0.65); // Ajuste de altura
-                int x = (getWidth() - width) / 2 + 30; // Desplazamos la imagen negra a la derecha
-                int y = (getHeight() - height) / 2 + 50; // Ajuste hacia arriba
-                g.drawImage(backgroundImage.getImage(), x, y, width, height, this);
-            }
-        };
-        centerPanel.setOpaque(false);
-        centerPanel.setLayout(null); // Usamos un layout nulo para colocar los elementos en posiciones específicas
-        mainPanel.add(centerPanel, BorderLayout.CENTER); // Colocar en el centro
-
-        // Crear panel para las flechas a la derecha de la imagen negra
-        JPanel arrowPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Asegúrate de que la ruta de la imagen sea correcta
-                try {
-                    ImageIcon arrowIcon = new ImageIcon(AppConfig.RESOURCES_URL + "images/flechasSinFondo.png");
-                    if (arrowIcon.getImageLoadStatus() == MediaTracker.COMPLETE) {
-                        g.drawImage(arrowIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
-                    } else {
-                        System.out.println("Error al cargar la imagen de flechas.");
-                    }
-                } catch (Exception e) {
-                    System.out.println("Error al cargar la imagen de flechas: " + e.getMessage());
+                switch (tipoVehiculo.toLowerCase()) {
+                    case "moto":
+                        motoCount.setText("" + cantidad);
+                        break;
+                    case "auto":
+                        carCount.setText("" + cantidad);
+                        break;
+                    case "camion":
+                    	truckCount.setText("" + cantidad);
+                        break;
                 }
             }
-        };
 
-        // Hacer que el panel sea visible con un borde para comprobar su posición
-        arrowPanel.setOpaque(false);
-        arrowPanel.setPreferredSize(new Dimension(500, 400)); // Aumentar la altura de la imagen de flechas
-        arrowPanel.setBounds(1380, 0, 300, 400); // Ubicar el panel de flechas a la derecha de la imagen negra
-        centerPanel.add(arrowPanel);
-
-        // Crear los JTextField para filtrado
-        JTextField marcaField = new JTextField("Marca...");
-        JTextField modeloField = new JTextField("Modelo...");
-        JTextField carroceriaField = new JTextField("Carrocería...");
-        JTextField resultadosField = new JTextField("Filtrar resultados...");
-        
-        // Hacer los JTextField más altos
-        JTextField[] textFields = {marcaField, modeloField, carroceriaField, resultadosField};
-        for (JTextField field : textFields) {
-            field.setFont(new Font("Arial", Font.PLAIN, 18));
-            field.setBackground(Color.WHITE);
-            field.setForeground(new Color(44, 73, 104));
-            field.setPreferredSize(new Dimension(250, 50)); // Aumenté la altura de los campos
-            field.setBorder(BorderFactory.createLineBorder(new Color(44, 73, 104), 2)); // Bordes azules
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+           
         }
 
-        // Colocar los JTextFields en las posiciones
-        marcaField.setBounds(410, 190, 250, 50);
-        modeloField.setBounds(670, 190, 250, 50);
-        carroceriaField.setBounds(930, 190, 250, 50);
-        resultadosField.setBounds(670, 270, 250, 50);
-
-        // Agregar los JTextFields al panel central
-        centerPanel.add(marcaField);
-        centerPanel.add(modeloField);
-        centerPanel.add(carroceriaField);
-        centerPanel.add(resultadosField);
-
-        // Crear el botón de la lupa y colocarlo en su posición original
-        ImageIcon lupaIcon = new ImageIcon(AppConfig.RESOURCES_URL + "images/lupaLT.png");
-        Image scaledLupaImage = lupaIcon.getImage().getScaledInstance(80, 40, Image.SCALE_SMOOTH);
-        JButton searchButton = new JButton();
-        searchButton.setIcon(new ImageIcon(scaledLupaImage));
-        searchButton.setOpaque(false);
-        searchButton.setContentAreaFilled(false);
-        searchButton.setBorderPainted(false);
-        searchButton.setFocusPainted(false);
-        searchButton.setMargin(new Insets(0, 0, 0, 0));
-
-        // Establecer la posición del botón de búsqueda
-        searchButton.setBounds(750, 350, 90, 40);
-        centerPanel.add(searchButton);
-
-        // Hacer visible la ventana
-        setVisible(true);
+    
     }
-
-    /**
-     * Método principal que ejecuta la aplicación y muestra la vista principal.
-     * 
-     * @param args Argumentos de la línea de comandos (no utilizados).
-     */
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            HomeView app = new HomeView();
-            app.setVisible(true);
-        });
+    private static ImageIcon scaleIcon(String path, int width, int height) {
+        ImageIcon icon = new ImageIcon(path);
+        Image img = icon.getImage(); // Obtener la imagen original
+        Image scaledImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH); // Escalar la imagen
+        return new ImageIcon(scaledImg); // Devolver el icono escalado
     }
 }

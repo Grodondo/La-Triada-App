@@ -2,7 +2,7 @@
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_Tm6s8YvxEe-GnNEF_4CFDA" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_Tm7UAIvxEe-GnNEF_4CFDA" bindingContexts="_Tm7UCYvxEe-GnNEF_4CFDA">
   <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList/>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_Tm7UAIvxEe-GnNEF_4CFDA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_T4iBYovxEe-GnNEF_4CFDA" label="%trimmedwindow.label.eclipseSDK" x="224" y="224" width="1024" height="768">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_Tm7UAIvxEe-GnNEF_4CFDA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_T4iBYovxEe-GnNEF_4CFDA" label="%trimmedwindow.label.eclipseSDK" x="0" y="0" width="1024" height="768">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
     <persistedState key="isRestored" value="true"/>
@@ -74,6 +74,7 @@
           <tags>persp.newWizSC:org.eclipse.jdt.junit.wizards.NewTestCaseCreationWizard</tags>
           <tags>persp.actionSet:org.eclipse.jdt.junit.JUnitActionSet</tags>
           <tags>persp.viewSC:org.eclipse.ant.ui.views.AntView</tags>
+          <tags>persp.actionSet:org.jkiss.dbeaver.search.searchActionSet</tags>
           <tags>persp.editorOnboardingImageUri:platform:/plugin/org.eclipse.jdt.ui/$nl$/icons/full/onboarding_jperspective.png</tags>
           <tags>persp.editorOnboardingText:Open a file or drop files here to open them.</tags>
           <tags>persp.editorOnboardingCommand:Find Actions$$$Ctrl+3</tags>
@@ -214,6 +215,7 @@
           <tags>persp.actionSet:org.eclipse.egit.ui.SearchActionSet</tags>
           <tags>persp.newWizSC:org.eclipse.egit.ui.CreateRepositoryWizard</tags>
           <tags>persp.showIn:org.eclipse.tm.terminal.view.ui.TerminalsView</tags>
+          <tags>persp.actionSet:org.jkiss.dbeaver.search.searchActionSet</tags>
           <children xsi:type="basic:PartSashContainer" xmi:id="_eQuLwZCoEe-2QrOCdUdS6A" selectedElement="_eQuLwpCoEe-2QrOCdUdS6A" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_eQuLwpCoEe-2QrOCdUdS6A" containerData="3000" selectedElement="_eQuLw5CoEe-2QrOCdUdS6A">
               <children xsi:type="basic:PartStack" xmi:id="_eQuLw5CoEe-2QrOCdUdS6A" elementId="org.eclipse.egit.ui.RepositoriesViewMStack" containerData="7000" selectedElement="_eQuLxJCoEe-2QrOCdUdS6A">
@@ -292,6 +294,7 @@
           <tags>persp.viewSC:org.eclipse.tm.terminal.view.ui.TerminalsView</tags>
           <tags>persp.showIn:org.eclipse.tm.terminal.view.ui.TerminalsView</tags>
           <tags>persp.viewSC:org.eclipse.ant.ui.views.AntView</tags>
+          <tags>persp.actionSet:org.jkiss.dbeaver.search.searchActionSet</tags>
           <tags>persp.editorOnboardingImageUri:platform:/plugin/org.eclipse.ui.ide.application/$nl$/icons/full/onboarding_resource_persp.png</tags>
           <tags>persp.editorOnboardingText:Open a file or drop files here to open them.</tags>
           <tags>persp.editorOnboardingCommand:Find Actions$$$Ctrl+3</tags>
@@ -610,7 +613,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_T6md8IvxEe-GnNEF_4CFDA" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_ct94wJ1PEe-4w8hiOrqrUg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_TnnQ-ovxEe-GnNEF_4CFDA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_EQ_GkKtzEe-UP8YM9Z_yGQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_TnnQ-ovxEe-GnNEF_4CFDA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_T6md8YvxEe-GnNEF_4CFDA" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -618,8 +621,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_T6md84vxEe-GnNEF_4CFDA" elementId="org.eclipse.ui.workbench.edit">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_ct_G4J1PEe-4w8hiOrqrUg" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_Tnk0fYvxEe-GnNEF_4CFDA"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_cuAVAJ1PEe-4w8hiOrqrUg" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_TnmCdIvxEe-GnNEF_4CFDA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_ERAUsKtzEe-UP8YM9Z_yGQ" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_Tnk0fYvxEe-GnNEF_4CFDA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_ERA7wKtzEe-UP8YM9Z_yGQ" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_TnmCdIvxEe-GnNEF_4CFDA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_T6nFAIvxEe-GnNEF_4CFDA" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -640,7 +643,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_T6nFBIvxEe-GnNEF_4CFDA" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_cuBjIJ1PEe-4w8hiOrqrUg" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_TnnQsovxEe-GnNEF_4CFDA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_ERCJ4KtzEe-UP8YM9Z_yGQ" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_TnnQsovxEe-GnNEF_4CFDA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_T6nFBYvxEe-GnNEF_4CFDA" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -944,6 +947,33 @@
     <bindings xmi:id="_ToPio4vxEe-GnNEF_4CFDA" keySequence="ALT+SHIFT+D T" command="_TnhxBovxEe-GnNEF_4CFDA"/>
     <bindings xmi:id="_ToPipIvxEe-GnNEF_4CFDA" keySequence="ALT+SHIFT+D J" command="_TnnQqIvxEe-GnNEF_4CFDA"/>
     <bindings xmi:id="_ToPipYvxEe-GnNEF_4CFDA" keySequence="ALT+SHIFT+D Q" command="_TnmCZYvxEe-GnNEF_4CFDA"/>
+    <bindings xmi:id="_D78qsKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+CR" command="_D7cUbqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D78qt6tzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+C" command="_D7Z4LatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7940KtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+R" command="_D7btfatzEe-UP8YM9Z_yGQ">
+      <tags>platform:win32</tags>
+    </bindings>
+    <bindings xmi:id="_D7-f4qtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+U" command="_D7cUbatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7-f5atzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+K" command="_D7btaatzEe-UP8YM9Z_yGQ">
+      <tags>platform:win32</tags>
+    </bindings>
+    <bindings xmi:id="_D7-f6atzEe-UP8YM9Z_yGQ" keySequence="CTRL+0" command="_D7Z4K6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7_G8qtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+V" command="_D7cUZatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7_uAKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+-" command="_D7btfqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7_uAatzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+N" command="_D7afNKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7_uBKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+A" command="_D7afVKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8AVEKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+C" command="_D7cUaKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8AVEatzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+D" command="_D7afcKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8AVFKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+F" command="_D7ZRF6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8BjM6tzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+," command="_D7bGQatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8D_cKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+9" command="_D7afRKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8EmgKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+=" command="_D7afMKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8IQ4atzEe-UP8YM9Z_yGQ" keySequence="ALT+SHIFT+ARROW_UP" command="_D7btVqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8IQ4qtzEe-UP8YM9Z_yGQ" keySequence="ALT+SHIFT+ARROW_DOWN" command="_D7afQqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8I39KtzEe-UP8YM9Z_yGQ" keySequence="ALT+`" command="_D7afYKtzEe-UP8YM9Z_yGQ">
+      <tags>platform:win32</tags>
+    </bindings>
+    <bindings xmi:id="_D8KGFKtzEe-UP8YM9Z_yGQ" keySequence="TAB" command="_D7Z4Q6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8KGFqtzEe-UP8YM9Z_yGQ" keySequence="CR" command="_D7btgKtzEe-UP8YM9Z_yGQ"/>
   </bindingTables>
   <bindingTables xmi:id="_ToEjhIvxEe-GnNEF_4CFDA" elementId="org.eclipse.core.runtime.xml" bindingContext="_ToEjg4vxEe-GnNEF_4CFDA">
     <bindings xmi:id="_ToEjhYvxEe-GnNEF_4CFDA" keySequence="CTRL+SHIFT+P" command="_TnnQ0ovxEe-GnNEF_4CFDA"/>
@@ -989,6 +1019,10 @@
     <bindings xmi:id="_ToO7l4vxEe-GnNEF_4CFDA" keySequence="CTRL+2 T" command="_Tnmpe4vxEe-GnNEF_4CFDA"/>
     <bindings xmi:id="_ToO7mIvxEe-GnNEF_4CFDA" keySequence="CTRL+2 L" command="_Tni_I4vxEe-GnNEF_4CFDA"/>
     <bindings xmi:id="_ToO7mYvxEe-GnNEF_4CFDA" keySequence="CTRL+2 M" command="_TnlbUYvxEe-GnNEF_4CFDA"/>
+    <bindings xmi:id="_D8A8IKtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+I" command="_D7affqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8A8IatzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+J" command="_D7afVatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8A8IqtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+K" command="_D7afPqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8A8JatzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+O" command="_D7Z4O6tzEe-UP8YM9Z_yGQ"/>
   </bindingTables>
   <bindingTables xmi:id="_ToFKlYvxEe-GnNEF_4CFDA" elementId="org.eclipse.jdt.ui.classFileEditorScope" bindingContext="_TnsJDIvxEe-GnNEF_4CFDA">
     <bindings xmi:id="_ToFKlovxEe-GnNEF_4CFDA" keySequence="CTRL+1" command="_Tnn36ovxEe-GnNEF_4CFDA"/>
@@ -1135,6 +1169,104 @@
   <bindingTables xmi:id="_UBoTAYvxEe-GnNEF_4CFDA" bindingContext="_UBoTAIvxEe-GnNEF_4CFDA"/>
   <bindingTables xmi:id="_UBoTA4vxEe-GnNEF_4CFDA" bindingContext="_UBoTAovxEe-GnNEF_4CFDA"/>
   <bindingTables xmi:id="_UBoTBYvxEe-GnNEF_4CFDA" bindingContext="_UBoTBIvxEe-GnNEF_4CFDA"/>
+  <bindingTables xmi:id="_D78qsatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.context.navigator" bindingContext="_D7f-watzEe-UP8YM9Z_yGQ">
+    <bindings xmi:id="_D78qsqtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+CR" command="_D7afPatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D79RwKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+CR" command="_D7affKtzEe-UP8YM9Z_yGQ">
+      <tags>platform:win32</tags>
+    </bindings>
+    <bindings xmi:id="_D8BjNKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+." command="_D7afcqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8F0o6tzEe-UP8YM9Z_yGQ" keySequence="ALT+INSERT" command="_D7btYqtzEe-UP8YM9Z_yGQ">
+      <tags>platform:win32</tags>
+    </bindings>
+    <bindings xmi:id="_D8HCwqtzEe-UP8YM9Z_yGQ" keySequence="F4" command="_D7afTKtzEe-UP8YM9Z_yGQ"/>
+  </bindingTables>
+  <bindingTables xmi:id="_D78qs6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.script.focused" bindingContext="_D7f-xatzEe-UP8YM9Z_yGQ">
+    <bindings xmi:id="_D78qtKtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+A" command="_D7ZRIKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D78quKtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+C" command="_D7btbatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D79RwatzEe-UP8YM9Z_yGQ" keySequence="CTRL+CR" command="_D7ZRGKtzEe-UP8YM9Z_yGQ">
+      <tags>platform:win32</tags>
+    </bindings>
+    <bindings xmi:id="_D8AVE6tzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+E" command="_D7afaKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8BjMqtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+'" command="_D7Z4PqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8FNkqtzEe-UP8YM9Z_yGQ" keySequence="CTRL+\" command="_D7afUatzEe-UP8YM9Z_yGQ">
+      <tags>platform:win32</tags>
+    </bindings>
+    <bindings xmi:id="_D8FNl6tzEe-UP8YM9Z_yGQ" keySequence="ALT+ARROW_UP" command="_D7Z4XatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8F0oKtzEe-UP8YM9Z_yGQ" keySequence="ALT+ARROW_DOWN" command="_D7afN6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8F0oatzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+X" command="_D7cUbKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8HCwatzEe-UP8YM9Z_yGQ" keySequence="F4" command="_D7afUKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8JfAatzEe-UP8YM9Z_yGQ" keySequence="ALT+X" command="_D7Z4ZatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8JfAqtzEe-UP8YM9Z_yGQ" keySequence="ALT+P" command="_D7ZREKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8KGEatzEe-UP8YM9Z_yGQ" keySequence="ALT+N" command="_D7ZRE6tzEe-UP8YM9Z_yGQ"/>
+  </bindingTables>
+  <bindingTables xmi:id="_D78qtatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.perspective" bindingContext="_D7f-yKtzEe-UP8YM9Z_yGQ">
+    <bindings xmi:id="_D78qtqtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+B" command="_D7Z4UKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8FNkatzEe-UP8YM9Z_yGQ" keySequence="CTRL+[" command="_D7afcatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8FNk6tzEe-UP8YM9Z_yGQ" keySequence="CTRL+]" command="_D7cUYqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8HCwKtzEe-UP8YM9Z_yGQ" keySequence="F3" command="_D7afcatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8I38qtzEe-UP8YM9Z_yGQ" keySequence="CTRL+F3" command="_D7cUYqtzEe-UP8YM9Z_yGQ"/>
+  </bindingTables>
+  <bindingTables xmi:id="_D78quatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.context.navigator.view" bindingContext="_D7f-wqtzEe-UP8YM9Z_yGQ">
+    <bindings xmi:id="_D78quqtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+D" command="_D7cUc6tzEe-UP8YM9Z_yGQ"/>
+  </bindingTables>
+  <bindingTables xmi:id="_D78qu6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.context.resultset.focused" bindingContext="_D7f-xKtzEe-UP8YM9Z_yGQ">
+    <bindings xmi:id="_D78qvKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+BS" command="_D7ZREatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7_G8atzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+D" command="_D7Z4J6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8A8J6tzEe-UP8YM9Z_yGQ" keySequence="CTRL+R" command="_D7afc6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8A8KKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+S" command="_D7Z4TqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8CxUKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+D" command="_D7afOatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8F0oqtzEe-UP8YM9Z_yGQ" keySequence="ALT+INSERT" command="_D7afZ6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8HCw6tzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+ARROW_LEFT" command="_D7btU6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8Hp0KtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+ARROW_RIGHT" command="_D7afOqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8IQ4KtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+INSERT" command="_D7cUb6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8I386tzEe-UP8YM9Z_yGQ" keySequence="ALT+DEL" command="_D7cUcatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8I39atzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+ARROW_LEFT" command="_D7Z4KqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8JfAKtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+ARROW_RIGHT" command="_D7afOKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8KGEKtzEe-UP8YM9Z_yGQ" keySequence="ESC" command="_D7afS6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8KGE6tzEe-UP8YM9Z_yGQ" keySequence="SHIFT+CR" command="_D7Z4KatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8KtIKtzEe-UP8YM9Z_yGQ" keySequence="CR" command="_D7Z4QqtzEe-UP8YM9Z_yGQ"/>
+  </bindingTables>
+  <bindingTables xmi:id="_D7-f4KtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.context.resultset" bindingContext="_D7f-xqtzEe-UP8YM9Z_yGQ">
+    <bindings xmi:id="_D7-f4atzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+T" command="_D7afdatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7-f6qtzEe-UP8YM9Z_yGQ" keySequence="CTRL+2" command="_D7btWqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7-f66tzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+C" command="_D7Z4Z6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7_G86tzEe-UP8YM9Z_yGQ" keySequence="CTRL+7" command="_D7ZREqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7_uBatzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+R" command="_D7afZKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8AVFatzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+G" command="_D7afY6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8A8I6tzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+=" command="_D7afYqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8A8JKtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+N" command="_D7Z4VKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8A8JqtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+1" command="_D7Z4JKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8BjMatzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+7" command="_D7btX6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8DYYKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+G" command="_D7afNatzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8FNkKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+`" command="_D7Z4IqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8GbsKtzEe-UP8YM9Z_yGQ" keySequence="F7" command="_D7ZREqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8GbsatzEe-UP8YM9Z_yGQ" keySequence="F11" command="_D7btaKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8I38KtzEe-UP8YM9Z_yGQ" keySequence="CTRL+F11" command="_D7btXKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8KGEqtzEe-UP8YM9Z_yGQ" keySequence="ALT+SPACE" command="_D7btdqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8KGFatzEe-UP8YM9Z_yGQ" keySequence="TAB" command="_D7btYKtzEe-UP8YM9Z_yGQ"/>
+  </bindingTables>
+  <bindingTables xmi:id="_D7-f46tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql" bindingContext="_D7f-wKtzEe-UP8YM9Z_yGQ">
+    <bindings xmi:id="_D7-f5KtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+W" command="_D7ZRG6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7-f5qtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+O" command="_D7afP6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7_uAqtzEe-UP8YM9Z_yGQ" keySequence="CTRL+/" command="_D7Z4I6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8CKQKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+/" command="_D7afe6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8FNlKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+[" command="_D7Z4SqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8FNlqtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+]" command="_D7Z4X6tzEe-UP8YM9Z_yGQ"/>
+  </bindingTables>
+  <bindingTables xmi:id="_D7-f56tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.script" bindingContext="_D7f-w6tzEe-UP8YM9Z_yGQ">
+    <bindings xmi:id="_D7-f6KtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+P" command="_D7btW6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7_G8KtzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+T" command="_D7Z4U6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D7_uA6tzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+O" command="_D7Z4T6tzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8AVEqtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+T" command="_D7Z4MqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8BjMKtzEe-UP8YM9Z_yGQ" keySequence="CTRL+T" command="_D7afgKtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8FNlatzEe-UP8YM9Z_yGQ" keySequence="CTRL+SHIFT+\" command="_D7btbqtzEe-UP8YM9Z_yGQ"/>
+    <bindings xmi:id="_D8I38atzEe-UP8YM9Z_yGQ" keySequence="CTRL+F2" command="_D7Z4P6tzEe-UP8YM9Z_yGQ"/>
+  </bindingTables>
+  <bindingTables xmi:id="_D8EmgatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.context.resultset.edit" bindingContext="_D7f-x6tzEe-UP8YM9Z_yGQ">
+    <bindings xmi:id="_D8EmgqtzEe-UP8YM9Z_yGQ" keySequence="ALT+CTRL+SHIFT+CR" command="_D7Z4UatzEe-UP8YM9Z_yGQ"/>
+  </bindingTables>
+  <bindingTables xmi:id="_EOz8UatzEe-UP8YM9Z_yGQ" bindingContext="_EOz8UKtzEe-UP8YM9Z_yGQ"/>
+  <bindingTables xmi:id="_EO0jYatzEe-UP8YM9Z_yGQ" bindingContext="_EO0jYKtzEe-UP8YM9Z_yGQ"/>
   <rootContext xmi:id="_Tm7UCYvxEe-GnNEF_4CFDA" elementId="org.eclipse.ui.contexts.dialogAndWindow" contributorURI="platform:/plugin/org.eclipse.platform" name="In Dialogs and Windows" description="Either a dialog or a window is open">
     <children xmi:id="_Tm7UCovxEe-GnNEF_4CFDA" elementId="org.eclipse.ui.contexts.window" contributorURI="platform:/plugin/org.eclipse.platform" name="In Windows" description="A window is open">
       <children xmi:id="_Tm7UC4vxEe-GnNEF_4CFDA" elementId="org.eclipse.e4.ui.contexts.views" contributorURI="platform:/plugin/org.eclipse.platform" name="%bindingcontext.name.bindingView"/>
@@ -1152,6 +1284,11 @@
         <children xmi:id="_TnsJGIvxEe-GnNEF_4CFDA" elementId="com.genuitec.copilot4eclipse.completionContext" name="Completion" description="Copilot4Eclipse completions available context"/>
         <children xmi:id="_TnsJGYvxEe-GnNEF_4CFDA" elementId="org.eclipse.ant.ui.AntEditorScope" name="Editing Ant Buildfiles" description="Editing Ant Buildfiles Context"/>
         <children xmi:id="_TnsJG4vxEe-GnNEF_4CFDA" elementId="org.eclipse.jdt.ui.propertiesEditorScope" name="Editing Properties Files" description="Editing Properties Files Context"/>
+        <children xmi:id="_D7f-wKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql" name="Contexto de Editor SQL">
+          <children xmi:id="_D7f-w6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.script" name="Contexto de Editor de Script SQL"/>
+          <children xmi:id="_D7f-xKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.context.resultset.focused" name="Contexto del visor de resultados" description="Contexto del visor de resultados"/>
+        </children>
+        <children xmi:id="_D7f-xatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.script.focused" name="Contexto de Editor de Script SQL"/>
       </children>
       <children xmi:id="_TnsJBYvxEe-GnNEF_4CFDA" elementId="org.eclipse.tm.terminal.view.ui.TerminalsView" name="In Terminal View" description="Show modified keyboard shortcuts in context menu"/>
       <children xmi:id="_TnsJBovxEe-GnNEF_4CFDA" elementId="org.eclipse.debug.ui.console" name="In I/O Console" description="In I/O console"/>
@@ -1169,6 +1306,13 @@
       <children xmi:id="_TnsJHIvxEe-GnNEF_4CFDA" elementId="org.eclipse.egit.ui.RepositoriesView" name="In Git Repositories View">
         <children xmi:id="_TnsJHYvxEe-GnNEF_4CFDA" elementId="org.eclipse.egit.ui.RepositoriesView.SingleRepository" name="In Git Repositories View"/>
       </children>
+      <children xmi:id="_D7f-watzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.context.navigator" name="Contexto del navegador de base de datos" description="Contexto del navegador de base de datos">
+        <children xmi:id="_D7f-wqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.context.navigator.view" name="Contexto de visualizaci&#xf3;n del navegador de base de datos" description="Contexto de visualizaci&#xf3;n del navegador de base de datos"/>
+      </children>
+      <children xmi:id="_D7f-xqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.context.resultset" name="Contexto del visor de resultados" description="Contexto del visor de resultados">
+        <children xmi:id="_D7f-x6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.context.resultset.edit" name="Contexto de edici&#xf3;n de resultados" description="Contexto de edici&#xf3;n de resultados"/>
+      </children>
+      <children xmi:id="_D7f-yKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.perspective" name="DBeaver Perspective" description="DBeaver Perspective Context"/>
     </children>
     <children xmi:id="_Tm7UDIvxEe-GnNEF_4CFDA" elementId="org.eclipse.ui.contexts.dialog" contributorURI="platform:/plugin/org.eclipse.platform" name="In Dialogs" description="A dialog is open"/>
   </rootContext>
@@ -1212,6 +1356,8 @@
   <rootContext xmi:id="_UBoTAIvxEe-GnNEF_4CFDA" elementId="org.eclipse.ui.WorkingSetActionSet" name="Auto::org.eclipse.ui.WorkingSetActionSet"/>
   <rootContext xmi:id="_UBoTAovxEe-GnNEF_4CFDA" elementId="org.eclipse.ui.actionSet.openFiles" name="Auto::org.eclipse.ui.actionSet.openFiles"/>
   <rootContext xmi:id="_UBoTBIvxEe-GnNEF_4CFDA" elementId="org.eclipse.ui.edit.text.actionSet.presentation" name="Auto::org.eclipse.ui.edit.text.actionSet.presentation"/>
+  <rootContext xmi:id="_EOz8UKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.search.searchActionSet" name="Auto::org.jkiss.dbeaver.search.searchActionSet"/>
+  <rootContext xmi:id="_EO0jYKtzEe-UP8YM9Z_yGQ" elementId="net.sf.jautodoc.actions.SearchActionSet" name="Auto::net.sf.jautodoc.actions.SearchActionSet"/>
   <descriptors xmi:id="_TqgMcIvxEe-GnNEF_4CFDA" elementId="org.eclipse.e4.ui.compatibility.editor" allowMultiple="true" category="org.eclipse.e4.primaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor">
     <tags>Editor</tags>
     <tags>removeOnHide</tags>
@@ -1602,6 +1748,67 @@
     <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.ui.workbench.texteditor"/>
     <tags>View</tags>
     <tags>categoryTag:General</tags>
+  </descriptors>
+  <descriptors xmi:id="_EN3hIKtzEe-UP8YM9Z_yGQ" elementId="org.eclipse.gef.ui.palette_view" label="Palette" iconURI="platform:/plugin/org.eclipse.gef/icons/palette_view.png" tooltip="" category="General" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.eclipse.gef.ui.views.palette.PaletteView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.gef"/>
+    <tags>View</tags>
+    <tags>categoryTag:General</tags>
+  </descriptors>
+  <descriptors xmi:id="_EN5WUKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.queryManager" label="Gestor de consultas" iconURI="platform:/plugin/org.jkiss.dbeaver.ui/icons/misc/qm.png" tooltip="Explore and search all queries executed by application. See query errors and hidden queries." category="Base de datos" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.jkiss.dbeaver.ui.views.qm.QueryManagerView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.jkiss.dbeaver.core"/>
+    <tags>View</tags>
+    <tags>categoryTag:Base de datos</tags>
+  </descriptors>
+  <descriptors xmi:id="_EN59YKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.shellProcess" label="Procesos" iconURI="platform:/plugin/org.jkiss.dbeaver.ui/icons/misc/shell.png" tooltip="Monitor and control shell process execution." allowMultiple="true" category="Base de datos" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.jkiss.dbeaver.ui.views.process.ShellProcessView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.jkiss.dbeaver.core"/>
+    <tags>View</tags>
+    <tags>categoryTag:Base de datos</tags>
+    <tags>NoRestore</tags>
+  </descriptors>
+  <descriptors xmi:id="_EN-O0KtzEe-UP8YM9Z_yGQ" elementId="com.dbeaver.ssh.tunnels" label="SSH tunnel explorer" iconURI="platform:/plugin/org.jkiss.dbeaver.ui/icons/sql/connect.png" tooltip="SSH tunnel explorer. Allows to view and manage SSH tunnels." category="Base de datos" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.jkiss.dbeaver.ui.net.ssh.SSHTunnelView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.jkiss.dbeaver.net.ssh.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:Base de datos</tags>
+  </descriptors>
+  <descriptors xmi:id="_EN-14KtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.tasks" label="Tareas de base de datos" iconURI="platform:/plugin/org.jkiss.dbeaver.tasks.ui.view/icons/task_list.png" tooltip="Gestor de tareas de la base de datos. Permite buscar, editar, programar y monitorear la ejecuci&#xf3;n de tareas." category="Base de datos" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.jkiss.dbeaver.tasks.ui.view.DatabaseTasksView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.jkiss.dbeaver.tasks.ui.view"/>
+    <tags>View</tags>
+    <tags>categoryTag:Base de datos</tags>
+  </descriptors>
+  <descriptors xmi:id="_EOB5MKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.dashboardView" label="Database Dashboard" iconURI="platform:/plugin/org.jkiss.dbeaver.model.dashboard/icons/dashboard.png" tooltip="" allowMultiple="true" category="Base de datos" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.jkiss.dbeaver.ui.dashboard.view.DataSourceDashboardView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.jkiss.dbeaver.ui.dashboard"/>
+    <tags>View</tags>
+    <tags>categoryTag:Base de datos</tags>
+  </descriptors>
+  <descriptors xmi:id="_EOGxsKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.databaseNavigator" label="Navegador de Bases de Datos" iconURI="platform:/plugin/org.jkiss.dbeaver.ui/icons/databases.png" tooltip="Moestra conexiones a bases de datos de proyectos activos" category="Base de datos" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.jkiss.dbeaver.ui.navigator.database.DatabaseNavigatorView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.jkiss.dbeaver.ui.navigator"/>
+    <tags>View</tags>
+    <tags>categoryTag:Base de datos</tags>
+  </descriptors>
+  <descriptors xmi:id="_EOH_0KtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.databaseBrowser" label="Navegador de bases de datos" iconURI="platform:/plugin/org.jkiss.dbeaver.ui/icons/database_navigator.png" tooltip="Navegar por elementos de conexi&#xf3;n de bases de datos" allowMultiple="true" category="Base de datos" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.jkiss.dbeaver.ui.navigator.database.DatabaseBrowserView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.jkiss.dbeaver.ui.navigator"/>
+    <tags>View</tags>
+    <tags>categoryTag:Base de datos</tags>
+  </descriptors>
+  <descriptors xmi:id="_EOH_0atzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.projectNavigator" label="Proyectos" iconURI="platform:/plugin/org.jkiss.dbeaver.ui/icons/projects.png" tooltip="Muestra todos los proyectos y sus contenidos. Soporta gesti&#xf3;n de proyectos." category="Base de datos" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.jkiss.dbeaver.ui.navigator.project.ProjectNavigatorView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.jkiss.dbeaver.ui.navigator"/>
+    <tags>View</tags>
+    <tags>categoryTag:Base de datos</tags>
+  </descriptors>
+  <descriptors xmi:id="_EOLDIKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.projectExplorer" label="Navegador de Proyectos" iconURI="platform:/plugin/org.jkiss.dbeaver.ui/icons/project.png" tooltip="Gestor de recursos de proyecto: carpetas, archivos y recursos enlazados" category="Base de datos" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.jkiss.dbeaver.ui.navigator.project.ProjectExplorerView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.jkiss.dbeaver.ui.navigator"/>
+    <tags>View</tags>
+    <tags>categoryTag:Base de datos</tags>
   </descriptors>
   <trimContributions xmi:id="_2r10UF9tEeO-yojH_y4TJA" elementId="org.eclipse.ui.ide.application.trimcontribution.QuickAccess" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" toBeRendered="false" parentId="org.eclipse.ui.main.toolbar" positionInParent="last">
     <children xsi:type="menu:ToolControl" xmi:id="_76uUAF9tEeO-yojH_y4TJA" elementId="Spacer Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
@@ -2634,6 +2841,287 @@
   <commands xmi:id="_T3Pn8IvxEe-GnNEF_4CFDA" elementId="AUTOGEN:::org.eclipse.mylyn.tasks.ui.actions.view/org.eclipse.mylyn.tasks.ui.open.repositories.view" commandName="Show Task Repositories View" description="Show Task Repositories View" category="_Tnf7x4vxEe-GnNEF_4CFDA"/>
   <commands xmi:id="_T3Pn8YvxEe-GnNEF_4CFDA" elementId="AUTOGEN:::org.eclipse.mylyn.tasks.ui.actions.view/org.eclipse.mylyn.doc.legend.show.action" commandName="Show UI Legend" description="Show Tasks UI Legend" category="_Tnf7x4vxEe-GnNEF_4CFDA"/>
   <commands xmi:id="_T3Pn8ovxEe-GnNEF_4CFDA" elementId="AUTOGEN:::org.eclipse.mylyn.tasks.ui.actions.view/org.eclipse.mylyn.context.ui.actions.tasklist.focus" commandName="Focus on Workweek" description="Focus on Workweek" category="_Tnf7x4vxEe-GnNEF_4CFDA"/>
+  <commands xmi:id="_D7ZREKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.run.scriptFromPosition" commandName="Execute SQL script from the position" description="Execute script from the cursor position" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZREatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.cell.setDefault" commandName="Definir por defecto" description="Definir celda con su valor por defecto" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZREqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.togglePreview" commandName="Alternar paneles de resultados" description="Alternar paneles de resultados adicionales" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRE6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.sql.script.run.scriptNative" commandName="Execute SQL Script natively" description="Execute SQL script via the native application" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRFKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.project.active" commandName="Establecer Proyecto Activo" description="Establecer proyecto activo" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRFatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.count" commandName="N&#xfa;mero de filas" description="Obtener n&#xfa;mero total de filas" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRFqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.txn.pending" commandName="Transacciones pendientes" description="Lista de todas las transacciones pendientes" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRF6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.text.content.format" commandName="Formato de contenido" description="Formatear texto" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRGKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.run.statement" commandName="Ejecutar Comando SQL" description="Ejecutar comando SQL" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRGatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.togglePanelMaximize" commandName="Maximizar/restaurar paneles" description="Alternar paneles de resultados adicionales" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRGqtzEe-UP8YM9Z_yGQ" elementId="org.eclipse.gef.ui.palette_view" commandName="Palette" category="_TnfUsYvxEe-GnNEF_4CFDA"/>
+  <commands xmi:id="_D7ZRG6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.word.wrap" commandName="Alternar ajuste de palabras" description="Alterna el ajuste suave de palabras del editor de texto" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRHKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.show.outline" commandName="Toggle outline" description="Show/hide script outline view" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRHatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.new.folder" commandName="Nueva Carpeta" description="Crear nueva carpeta de conexiones" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRHqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.erd.diagram.saveAs" commandName="Save diagram as ..." description="Save diagram in external format" category="_D7YqBqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRH6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ext.oracle.code.package.navigate" commandName="Go to source code" description="Navigate to object source code" category="_D7YqAatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7ZRIKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.run.all.rows" commandName="Seleccionar todas las filas" description="Seleccionar y mostrar todas las filas (sin l&#xed;mite de tama&#xf1;o de b&#xfa;squeda)" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4IKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.view.toggle" commandName="Show/Hide view" description="Toggle view" category="_D7YqAqtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7Z4IatzEe-UP8YM9Z_yGQ" elementId="viewId" name="View ID" optional="false"/>
+  </commands>
+  <commands xmi:id="_D7Z4IqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.switchPresentation" commandName="Cambiar presentaci&#xf3;n" description="Cambiar presentaci&#xf3;n de resultados" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4I6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.comment.single" commandName="Alternar Comentario de L&#xed;nea" description="Agregar o quitar comentario de l&#xed;nea &#xfa;nica" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4JKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.referencesMenu" commandName="Referencias" description="Claves for&#xe1;neas y tablas que referencian a la tabla actual" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4JatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.showColumns" commandName="Show columns" description="Show hidden columns" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4JqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.connection.readonly" commandName="Read-only" description="Make database connection read-only" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4J6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.row.copy.from.below" commandName="Copy from row below" description="Copy values from row below to current row" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4KKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.ExpandAllFoldings" commandName="Expand All Foldings" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4KatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.row.edit" commandName="Modificar celda" description="Modificar valor de celda en di&#xe1;logo/editor separado" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4KqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.row.first" commandName="Primer registro" description="Ir al primer registro" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4K6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.tools.select.schema" commandName="Seleccionar esquema activo" description="Seleccionar esquema activo para base de datos actual" category="_D7YqBKtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7Z4LKtzEe-UP8YM9Z_yGQ" elementId="noCustomLabel" name="Show original command name"/>
+  </commands>
+  <commands xmi:id="_D7Z4LatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.edit.copy.special.with.last.settings" commandName="Advanced Copy with last settings" description="Advanced Copy with last settings" category="_D7YqBatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4LqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.export" commandName="Exportar datos ..." description="Exportar resultados a archivo u otra tabla" category="_D7YqA6tzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7Z4L6tzEe-UP8YM9Z_yGQ" elementId="exportWithParameter" name="exportWithParameter"/>
+  </commands>
+  <commands xmi:id="_D7Z4MKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.connect" commandName="Conectar" description="Conectar a base de datos" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4MatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.sql.script.associate" commandName="Asociar con fuente de datos" description="Asociar script(s) seleccionado(s) con fuente de datos" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4MqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.switch.panel" commandName="Cambiar panel activo" description="Cambiar panel de editor SQL activo" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4M6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resource.create.folder" commandName="Crear Nueva Carpeta" description="Crear nueva carpeta" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4NKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.invalidate" commandName="Invalidar/Reconectar" description="Invalidar/Reconectar las conexiones a la base de datos" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4NatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.navigator.view.configure" commandName="Configurar" description="Configurar vista" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4NqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.folder.disconnect" commandName="Desconectar" description="Desconectar de la base de datos" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4N6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.dashboard.delete" commandName="Delete dashboard" description="Delete dashboard" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4OKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.openWith" commandName="Abrir con" description="Abrir datos en aplicaci&#xf3;n externa" category="_D7YqA6tzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7Z4OatzEe-UP8YM9Z_yGQ" elementId="processorId" name="Procesador" optional="false"/>
+  </commands>
+  <commands xmi:id="_D7Z4OqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.chart.refresh" commandName="Refresh chart" description="Refresh chart state" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4O6tzEe-UP8YM9Z_yGQ" elementId="net.sf.jautodoc.commands.AddHeaderDlg" commandName="Add Header with Dialog" category="_D7YqCKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4PKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.disconnectOther" commandName="Desconectar otras" description="Cerrar todas las conexiones excepto las seleccionadas" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4PatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.load.plan" commandName="Cargar plan de ejecuci&#xf3;n" description="Cargar plan de ejecuci&#xf3;n desde archivo" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4PqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.run.expression" commandName="Evaluar expresi&#xf3;n SQL" description="Seleccionar valor de la expresi&#xf3;n SQL seleccionada" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4P6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.rename" commandName="Renombrar Script SQL" description="Renombrar script SQL actual" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4QKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.erd.focus.palette" commandName="ERD: Focus on palette" description="Changes focus to palette" category="_D7YqBqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4QatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.toggle.extraPanels" commandName="Show panels in result tabs" description="Show panels in result tabs instead of SQL editor pane" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4QqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.row.edit.inline" commandName="Edici&#xf3;n en l&#xed;nea" description="Editar el valor de celda con editor en l&#xed;nea" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4Q6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.erd.toggleHand" commandName="Toggle hand tool" description="Cycle through hand tool and previously used tool" category="_D7YqBqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4RKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.folder.task.create" commandName="Create new task folder" description="Create a new task storage folder" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4RatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.task.copy" commandName="Copiar tarea" description="Crear copia de tarea existente" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4RqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.export.data" commandName="Exportar Desde Consulta" description="Exportar datos retornados por la consulta actual" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4R6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.show.log" commandName="Mostrar log de ejecuci&#xf3;n" description="Mostrar log de ejecuci&#xf3;n SQL" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4SKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.move.down" commandName="Mover hacia abajo" description="Mover objeto hacia abajo" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4SatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.copyRowNames" commandName="Copiar n&#xfa;mero(s) de fila(s)" description="Copiar n&#xfa;mero(s) de fila(s) seleccionada(s)" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4SqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.gotoMatchingBracket" commandName="Ir a par&#xe9;ntesis emparejado" description="Posicionar el cursor en el par&#xe9;ntesis emparejado" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4S6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.new.connection.from.url" commandName="New Connection from JDBC URL" description="Create new connection from supplied JDBC URL" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4TKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.migrate.connection" commandName="Migrar conexi&#xf3;n(es)" description="Migrar conexi&#xf3;n(es) a otro driver" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4TatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.process.stop" commandName="Terminar proceso" description="Terminar proceso en ejecuci&#xf3;n" category="_D7YqBatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4TqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.applyChanges" commandName="Aplicar cambios" description="Aplicar cambios en los datos" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4T6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.show.output" commandName="Mostrar salida del servidor" description="Mostrar la consola de salida del servidor" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4UKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.dashboard.open" commandName="Open Dashboard" description="Open database dashboard" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4UatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.cell.save" commandName="Aplicar cambios de celda" description="Aplicar cambios de celda" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4UqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.filterSave" commandName="Guardar ajustes de filtros" description="Guardar ajustes de filtros/orden y posici&#xf3;n/visibilidad de columnas para los resultados actuales" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4U6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.maximize.result.panel" commandName="Maximizar panel de resultados" description="Maximizar/normalizar panel de resultados" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4VKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.fetch.page" commandName="Obtener p&#xe1;gina siguiente" description="Obtener p&#xe1;gina siguiente de resultados" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4VatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.erd.focus.parameter" commandName="ERD: Focus on parameters" description="Changes focus to parameters" category="_D7YqBqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4VqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.connection.changeCurrentPassword" commandName="Cambiar contrase&#xf1;a de usuario" description="Cambiar la contrase&#xf1;a actual del usuario" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4V6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.connection.synchronize" commandName="Synchronize" description="Synchronize local and remote data sources" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4WKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.navigator.filter.connected" commandName="Mostrar conectadas" description="Ver fuentes de datos (todas/conectadas)" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4WatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.copyColumnNames" commandName="Copiar nombre(s) de columna(s)" description="Copiar nombre(s) de columna(s) seleccionada(s)" category="_D7YqA6tzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7Z4WqtzEe-UP8YM9Z_yGQ" elementId="columns" name="Columns to copy"/>
+  </commands>
+  <commands xmi:id="_D7Z4W6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.edit.save.resource" commandName="Save resource(s) to local disk" description="Save remote resource(s) to local disk" category="_D7YqBatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4XKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.sql.editor.defaultCommand" commandName="Script SQL" description="Abrir script SQL (existente o nuevo)" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4XatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.query.prev" commandName="Consulta anterior" description="Cambiar a la consulta anterior" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4XqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.FoldingsEnabled" commandName="Foldings Enabled" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4X6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.selectToMatchingBracket" commandName="Select to the matching bracket" description="Select text from current bracket to the matching bracket" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4YKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.sql.editor.showScripts" commandName="Show scripts" description="Show existing SQL scripts" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4YatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.filter.config" commandName="Configurar filtro" description="Configura filtro de objetos" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4YqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.search.web" commandName="Buscar en la web" description="Busca el texto seleccionado en la web" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4Y6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.navigator.create.column.index" commandName="New Index from Selection" description="Create New Index with Selected Column(s)" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4ZKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.cell.setNull" commandName="Definir como NULL" description="Definir valor(es) de celda(s) como NULL" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4ZatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.run.script" commandName="Ejecutar Script SQL" description="Ejecutar script" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4ZqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.folder.rename" commandName="Rename folder" description="Rename task folder" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4Z6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.selectColumn" commandName="Select column(s)" description="Select columns for the selected cell(s)" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4aKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.toggleLayout" commandName="Alternar dise&#xf1;o del editor" description="Alternar dise&#xf1;o del editor (horizontal/vertical)" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4aatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.move.up" commandName="Mover hacia arriba" description="Mover objeto hacia arriba" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4aqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.txn.autocommit" commandName="Auto-commit" description="Cambia el modo de transacci&#xf3;n de la sesi&#xf3;n activa" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7Z4a6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resource.link.file" commandName="Enlazar archivo" description="Crear enlace a un archivo en el sistema de archivos" category="_D7YqAqtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7Z4bKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resource.link.file.contenttype" name="Tipo de contenido de archivo enlazado"/>
+  </commands>
+  <commands xmi:id="_D7Z4batzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.disconnect" commandName="Desconectar" description="Desconectar de la base de datos" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afMKtzEe-UP8YM9Z_yGQ" elementId="org.eclipse.gef.zoom_in" commandName="Zoom In" description="Zoom In" category="_D7YqBqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afMatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.filter.add.include" commandName="Mostrar s&#xf3;lo objetos seleccionados" description="Mostrar s&#xf3;lo objetos seleccionados" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afMqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.edit.load.resource" commandName="Load resource(s) from local disk" description="Load resource(s) from local disk to remote file system" category="_D7YqBatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afM6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ext.db2.ui.reorgTable" commandName="Reorg Table..." category="_Tnf7x4vxEe-GnNEF_4CFDA"/>
+  <commands xmi:id="_D7afNKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.new.connection" commandName="Nueva Conexi&#xf3;n" description="Asistente para Nueva Conexi&#xf3;n" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afNatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.gotoRow" commandName="Go To Row" description="Jump to a specified row" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afNqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ext.exasol.ui.exportTable" commandName="Export Table(s)" category="_Tnf7x4vxEe-GnNEF_4CFDA"/>
+  <commands xmi:id="_D7afN6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.query.next" commandName="Consulta siguiente" description="Cambiar a la consulta siguiente" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afOKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.row.last" commandName="&#xda;ltimo registro" description="Ir al &#xfa;ltimo registro" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afOatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.row.copy.from.above" commandName="Copy from row above" description="Copy values from row above to current row" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afOqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.row.next" commandName="Registro siguiente" description="Ir al registro siguiente" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afO6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.navigator.open.browser" commandName="Navegar desde aqu&#xed;" description="Abrir una vista de navegador de base de datos desde el nodo actual" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afPKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.toggleConfirmSave" commandName="Show confirmation before save" description="Always confirm data changes save by showing final SQL script" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afPatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.sql.editor.console" commandName="Open SQL console" description="Open new SQL console. No script file will be created." category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afPqtzEe-UP8YM9Z_yGQ" elementId="net.sf.jautodoc.commands.AddHeader" commandName="Add Header" category="_D7YqCKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afP6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.open.file" commandName="Importar script SQL" description="Cargar script SQL desde un archivo" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afQKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.filter.clear" commandName="Limpiar filtro" description="Limpiar ajustes de filtro" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afQatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.selectRowColor" commandName="Set row color" description="Set color for the selected row" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afQqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.entity.propsTab.nextPage" commandName="Next Entity Properties tab" description="Switch to the next entity properties tab page" category="_D7YqCatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afQ6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.filterSettings" commandName="Personalizar filtros ..." description="Definir ajustes de filtros/orden personalizados" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afRKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.tools.select.connection" commandName="Asignar conexi&#xf3;n activa" description="Seleccionar conexi&#xf3;n para el editor actual" category="_D7YqBKtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7afRatzEe-UP8YM9Z_yGQ" elementId="noCustomLabel" name="Show original command name"/>
+  </commands>
+  <commands xmi:id="_D7afRqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.applyAndCommitChanges" commandName="Apply and commit changes" description="Save changes and perform commit" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afR6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.task.run" commandName="Ejecutar tarea" description="Ejecuta la tarea seleccionada" category="_D7YqAqtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7afSKtzEe-UP8YM9Z_yGQ" elementId="task" name="Task"/>
+  </commands>
+  <commands xmi:id="_D7afSatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.object.property.source.activate" commandName="Open Source tab" description="Open SQL definition of database object" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afSqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.delete" commandName="Borrar Objeto" description="Borrar Objeto de Base de Datos" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afS6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.cell.reset" commandName="Reestablecer cambios de celda" description="Reestablecer celda a su valor original" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afTKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.open" commandName="Modificar Objeto" description="Abrir editor de objeto" category="_D7YqBKtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7afTatzEe-UP8YM9Z_yGQ" elementId="activePage" name="Active page"/>
+    <parameters xmi:id="_D7afTqtzEe-UP8YM9Z_yGQ" elementId="activeFolder" name="Active folder"/>
+  </commands>
+  <commands xmi:id="_D7afT6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.eula.showPopup" commandName="Show End-User License Agreement" description="Show dialog with terms of End-User License Agreement" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afUKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.navigate.object" commandName="Abrir Declaraci&#xf3;n" description="Abrir editor del objeto de base de datos actual (resaltado)" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afUatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.run.statementNew" commandName="Ejecutar SQL en una pesta&#xf1;a nueva" description="Ejecutar comando SQL en una pesta&#xf1;a nueva" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afUqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.move.bottom" commandName="Move to bottom" description="Move object to the very bottom" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afU6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.dashboard.add" commandName="Add chart" description="Add chart to dashboard" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afVKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.navigator.set.default" commandName="Establecer por defecto" description="Establecer como objeto por defecto" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afVatzEe-UP8YM9Z_yGQ" elementId="net.sf.jautodoc.commands.AddJavadoc" commandName="Add Javadoc" category="_D7YqCKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afVqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.copyAs" commandName="Copiar como" description="Copiar datos en el portapapeles usando el formato especificado" category="_D7YqA6tzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7afV6tzEe-UP8YM9Z_yGQ" elementId="processorId" name="Procesador" optional="false"/>
+  </commands>
+  <commands xmi:id="_D7afWKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.driver.manager" commandName="Gestor de Driver" description="Gestor de Driver" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afWatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.navigator.create.column.constraint" commandName="New Constraint from Selection" description="Create New Constraint with Selected Column(s)" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afWqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.dashboard.view" commandName="View chart" description="View chart in dialog" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afW6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.multipleResultsPerTab" commandName="Show multiple results in a single tab" description="Show each result set in a separate tab or on one scrollable tab" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afXKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.moveColumnLeft" commandName="Move column left" description="Swap selected column with another one to the left" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afXatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.hideColumns" commandName="Hide columns" description="Hide selected columns" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afXqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.disableSQLSyntaxParser" commandName="Disable SQL syntax parser" description="Disable autocomplete, folding, word occurrences highlighting&#xA;(Automatically applied for large script files)" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afX6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.sync.auto" commandName="Auto-sincronizar conexi&#xf3;n con el navegador" description="Auto-sincronizar conexi&#xf3;n activa con la selecci&#xf3;n del navegador de base de datos" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afYKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.tools.menu" commandName="Herramientas de contexto" description="Mustra un men&#xfa; de contexto con herramientas de bases de datos" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afYatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.show.variables" commandName="Show SQL variables" description="Show active SQL variables" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afYqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.fetch.all" commandName="Obtener todos los datos" description="Obtener todas las filas" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afY6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.gotoColumn" commandName="Go To Column" description="Jump to a specified column" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afZKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.selectRow" commandName="Select row(s)" description="Select row(s) for the selected cell(s)" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afZatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.deleteThisScript" commandName="Borrar este script" description="Borrar el archivo de script actual" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afZqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ext.postgresql.ui.fdw" commandName="Foreign data wrappers configurator" category="_Tnf7x4vxEe-GnNEF_4CFDA"/>
+  <commands xmi:id="_D7afZ6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.row.add" commandName="A&#xf1;adir registro" description="A&#xf1;adir nuevo registro" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afaKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.run.explain" commandName="Visualizar plan de ejecuci&#xf3;n" description="Visualizar plan de ejecuci&#xf3;n" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afaatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ext.oracle.job.run" commandName="Run" description="Run Job" category="_D7YqAatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afaqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.move.top" commandName="Move to top" description="Move object to the very top" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afa6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.copy.query" commandName="Copy selected query" description="Performs a copy of the query under the cursor in the SQL editor" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afbKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ext.exasol.ui.importTable" commandName="Import Table(s)" category="_Tnf7x4vxEe-GnNEF_4CFDA"/>
+  <commands xmi:id="_D7afbatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.disconnectAll" commandName="Desconectar todo" description="Cerrar todas las conexiones abiertas" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afbqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.togglePanel" commandName="Mostrar/ocultar panel de resultados" description="Mostrar/ocultar algunos paneles de resultados espec&#xed;ficos" category="_D7YqA6tzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7afb6tzEe-UP8YM9Z_yGQ" elementId="panelId" name="Nombre del panel" optional="false"/>
+  </commands>
+  <commands xmi:id="_D7afcKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.goto" commandName="Abrir Objeto de base de datos ..." description="Abrir objeto meta de base de datos" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afcatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.sql.editor.open" commandName="Script SQL" description="Abrir script SQL (existente o nuevo)" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afcqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.sync.connection" commandName="Definir conexi&#xf3;n a partir del navegador" description="Definir conexi&#xf3;n activa a partir de la selecci&#xf3;n del navegador de base de datos" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afc6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.rejectChanges" commandName="Rechazar cambios" description="Rechazar cambios de datos" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afdKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.navigator.bookmark.navigate" commandName="Navegar a" description="Navegar al objeto marcado" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afdatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.focus.filter" commandName="Activar editor de filtro/datos" description="Cambiar foco al visor de filtros / visor de datos" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afdqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.save.file" commandName="Exportar script SQL" description="Grabar script a archivo" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afd6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.show.terminalView" commandName="SQL Terminal" description="SQL Terminal" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afeKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.export.data" commandName="Export Data" description="Export data to file(s) or database table(s)" category="_D7YqBatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afeatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.CollapseAllFoldings" commandName="Collapse All Foldings" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afeqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.columnsFitScreen" commandName="Ancho de columnas: ajustar a pantalla" description="Cambiar el tama&#xf1;o de las columnas para ver la m&#xe1;xima informaci&#xf3;n" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afe6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.comment.multi" commandName="Alternar Comentario de Bloque" description="Agregar o quitar comentario de m&#xfa;ltiples l&#xed;neas" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7affKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.sql.editor.recent" commandName="Script SQL reciente" description="Abrir el script SQL m&#xe1;s reciente" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7affatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.moveColumnRight" commandName="Move column right" description="Swap selected column with another one to the right" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7affqtzEe-UP8YM9Z_yGQ" elementId="net.sf.jautodoc.commands.AddJavadocDlg" commandName="Add Javadoc with Dialog" category="_D7YqCKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7aff6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.procedure.execute" commandName="Execute Stored Procedure" description="Open new SQL console with execute stored procedure query" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afgKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.toggle.result.panel" commandName="Alternar el panel de resultados" description="Mostrar/ocultar el panel de resultados" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7afgatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.erd.diagram.create" commandName="Create Diagram" description="Create Entity Relationship diagram" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7bGQKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ext.oracle.code.compile" commandName="Compile" description="Compile" category="_D7YqAatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7bGQatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.navigator.linkeditor" commandName="Enlazar al editor" description="Enlazar al editor" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7bGQqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.filterClear" commandName="Remover todos los filtros/ordenamientos" description="Remover todos los filtros/ordenamientos" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7bGQ6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resource.create.file" commandName="Crear Nuevo Archivo" description="Crear nuevo archivo" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7bGRKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.project.create" commandName="Crear Proyecto" description="Crear un nuevo proyecto" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btUKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.trim.spaces" commandName="Trim spaces" description="Trim trailing and leading spaces" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btUatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.txn.log" commandName="Log de transacciones" description="Log de transacciones actuales (consultas ejecutadas)" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btUqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.disconnectProject" commandName="Desconectar proyecto" description="Cerrar todas las conexiones abiertas del proyecto" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btU6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.row.previous" commandName="Registro anterior" description="Ir al registro anterior" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btVKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.columnsHideEmpty" commandName="Hide columns with no data" description="Hide columns whose values within loaded rows are NULL" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btVatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.erd.focus.outline" commandName="ERD: Focus on outline" description="Changes focus to outline" category="_D7YqBqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btVqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.entity.propsTab.prevPage" commandName="Previous Entity Properties tab" description="Switch to the previous entity properties tab page" category="_D7YqCatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btV6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.navigator.filter.object.type" commandName="Tipo de objeto de filtro de navegador" description="Tipo de objeto de filtro de navegador (conexi&#xf3;n, contenedor, tabla)" category="_D7YqBKtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7btWKtzEe-UP8YM9Z_yGQ" elementId="type" name="Object type" optional="false"/>
+  </commands>
+  <commands xmi:id="_D7btWatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.dashboard.remove" commandName="Remove chart" description="Remove chart from dashboard" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btWqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.toggleOrder" commandName="Alternar orden de ordenamiento de los resultados" description="Alternar orden de ordenamiento de los resultados (ascendente/descendente/por defecto)" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btW6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.toggle.pinned.tab" commandName="Pin/unpin" description="Pin/unpin results tab" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btXKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.filterMenu.distinct" commandName="Filtrar por valor" description="Filtrar por valores de atributos &#xfa;nicos" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btXatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.project.refresh" commandName="Refrescar proyectos" description="Refrescar todo el espacio de trabajo" category="_D7YqAqtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7btXqtzEe-UP8YM9Z_yGQ" elementId="singleProject" name="Refresh just active project"/>
+  </commands>
+  <commands xmi:id="_D7btX6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.activatePreview" commandName="Activar resultados/panel" description="Cambiar foco al visor de resultados / panel activo" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btYKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.toggleMode" commandName="Alternar entre vista de tabla/registro" description="Alternar entre vista de resultados de tabla/registro" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btYatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.qm.clear" commandName="Limpiar el log" description="Limpiar el log del gestor de consultas" category="_D7YqBatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btYqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.create" commandName="Crear Objeto" description="Crear Nuevo Objeto de Base de Datos" category="_D7YqBKtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7btY6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.type" name="Object type"/>
+    <parameters xmi:id="_D7btZKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.typeName" name="Object type name"/>
+    <parameters xmi:id="_D7btZatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.typeIcon" name="Object type icon"/>
+    <parameters xmi:id="_D7btZqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.folder" name="Object is folder"/>
+  </commands>
+  <commands xmi:id="_D7btZ6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.filter.add.exclude" commandName="Ocultar objeto(s) seleccionado(s)" description="Ocultar objeto(s) seleccionado(s)" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btaKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.filterMenu" commandName="Men&#xfa; de filtros" description="Men&#xfa; de contexto de filtros" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btaatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.commit" commandName="Commit" description="Commit de las modificaciones en la Sesi&#xf3;n SQL" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btaqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.task.create" commandName="Crear nueva tarea ..." description="Crear nueva tarea de base de datos" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7bta6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.morph.delimited.list" commandName="Transformar a lista delimitada" description="Transformar a lista delimitada" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btbKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.data.forSelection" commandName="Ver datos" description="Ver/editar datos de tabla" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btbatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.run.count" commandName="Seleccionar conteo de filas" description="Seleccionar conteo de filas para la consulta bajo el cursor" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btbqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.close.tab" commandName="Cerrar pesta&#xf1;a" description="Cerrar pesta&#xf1;a de resultados" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btb6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.erd.focus.diagram" commandName="ERD: Focus on diagram" description="Changes focus to diagram" category="_D7YqBqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btcKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.assist.templates" commandName="Nombre completo de plantilla" description="Auto-completado de nombre de plantilla" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btcatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.switch.presentation" commandName="Switch presentation to" description="Switch SQL editor presentation" category="_D7YqB6tzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7btcqtzEe-UP8YM9Z_yGQ" elementId="presentationId" name="Presentation" optional="false"/>
+  </commands>
+  <commands xmi:id="_D7btc6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.qm.filter" commandName="Filtros ..." description="Filtrar el gestor de consultas" category="_D7YqBatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btdKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.sql.editor.open.default" commandName="Default open command" description="Default SQL editor open command" category="_D7YqBKtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7btdatzEe-UP8YM9Z_yGQ" elementId="command" name="SQL editor open command" optional="false"/>
+  </commands>
+  <commands xmi:id="_D7btdqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.navigateLink" commandName="Navegar enlace" description="Seguir enlace de clave for&#xe1;nea" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btd6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.compare.simple" commandName="Simple Structure Compare" description="Simple compare of database objects structure" category="_D7YqBatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7bteKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.generateScript" commandName="Generar script" description="Generar script de cambios" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7bteatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.project.select" commandName="Seleccionar Proyecto Activo" description="Seleccionar proyecto activo" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7bteqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ext.db2.ui.showError" commandName="Retrieve SQL Error Message..." category="_Tnf7x4vxEe-GnNEF_4CFDA"/>
+  <commands xmi:id="_D7bte6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.dashboard.configure" commandName="Dashboard settings" description="Dashboard view settings" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btfKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.sql.editor.forSelection" commandName="Leer datos en la consola SQL" description="Abrir una nueva consola SQL con consulta de lectura de datos" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btfatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.rollback" commandName="Rollback" description="Rollback de las modificaciones en la Sesi&#xf3;n SQL" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btfqtzEe-UP8YM9Z_yGQ" elementId="org.eclipse.gef.zoom_out" commandName="Zoom Out" description="Zoom Out" category="_D7YqBqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btf6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.columnsFitValue" commandName="Ancho de columnas: ajustar a valores" description="Cambiar el tama&#xf1;o de las columnas para que se ajusten a los valores de las filas" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btgKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.task.edit" commandName="Editar tarea" description="Abre la configuraci&#xf3;n de la tarea" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btgatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.toggleLayout" commandName="Alternar dise&#xf1;o de paneles" description="Alternar dise&#xf1;o vertical/horizontal de paneles" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btgqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.navigator.preferences" commandName="Preferencias" description="Preferencias de navegador" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7btg6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resource.link.folder" commandName="Enlazar carpeta" description="Crear enlace a una carpeta en el sistema de archivos" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7bthKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.object.filter.toggle" commandName="Alternar filtro" description="Alterna (activa/desactiva) el filtro definido" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7bthatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.dashboard.catalog.show" commandName="Show charts catalog" description="Show charts catalog" category="_D7YqBKtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7cUYKtzEe-UP8YM9Z_yGQ" elementId="toggleCatalogPanel" name="Show charts catalog"/>
+  </commands>
+  <commands xmi:id="_D7cUYatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.showColumnContextMenu" commandName="Show context menu for column" description="Show context menu for column according to the focus cell" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUYqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.sql.editor.create" commandName="Nuevo script SQL" description="Abrir un nuevo script SQL (crear nuevo script)" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUY6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.grid.switchContentViewer" commandName="Switch content viewer" description="Switches content viewer for selected value" category="_D7YqA6tzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7cUZKtzEe-UP8YM9Z_yGQ" elementId="managerId" name="Viewer Name" optional="false"/>
+  </commands>
+  <commands xmi:id="_D7cUZatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.edit.paste.special" commandName="Advanced Paste ..." description="Paste with extra settings" category="_D7YqBatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUZqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.dashboard.create" commandName="Create dashboard" description="Create new dashboard" category="_D7YqBKtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7cUZ6tzEe-UP8YM9Z_yGQ" elementId="datasource" name="Create dashboard for active datasource"/>
+  </commands>
+  <commands xmi:id="_D7cUaKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.edit.copy.special" commandName="Advanced Copy" description="Copy special" category="_D7YqBatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUaatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.show.in.explorer" commandName="Show resource in explorer" description="Opens system explorer and highlights selected resource" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUaqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.task.group" commandName="Agrupar por" description="Agrupar tareas por" category="_D7YqAqtzEe-UP8YM9Z_yGQ">
+    <parameters xmi:id="_D7cUa6tzEe-UP8YM9Z_yGQ" elementId="group" name="Group by" optional="false"/>
+  </commands>
+  <commands xmi:id="_D7cUbKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.run.scriptNew" commandName="Ejecutar comandos en pesta&#xf1;as separadas" description="Ejecutar comandos del script en pesta&#xf1;as de resultado separadas" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUbatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.generate.uuid" commandName="Generar UUID" description="Genera UUID/GUID y lo inserta en el editor activo de texto o datos" category="_D7YqBKtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUbqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.erd.diagram.view" commandName="View Diagram" description="View Entity Relations Diagram" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUb6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.row.copy" commandName="Duplicar registro" description="Duplicar registro actual" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUcKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.cancel.query" commandName="Cancel active query" description="Cancels execution of the query in the active tab" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUcatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.resultset.row.delete" commandName="Eliminar registro actual" description="Eliminar registro actual" category="_D7YqA6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUcqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.import.data" commandName="Import Data" description="Import data from database table(s)" category="_D7YqBatzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUc6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.navigator.bookmark.add" commandName="A&#xf1;adir marcador" description="A&#xf1;adir marcador" category="_D7YqAqtzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_D7cUdKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ui.editors.sql.generate.ddl.by.resultSet" commandName="DDL" description="Generate result set based DDL" category="_D7YqB6tzEe-UP8YM9Z_yGQ"/>
+  <commands xmi:id="_ECqWsKtzEe-UP8YM9Z_yGQ" elementId="hint" commandName="hint"/>
+  <commands xmi:id="_EM_XYKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.search.OpenDataSearchPage" commandName="DB Texto completo" category="_Tnf7x4vxEe-GnNEF_4CFDA"/>
+  <commands xmi:id="_EM_-cKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.search.OpenMetadataSearchPage" commandName="Metadatos de base de datos" category="_Tnf7x4vxEe-GnNEF_4CFDA"/>
+  <commands xmi:id="_EM_-catzEe-UP8YM9Z_yGQ" elementId="AUTOGEN:::net.sf.jautodoc.actions.SearchActionSet/net.sf.jautodoc.actions.OpenSearchPage" commandName="JAutodoc..." category="_Tnf7x4vxEe-GnNEF_4CFDA"/>
   <addons xmi:id="_Tm7UDYvxEe-GnNEF_4CFDA" elementId="org.eclipse.e4.core.commands.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_Tm7UDovxEe-GnNEF_4CFDA" elementId="org.eclipse.e4.ui.contexts.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_Tm7UD4vxEe-GnNEF_4CFDA" elementId="org.eclipse.e4.ui.bindings.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
@@ -2645,7 +3133,7 @@
   <addons xmi:id="_Tm7UFYvxEe-GnNEF_4CFDA" elementId="MinMax Addon" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
   <addons xmi:id="_Tm7UFovxEe-GnNEF_4CFDA" elementId="org.eclipse.ui.workbench.addon.0" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_TnIIUIvxEe-GnNEF_4CFDA" elementId="SplitterAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon"/>
-  <addons xmi:id="_IYS0IKimEeS11vbz3f9ezw" elementId="org.eclipse.ui.ide.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
+  <addons xmi:id="_D8_zkKtzEe-UP8YM9Z_yGQ" elementId="org.eclipse.ui.ide.addon.0" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
   <addons xmi:id="_dz0JgGOlEeSMMaPQU2nlzw" elementId="org.eclipse.ui.ide.application.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.ide.application/org.eclipse.ui.internal.ide.application.addons.ModelCleanupAddon"/>
   <categories xmi:id="_TnfUsIvxEe-GnNEF_4CFDA" elementId="org.eclipse.team.ui.category.team" name="Version control (Team)" description="Actions that apply when working with a version control system"/>
   <categories xmi:id="_TnfUsYvxEe-GnNEF_4CFDA" elementId="org.eclipse.ui.category.views" name="Views" description="Commands for opening views"/>
@@ -2686,4 +3174,13 @@
   <categories xmi:id="_Tnf7xYvxEe-GnNEF_4CFDA" elementId="org.eclipse.oomph.commands" name="Oomph"/>
   <categories xmi:id="_Tnf7xovxEe-GnNEF_4CFDA" elementId="com.genuitec.copilot4eclipse.commands.category" name="Copilot4Eclipse"/>
   <categories xmi:id="_Tnf7x4vxEe-GnNEF_4CFDA" elementId="org.eclipse.core.commands.categories.autogenerated" name="Uncategorized" description="Commands that were either auto-generated or have no category"/>
+  <categories xmi:id="_D7YqAatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.ext.oracle" name="Oracle" description="Oracle Commands"/>
+  <categories xmi:id="_D7YqAqtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.navigator" name="Navegador de Bases de Datos" description="Comandos del Navegador de Bases de Datos"/>
+  <categories xmi:id="_D7YqA6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.rs" name="Resultados" description="Comandos de resultados"/>
+  <categories xmi:id="_D7YqBKtzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.database" name="Conexiones" description="Comandos de Conexiones de Bases de Datos"/>
+  <categories xmi:id="_D7YqBatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.util" name="Utilidades" description="Comandos de utilidad"/>
+  <categories xmi:id="_D7YqBqtzEe-UP8YM9Z_yGQ" elementId="org.eclipse.gef.category.view" name="View" description="View"/>
+  <categories xmi:id="_D7YqB6tzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.core.sql" name="Editor SQL" description="Comandos de Editor SQL"/>
+  <categories xmi:id="_D7YqCKtzEe-UP8YM9Z_yGQ" elementId="net.sf.jautodoc.categories.JAutodoc" name="JAutodoc"/>
+  <categories xmi:id="_D7YqCatzEe-UP8YM9Z_yGQ" elementId="org.jkiss.dbeaver.entity.propsTab" name="Entity Properties" description="Entity properties tab"/>
 </application:Application>

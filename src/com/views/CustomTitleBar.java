@@ -111,7 +111,7 @@ public class CustomTitleBar extends JMenuBar {
 							AppConfig.sizeWindow = frame.getSize();
 							frame.dispose();
 							
-							MainView searchView = new MainView();
+							HomeView searchView = new HomeView();
 							searchView.setVisible(true);
 						}
 	                           
