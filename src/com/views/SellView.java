@@ -209,6 +209,13 @@ public class SellView extends JFrame {
 		                JOptionPane.INFORMATION_MESSAGE // Tipo de mensaje 
                         );
                     
+                    FileChooserButton.matricula = vehicle.getMatricula();
+                    String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";
+                    String textoFileChooser = "Seleccionar imagen";
+                    
+                    FileChooserButton fileChooserButton = new FileChooserButton(textoFileChooser, directorioImagenes);
+                    fileChooserButton.doClick();
+                    
                     // Abrir SearchView y cerrar SellView
                     new SearchView().setVisible(true);
                     SellView.this.dispose();
@@ -235,19 +242,15 @@ public class SellView extends JFrame {
             }
         });
      
-        String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";
-        String textoFileChooser = "Seleccionar imagen";
-        
-        FileChooserButton fileChooserButton = new FileChooserButton(textoFileChooser, directorioImagenes, textFields[0].getText());
-     // --------------------------------------------------------------------------------------------- //
+//        String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";
+//        String textoFileChooser = "Seleccionar imagen";
+//        
+//        FileChooserButton fileChooserButton = new FileChooserButton(textoFileChooser, directorioImagenes);
+     // --------------------------------------------------------------------------------------------- //																																																																																																																																																																																											
         
         // Añadir el botón al panel
         confirmButtonPanel.add(confirmButton);
         backgroundPanel.add(confirmButtonPanel);
-        confirmButtonPanel.add(fileChooserButton);
-
-        // Mostrar el marco
-        //frame.setVisible(true);
 
     }
     

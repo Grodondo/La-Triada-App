@@ -1,5 +1,7 @@
 package com.database;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +19,6 @@ import com.models.Vehiculo;
  * la base de datos, eliminacion de vehiculos de la tabla e introduccion de los
  * mismos.
  * 
- * @version 1.0
  * @autor [Carlos Arroyo Caballero]
  * @version 1.0
  */
@@ -32,12 +33,12 @@ public class DatabaseManager {
 	}
 
 	/**
-	 * Metodo para eliminar un vehiculo de la tabla especificada.
+	 * Metodo para eliminar un vehiculo de la tabla especificada, junto a su imagen el la carpeta Imagenes.
 	 * 
 	 * @param matricula Identificador del vehiculo a eliminar.
 	 * @param nameTable Nombre de la tabla de la que se eliminará el vehiculo.
 	 */
-	public void eliminarVehiculo(String matricula, String nameTable) {
+	public static void eliminarVehiculo(String matricula, String nameTable) {
 
 		if (!"vehiculo".equals(nameTable) && !"alquilado".equals(nameTable)) {
 			throw new IllegalArgumentException("Nombre de tabla no válido: " + nameTable);
@@ -47,8 +48,13 @@ public class DatabaseManager {
 		String sqlDelete = "DELETE FROM " + nameTable + " WHERE matricula = ?";
 
 		try (PreparedStatement psDelete = con.prepareStatement(sqlDelete)) {
-			psDelete.setString(1, matricula); // Establece la matrícula como parámetro
+			psDelete.setString(1, matricula);
 			int rowsAffected = psDelete.executeUpdate(); // Ejecuta la consulta
+			
+			// Eliminar imagen con el nombre de la matrícula
+			String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";
+			String rutaImagen = Paths.get(directorioImagenes, matricula + ".jpg").toString();
+			Files.deleteIfExists(Paths.get(rutaImagen));
 
 			if (rowsAffected > 0) {
 				System.out.println("Vehículo con matrícula " + matricula + " eliminado de la tabla " + nameTable + ".");
@@ -58,6 +64,9 @@ public class DatabaseManager {
 			}
 		} catch (SQLException e) {
 			System.err.println("Error al eliminar el vehículo: " + e.getMessage());
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("No se pudo eliminar la imagen: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}

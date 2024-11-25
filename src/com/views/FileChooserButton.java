@@ -20,9 +20,10 @@ import javax.swing.JOptionPane;
  */
 public class FileChooserButton extends JButton {
 
+	public static String matricula = "";
+	
     private String imageDirectoryPath;
     private String selectedImagePath;
-    private String nameImage;
 
 	/**
 	 * Constructor de la clase {@link FileChooserButton}.
@@ -30,10 +31,9 @@ public class FileChooserButton extends JButton {
 	 * @param buttonText         Texto del botón
 	 * @param imageDirectoryPath Ruta del directorio donde se guardarán las imágenes
 	 */
-    public FileChooserButton(String buttonText, String imageDirectoryPath, String nameImage) {
+    public FileChooserButton(String buttonText, String imageDirectoryPath) {
         super(buttonText); // Set the button's text
-        this.imageDirectoryPath = imageDirectoryPath;
-        this.selectedImagePath = imageDirectoryPath + nameImage;
+        this.imageDirectoryPath = imageDirectoryPath;;
 
         // Configure the button's appearance
         this.setFont(new Font("Arial", Font.BOLD, 16));
@@ -49,12 +49,15 @@ public class FileChooserButton extends JButton {
         });
     }
 
+	/**
+	 * Método que se encarga de manejar la selección de un archivo de imagen.
+	 */
     private void handleFileSelection() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Seleccionar una imagen");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-        // Add a filter for image files
+        // Añana un filtro para mostrar solo archivos de imagen
         fileChooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
             @Override
             public boolean accept(File f) {
@@ -80,7 +83,7 @@ public class FileChooserButton extends JButton {
 
                 // Copiar el archivo seleccionado al directorio de imágenes
                 //String newFileName = System.currentTimeMillis() + "_" + selectedFile.getName();
-                String newFileName = nameImage + ".jpg";
+                String newFileName = matricula + ".jpg";
                 System.out.println(newFileName);
                 File destinationFile = new File(imageDirectory, newFileName);
                 Files.copy(selectedFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);

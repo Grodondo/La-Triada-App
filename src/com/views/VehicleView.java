@@ -102,6 +102,9 @@ public class VehicleView extends JFrame {
 		buyButton.addActionListener(e -> {
 			// Acción al hacer clic en el botón de comprar
 			System.out.println("Comprar vehículo: " + marcaModelo);
+			DatabaseManager.eliminarVehiculo(vehicle.getMatricula(), "vehiculo");
+			
+			this.dispose();
 			
 		});
         
@@ -125,11 +128,12 @@ public class VehicleView extends JFrame {
 		    String fechaFin = fechaActual.plusDays(7).toString();
 			DatabaseManager.introducirVehiculoAlquilado(vehicle, fechaFin);
 			
+			this.dispose();
 		});
         
         backgroundPanel.add(rentButton);
 
-        JLabel rentPriceLabel = new JLabel(precioAlquiler);
+        JLabel rentPriceLabel = new JLabel(precioAlquiler + "/s");
         rentPriceLabel.setFont(new Font("Arial", Font.PLAIN, 30));
         rentPriceLabel.setForeground(Color.GRAY);
         rentPriceLabel.setBounds(800, 340, 200, 50);
@@ -142,25 +146,25 @@ public class VehicleView extends JFrame {
         carroceriaLabel.setBounds(200, 500, 400, 30);
         backgroundPanel.add(carroceriaLabel);
 
-        JLabel kilometrosLabel = new JLabel(kilometros);
+        JLabel kilometrosLabel = new JLabel(kilometros + " Km");
         kilometrosLabel.setFont(new Font("Arial", Font.BOLD, 30));
         kilometrosLabel.setForeground(Color.GRAY);
         kilometrosLabel.setBounds(200, 540, 400, 30);
         backgroundPanel.add(kilometrosLabel);
 
-        JLabel combustibleLabel = new JLabel(combustible);
+        JLabel combustibleLabel = new JLabel("Combustible: " + combustible);
         combustibleLabel.setFont(new Font("Arial", Font.BOLD, 30));
         combustibleLabel.setForeground(Color.GRAY);
         combustibleLabel.setBounds(200, 580, 400, 30);
         backgroundPanel.add(combustibleLabel);
 
         JLabel matriculaLabel = new JLabel(matricula);
-        matriculaLabel.setFont(new Font("Arial", Font.BOLD, 30));
+        matriculaLabel.setFont(new Font("Arial", Font.BOLD, 40));
         matriculaLabel.setForeground(Color.GRAY);
         matriculaLabel.setBounds(450, 500, 400, 30);
         backgroundPanel.add(matriculaLabel);
 
-        JLabel consumoLabel = new JLabel(consumo);
+        JLabel consumoLabel = new JLabel("Consumo: " + consumo);
         consumoLabel.setFont(new Font("Arial", Font.BOLD, 30));
         consumoLabel.setForeground(Color.GRAY);
         consumoLabel.setBounds(450, 540, 400, 30);

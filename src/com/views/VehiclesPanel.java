@@ -157,7 +157,7 @@ public class VehiclesPanel extends JPanel{
 			catch (Exception e) {
 				vehicleIcon = SharedMethods.resizeImage(new ImageIcon( AppConfig.RESOURCES_URL + "images\\iconos\\CocheNegro.png"), 5);
 			}
-	        System.out.println("Ruta: " + vehicle.getRutaImagen());
+	        //System.out.println("Ruta: " + vehicle.getRutaImagen());
 	        
 	       
             imageLabel.setIcon(vehicleIcon);
