@@ -14,10 +14,10 @@ import java.io.File;
  * La clase <code>VehicleView</code> es una aplicación gráfica en Java que muestra información de un vehículo
  * y permite visualizar los detalles relacionados con su compra y alquiler.
  * La información se recupera desde una base de datos SQLite y se presenta en una interfaz gráfica utilizando Swing.
- * @author [Ismael Martin Boudiab] y [Carlos Arroyo Caballero]
+ * @author [Ismael Martin Boudiab] 
  * @version 1.0
  * 
- * 
+ * Revisado por [Carlos Arroyo Caballero]
  */
 public class VehicleView extends JFrame {
 
@@ -73,7 +73,8 @@ public class VehicleView extends JFrame {
         mainPanel.add(rightPanel);
 
         
-        String marcaModelo = vehicle.getMarca();
+        // Modificado por [Carlos Arroyo] -> Ahora se pasa el objeto Vehiculo como parametro
+        String marcaModelo = vehicle.getMarca() + " - " + vehicle.getModelo();
         String precioCompra = vehicle.getPrecioCompra() + "";
         String precioAlquiler = vehicle.getPrecioAlquiler() + "";
         String imagenRuta = vehicle.getRutaImagen();

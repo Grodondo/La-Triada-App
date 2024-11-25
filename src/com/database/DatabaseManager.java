@@ -1,12 +1,15 @@
 package com.database;
 
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.time.LocalDate;
 
+import com.config.AppConfig;
 import com.models.Vehiculo;
 
 /**
@@ -64,19 +67,14 @@ public class DatabaseManager {
 	 *
 	 * @param vehicle Vehiculo a eliminar de la tabla 'alquilado'.
 	 */
-	public static void eliminarVehiculoAlquilado(Vehiculo vehicle) {
-		String sqlDeleteAlquilado = "DELETE FROM alquilado WHERE matricula = ?";
+	public static void eliminarVehiculoAlquilado(String matricula) {
+		//String sqlDeleteAlquilado = "DELETE FROM alquilado WHERE matricula = ?";
 		String sqlUpdateVehiculo = "UPDATE vehiculo SET alquilado = 0 WHERE matricula = ?";
 
-		try (PreparedStatement psDeleteAlquilado = con.prepareStatement(sqlDeleteAlquilado);
-				PreparedStatement psUpdateVehiculo = con.prepareStatement(sqlUpdateVehiculo)) {
-
-			// Eliminar el registro de la tabla 'alquilado'
-			psDeleteAlquilado.setString(1, vehicle.getMatricula());
-			psDeleteAlquilado.executeUpdate();
+		try (PreparedStatement psUpdateVehiculo = con.prepareStatement(sqlUpdateVehiculo)) {
 
 			// Actualizar el estado del vehiculo en la tabla 'vehiculo'
-			psUpdateVehiculo.setString(1, vehicle.getMatricula());
+			psUpdateVehiculo.setString(1, matricula);
 			psUpdateVehiculo.executeUpdate();
 
 			System.out.println("Vehículo eliminado de la tabla 'alquilado' y marcado como no alquilado.");
@@ -86,7 +84,41 @@ public class DatabaseManager {
 			e.printStackTrace();
 		}
 	}
+	public static void insertarVehiculo(Vehiculo vehicle) throws SQLException {
+		// Directorio base para las imágenes
+		String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";
 
+		// Generar la ruta de la imagen usando la matrícula
+		String rutaImagen = Paths.get(directorioImagenes, vehicle.getMatricula() + ".jpg").toString();
+			
+		String sql = "INSERT INTO vehiculo(matricula, tipo, marca, modelo, carroceria, combustible, consumo, plazas, kilometros, precio_compra, precio_venta, precio_alquiler, alquilado, imagen) "
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		try (Connection conn = createDatabase.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, vehicle.getMatricula());
+			pstmt.setString(2, vehicle.getTipo());
+			pstmt.setString(3, vehicle.getMarca());
+			pstmt.setString(4, vehicle.getModelo());
+			pstmt.setString(5, vehicle.getCarroceria());
+			pstmt.setString(6, vehicle.getCombustible());
+			pstmt.setDouble(7, vehicle.getConsumo());
+			if (vehicle.getPlazas() != null) {
+				pstmt.setInt(8, vehicle.getPlazas());
+			}else {
+				pstmt.setNull(8, Types.INTEGER);
+			}
+			pstmt.setDouble(9, vehicle.getKilometros());
+			pstmt.setDouble(10, vehicle.getPrecioCompra());
+			pstmt.setDouble(11, vehicle.getPrecioCompra() * 1.33); // Ejemplo: 33% margen sobre el precio de compra
+			pstmt.setDouble(12, vehicle.getPrecioAlquiler());
+			pstmt.setBoolean(13, vehicle.isAlquilado());
+			pstmt.setString(14, rutaImagen); // Ruta generada de la imagen
+			
+			pstmt.executeUpdate();
+			System.out.println("Vehículo insertado correctamente: " + vehicle.getMatricula());
+		} 
+	}
+	
 	/**
 	 * Metodo para introducir un vehiculo en la base de datos.
 	 * 

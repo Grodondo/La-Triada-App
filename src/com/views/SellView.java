@@ -1,22 +1,28 @@
 package com.views;
 import javax.swing.*;
 import com.config.AppConfig;
+import com.database.DatabaseManager;
+import com.models.Vehiculo;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.sql.SQLException;
 
 /**
  * La clase <code>SellView</code> representa la interfaz gráfica de usuario (GUI) 
  * para la vista de venta de vehículos dentro de la aplicación. 
  * Permite al usuario seleccionar un vehículo, ingresar detalles de venta y confirmarlos.
- * * @author [Ismael Martin Boudiab]
+ * * @author [Ismael Martin Boudiab] y [Carlos Arroyo Caballero]
  *  * @version 1.0
  */
 public class SellView extends JFrame {
 
 
+	private String tipo;
+	
     /**
      * Método principal que inicia la vista de venta de vehículos. 
      * Configura la ventana de la aplicación, paneles, botones y campos de texto.
@@ -87,6 +93,43 @@ public class SellView extends JFrame {
         JButton cocheButton = createVehicleButton("CocheNegro.png", "CocheAzul.png");
         JButton camionButton = createVehicleButton("CamionNegro.png", "CamionAzul.png");
 
+        // Añadidos los ActionListeners - [Carlos Arroyo]
+     // --------------------------------------------------------------------------------------------- //
+        {
+        	motoButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                System.out.println("Moto seleccionada");
+	                cocheButton.setSelected(false);
+	                camionButton.setSelected(false);
+	                
+	                tipo = "moto";
+	            }
+	        });
+	        
+	        cocheButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                System.out.println("Coche seleccionada");
+	                cocheButton.setSelected(false);
+	                motoButton.setSelected(false);
+	            
+	                tipo = "coche";
+	            }
+	        });
+	        
+	        camionButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                System.out.println("Camion seleccionada");
+	                cocheButton.setSelected(false);
+	                motoButton.setSelected(false);
+	                
+	                tipo = "camion";
+	            }
+	        });
+        }
+     // --------------------------------------------------------------------------------------------- //
         buttonContainerPanel.add(motoButton);
         buttonContainerPanel.add(cocheButton);
         buttonContainerPanel.add(camionButton);
@@ -108,16 +151,19 @@ public class SellView extends JFrame {
         int xRight = 420;             // Posición X para la columna derecha (más a la izquierda)
         int yStart = 20;              // Posición inicial Y
 
+        
+        JTextField textFields[] = new JTextField[placeholders.length];
+        
         // Iterar sobre los placeholders y añadirlos en dos columnas
         for (int i = 0; i < placeholders.length; i++) {
-            JTextField textField = createPlaceholderTextField(placeholders[i]);
+            textFields[i] = createPlaceholderTextField(placeholders[i]);
 
             // Alternar entre la columna izquierda y la derecha
             int x = (i < 4) ? xLeft : xRight; // Las primeras 4 en la izquierda, las siguientes en la derecha
             int y = yStart + (i % 4) * (height + gap); // Alinear verticalmente con espaciado
 
-            textField.setBounds(x, y, width, height);
-            textFieldPanel.add(textField);
+            textFields[i].setBounds(x, y, width, height);
+            textFieldPanel.add(textFields[i]);
         }
 
         // Crear un panel para el botón Confirmar
@@ -132,18 +178,73 @@ public class SellView extends JFrame {
         confirmButton.setForeground(Color.WHITE); // Color del texto
         confirmButton.setPreferredSize(new Dimension(300, 40)); // Tamaño del botón más ancho
 
-        // Añadir acción al botón Confirmar
+        // Añadida parte funcional el confirmButton - [Carlos Arroyo]
+        // --------------------------------------------------------------------------------------------- //
         confirmButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Acción para el botón Confirmar (puedes poner cualquier lógica aquí)
+            	Vehiculo vehicle = null;
+                String[] placeholders = {"MATRÍCULA", "MARCA", "MODELO", "CARROCERÍA", 
+                        "CONSUMO", "COMBUSTIBLE", "KILOMETRAJE", "PRECIO"};
+            	try {
+            		vehicle = new Vehiculo(
+            			textFields[0].getText(), // Matricula
+            			tipo, 					 // Tipo
+            			textFields[1].getText(), // Marca
+            			textFields[2].getText(), // Modelo
+            			textFields[3].getText(), // Carroceria
+            			textFields[5].getText(),					 // Combustible
+            			Double.parseDouble(textFields[4].getText()), // Consumo
+            			1, 						 // Plazas
+            			Double.parseDouble(textFields[6].getText()), // Kilometros
+            			Double.parseDouble(textFields[7].getText()), // Precio compra
+            			false
+            		);
+                    DatabaseManager.insertarVehiculo(vehicle);
+                    
+                    JOptionPane.showMessageDialog(
+                        null, // Padre del diálogo (null para centrar en pantalla)
+                        "Datos añadidos correctamente.", // Mensaje
+		                "Datos añadidos", // Título del popup
+		                JOptionPane.INFORMATION_MESSAGE // Tipo de mensaje 
+                        );
+                    
+                    // Abrir SearchView y cerrar SellView
+                    new SearchView().setVisible(true);
+                    SellView.this.dispose();
+                    
+            	}catch (SQLException sqle) {
+            		JOptionPane.showMessageDialog(
+                        null, // Padre del diálogo (null para centrar en pantalla)
+                        "Error al añadir los datos a la base de datos.", // Mensaje
+                        "Error en la base de datos", // Título del popup
+                        JOptionPane.ERROR_MESSAGE // Tipo de mensaje (ícono de error)
+                     );
+            	}catch(Exception ex) {
+		            JOptionPane.showMessageDialog(
+		                null, // Padre del diálogo (null para centrar en pantalla)
+		                "Faltan datos por añadir. Por favor, revisa e intenta nuevamente.", // Mensaje
+		                "Datos incompletos", // Título del popup
+		                JOptionPane.WARNING_MESSAGE // Tipo de mensaje (ícono de advertencia)
+			        );
+		            
+            	}
+            
+            	
                 System.out.println("Confirmación realizada");
             }
         });
-
+     
+        String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";
+        String textoFileChooser = "Seleccionar imagen";
+        
+        FileChooserButton fileChooserButton = new FileChooserButton(textoFileChooser, directorioImagenes, textFields[0].getText());
+     // --------------------------------------------------------------------------------------------- //
+        
         // Añadir el botón al panel
         confirmButtonPanel.add(confirmButton);
         backgroundPanel.add(confirmButtonPanel);
+        confirmButtonPanel.add(fileChooserButton);
 
         // Mostrar el marco
         //frame.setVisible(true);
