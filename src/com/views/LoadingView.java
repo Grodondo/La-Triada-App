@@ -29,19 +29,19 @@ public class LoadingView extends JFrame  {
 
 	
 	
-	static MainView searchView = new MainView();
+	static HomeView searchView = new HomeView();
 	static LoadingView frame = new LoadingView();
 	
 	/**
-	 * Delay para el cambio a main view
+	 * Delay para el cambio a home view
 	 */
 	public static void scheduleDelayTask1()
 	{
 	    ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 	    Runnable task1 = () -> searchView.setVisible(true);
-		Runnable task2=() ->  frame.dispose();					
-	    service.scheduleAtFixedRate(task1, 1, 100, TimeUnit.SECONDS);
-	    service.scheduleAtFixedRate(task2, 1, 100, TimeUnit.SECONDS);
+		;					
+	    service.scheduleAtFixedRate(task1, 12, 1, TimeUnit.SECONDS);
+	  
        
 	}
 	
@@ -51,7 +51,9 @@ public class LoadingView extends JFrame  {
 	public LoadingView() {
 		
 		 setTitle("Loading view");
-		  setSize(1080, 720);
+		 setExtendedState(JFrame.MAXIMIZED_BOTH);
+		  setMinimumSize(AppConfig.MINIMUM_WINDOW_SIZE);
+		  setSize(AppConfig.sizeWindow);
 		  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		  setLocationRelativeTo(null);
 		  

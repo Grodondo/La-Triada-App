@@ -7,6 +7,7 @@ import javax.swing.border.LineBorder;
 
 import com.App;
 import com.config.AppConfig;
+import com.database.DatabaseManager;
 
 import java.awt.*;
 import java.sql.Connection;
@@ -14,6 +15,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -53,34 +55,31 @@ public class DevolverView extends JFrame {
 	                // Datos del alquiler
 	                String fechaInicio = rs.getString("fecha_inicio");
 	                String fechaFinEsperada = rs.getString("fecha_fin");
-	                int alquilerId = rs.getInt("id");
+	                String alquilerId = rs.getString("matricula");
 
 	                // Obtener la fecha y hora actual
-	                LocalDateTime fechaActual = LocalDateTime.now();
+	                LocalDate fechaActual = LocalDate.now();
 
 	                // Mostrar información al usuario
-	                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	                LocalDateTime fechaInicioDt = LocalDateTime.parse(fechaInicio, formatter);
-	                LocalDateTime fechaFinEsperadaDt = LocalDateTime.parse(fechaFinEsperada, formatter);
+	                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	                LocalDate fechaInicioDt = LocalDate.parse(fechaInicio);
+	                LocalDate fechaFinEsperadaDt = LocalDate.parse(fechaFinEsperada);
 
-	                long horasTotales = ChronoUnit.HOURS.between(fechaInicioDt, fechaActual);
-	                long horasTarde = ChronoUnit.HOURS.between(fechaFinEsperadaDt, fechaActual);
+	                long horasTotales = ChronoUnit.DAYS.between(fechaInicioDt, fechaActual);
+	                long horasTarde = ChronoUnit.DAYS.between(fechaFinEsperadaDt, fechaActual);
 
-	                // Actualizar la fecha de devolución en la base de datos
-	                String updateSql = "UPDATE alquileres SET fecha_devuelto = ? WHERE id = ?";
-	                PreparedStatement updateStmt = conn.prepareStatement(updateSql);
-	                updateStmt.setString(1, fechaActual.format(formatter));
-	                updateStmt.setInt(2, alquilerId);
-	                updateStmt.executeUpdate();
+	                // Actualizar la base de datos
+	                DatabaseManager d1 =new DatabaseManager();
+	                d1.eliminarVehiculoAlquilado(matricula);
 
 	                // Mostrar el resultado
 	                if (fechaActual.isAfter(fechaFinEsperadaDt)) {
 	                    JOptionPane.showMessageDialog(bottomPanel,
-	                            "Vehículo devuelto.\nTiempo alquilado: " + horasTotales + " horas.\nDevuelto tarde por " + horasTarde + " horas.",
+	                            "Vehículo devuelto.\nTiempo alquilado: " + horasTotales + " dias.\nDevuelto tarde por " + horasTarde + " horas.",
 	                            "Devolución Tarde", JOptionPane.WARNING_MESSAGE);
 	                } else {
 	                    JOptionPane.showMessageDialog(bottomPanel,
-	                            "Vehículo devuelto.\nTiempo alquilado: " + horasTotales + " horas.\nDevuelto a tiempo.",
+	                            "Vehículo devuelto.\nTiempo alquilado: " + horasTotales + " dias.\nDevuelto a tiempo.",
 	                            "Devolución Exitosa", JOptionPane.INFORMATION_MESSAGE);
 	                }
 
@@ -106,7 +105,9 @@ public class DevolverView extends JFrame {
   	public DevolverView() {
 	
 		  setTitle("La Tienda - Devolver");
-		  setSize(1080, 720);
+		  setMinimumSize(AppConfig.MINIMUM_WINDOW_SIZE);
+		  setSize(AppConfig.sizeWindow);
+		  setExtendedState(JFrame.MAXIMIZED_BOTH);
 		  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		  setLocationRelativeTo(null);
 
@@ -184,6 +185,7 @@ public class DevolverView extends JFrame {
 		  mainPanel.add(imageLabelR, BorderLayout.EAST); 
 		  
 		  mainPanel.add(bottomPanel,BorderLayout.AFTER_LAST_LINE);
+		
 
 		  confirmButton.addActionListener(e -> {
 			
