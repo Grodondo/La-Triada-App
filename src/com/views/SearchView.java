@@ -86,6 +86,17 @@ public class SearchView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 
+//		if (AppConfig.isMaximized) {
+//			setExtendedState(JFrame.MAXIMIZED_BOTH);
+//		}
+//		
+//		int state = this.getExtendedState();
+//		if ((state & this.MAXIMIZED_BOTH) == this.MAXIMIZED_BOTH) {
+//			 AppConfig.isMaximized = true;
+//        } else {
+//        	 AppConfig.isMaximized = false;
+//        }
+		
 		getContentPane().setBackground(backgroundColor);
 		
 		// Applied Filters Panel - Important to setup before Filters

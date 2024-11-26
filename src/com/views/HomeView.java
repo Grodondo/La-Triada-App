@@ -22,11 +22,13 @@ public class HomeView extends JFrame {
   public HomeView() {
 	  // Crear el marco principal
       
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setMinimumSize(AppConfig.MINIMUM_WINDOW_SIZE);
-	  setSize(AppConfig.sizeWindow);
-	  setExtendedState(JFrame.MAXIMIZED_BOTH);
-	  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setSize(AppConfig.sizeWindow);
+      setDefaultCloseOperation(EXIT_ON_CLOSE);
+      setIconImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\icon.png").getImage());
+      setLocationRelativeTo(null);
+	  
+	  //setExtendedState(JFrame.MAXIMIZED_BOTH);
       setLayout(new BorderLayout());
       
     
