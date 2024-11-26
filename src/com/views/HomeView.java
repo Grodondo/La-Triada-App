@@ -35,7 +35,6 @@ public class HomeView extends JFrame {
 		setIconImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\icon.png").getImage());
 		setLocationRelativeTo(null);
 
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setLayout(new BorderLayout());
 
 		// Panel principal con el contenido
