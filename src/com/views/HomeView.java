@@ -8,10 +8,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.config.AppConfig;
+import com.models.Vehiculo;
 
 /**
  * La clase <code>HomeView</code> representa la vista principal de la aplicación de ventas de vehículos.
  * Esta interfaz muestra una ventana maximizada con un banner superior, panel de filtros, y elementos gráficos.
+ *
+ * 
+ * @author Pablo Orozco Carrasco
+ * @version 2.0
+ * @see CustomTitleBar
  */
 public class HomeView extends JFrame {
 	   static   JLabel motoCount = new JLabel("3", SwingConstants.CENTER);
@@ -118,7 +124,8 @@ public class HomeView extends JFrame {
         // Crear el marco principal
        HomeView h1 = new HomeView();
        h1.setVisible(true);
-
+     
+       
         // Consultar la base de datos para obtener las cantidades
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
@@ -134,7 +141,7 @@ public class HomeView extends JFrame {
                     case "moto":
                         motoCount.setText("" + cantidad);
                         break;
-                    case "auto":
+                    case "coche":
                         carCount.setText("" + cantidad);
                         break;
                     case "camion":
