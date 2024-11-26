@@ -41,14 +41,17 @@ import java.sql.SQLException;
  * @version 1.5
  */
 
-public class createDatabase {
+public class createDatabase implements AutoCloseable{
+	
+	private static Connection conn = null;
+	
 	/**
 	 * Establece una conexión a la base de datos SQLite.
 	 * 
 	 * @return Connection objeto que representa la conexión a la base de datos
 	 */
 	public static Connection connect() {
-		Connection conn = null;
+		conn = null;
 		try {
 			Class.forName("org.sqlite.JDBC"); // Cargar el driver JDBC para SQLite
 			String url = "jdbc:sqlite:./database.db"; // Crea bdd "database.db"
@@ -224,6 +227,14 @@ public class createDatabase {
 			System.out.println("Error al eliminar la tabla: " + e.getMessage());
 		}
 
+	}
+
+	@Override
+	public void close() throws Exception {
+		if (conn != null) {
+			conn.close();
+		}
+		
 	}
 
 }

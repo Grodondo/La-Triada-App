@@ -24,8 +24,6 @@ import com.models.Vehiculo;
  */
 public class DatabaseManager {
 
-	public static Connection con = createDatabase.connect();
-
 	/**
 	 * Constructor de la clase <code>DatabaseManager</code>. 
 	 */
@@ -40,6 +38,8 @@ public class DatabaseManager {
 	 */
 	public static void eliminarVehiculo(String matricula, String nameTable) {
 
+		Connection con = createDatabase.connect();
+		
 		if (!"vehiculo".equals(nameTable) && !"alquilado".equals(nameTable)) {
 			throw new IllegalArgumentException("Nombre de tabla no válido: " + nameTable);
 		}
@@ -69,6 +69,13 @@ public class DatabaseManager {
 			System.out.println("No se pudo eliminar la imagen: " + e.getMessage());
 			e.printStackTrace();
 		}
+		finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				System.err.println("Error al cerrar la conexión: " + e.getMessage());
+			}
+		}
 	}
 
 	/**
@@ -77,23 +84,39 @@ public class DatabaseManager {
 	 * @param vehicle Vehiculo a eliminar de la tabla 'alquilado'.
 	 */
 	public static void eliminarVehiculoAlquilado(String matricula) {
+		Connection con = createDatabase.connect();
+		
 		//String sqlDeleteAlquilado = "DELETE FROM alquilado WHERE matricula = ?";
 		String sqlUpdateVehiculo = "UPDATE vehiculo SET alquilado = 0 WHERE matricula = ?";
-
-		try (PreparedStatement psUpdateVehiculo = con.prepareStatement(sqlUpdateVehiculo)) {
-
+		//PreparedStatement psDeleteVehiculoAlq = con.prepareStatement(sqlDeleteAlquilado);
+		try (	
+				PreparedStatement psUpdateVehiculo = con.prepareStatement(sqlUpdateVehiculo)) {
+			
 			// Actualizar el estado del vehiculo en la tabla 'vehiculo'
 			psUpdateVehiculo.setString(1, matricula);
 			psUpdateVehiculo.executeUpdate();
+			
+			// Eliminar el vehículo de la tabla
+//			psDeleteVehiculoAlq.setString(1, matricula);
+//			psDeleteVehiculoAlq.executeUpdate();
 
 			System.out.println("Vehículo eliminado de la tabla 'alquilado' y marcado como no alquilado.");
 
 		} catch (SQLException e) {
 			System.err.println("Error al eliminar el vehículo de la base de datos: " + e.getMessage());
 			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				System.err.println("Error al cerrar la conexión: " + e.getMessage());
+			}
 		}
+		
 	}
 	public static void insertarVehiculo(Vehiculo vehicle) throws SQLException {
+		Connection con = createDatabase.connect();
+		
 		// Directorio base para las imágenes
 		String directorioImagenes = AppConfig.PROJECT_PATH + "\\src\\com\\database\\imagenes\\";
 
@@ -103,7 +126,7 @@ public class DatabaseManager {
 		String sql = "INSERT INTO vehiculo(matricula, tipo, marca, modelo, carroceria, combustible, consumo, plazas, kilometros, precio_compra, precio_venta, precio_alquiler, alquilado, imagen) "
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		try (Connection conn = createDatabase.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try ( PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setString(1, vehicle.getMatricula());
 			pstmt.setString(2, vehicle.getTipo());
 			pstmt.setString(3, vehicle.getMarca());
@@ -125,7 +148,15 @@ public class DatabaseManager {
 			
 			pstmt.executeUpdate();
 			System.out.println("Vehículo insertado correctamente: " + vehicle.getMatricula());
-		} 
+		}catch (SQLException e) {
+            System.err.println("Error al insertar el vehículo: " + e.getMessage());
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				System.err.println("Error al cerrar la conexión: " + e.getMessage());
+			}
+		}
 	}
 	
 	/**
@@ -136,18 +167,21 @@ public class DatabaseManager {
 	 *                 especifica).
 	 */
 	public static void introducirVehiculoAlquilado(Vehiculo vehicle, String fechaFin) {
-		//String sqlInsertAlquilado = "INSERT INTO alquilado (matricula, fecha_inicio, fecha_fin) VALUES (?, ?, ?)";
+		Connection con = createDatabase.connect();
+		
+		String sqlInsertAlquilado = "INSERT INTO alquilado (matricula, fecha_inicio, fecha_fin) VALUES (?, ?, ?)";
 		String sqlUpdateVehiculo = "UPDATE vehiculo SET alquilado = 1 WHERE matricula = ?";
-		try (
-			 PreparedStatement psUpdateVehiculo = con.prepareStatement(sqlUpdateVehiculo)) {
+		
+		try (PreparedStatement psInsertAlquilado = con.prepareStatement(sqlInsertAlquilado);
+			 PreparedStatement psUpdateVehiculo = con.prepareStatement(sqlUpdateVehiculo);) {
 
-//			// Establecer valores para la tabla 'alquilado'
-//			psInsertAlquilado.setString(1, vehicle.getMatricula());
-//			psInsertAlquilado.setString(2, LocalDate.now().toString()); // Fecha actual como fecha_inicio
-//			psInsertAlquilado.setString(3, fechaFin); // Puede ser null
-//
-//			// Ejecutar inserción en la tabla 'alquilado'
-//			psInsertAlquilado.executeUpdate();
+			// Establecer valores para la tabla 'alquilado'
+			psInsertAlquilado.setString(1, vehicle.getMatricula());
+			psInsertAlquilado.setString(2, LocalDate.now().toString()); // Fecha actual como fecha_inicio
+			psInsertAlquilado.setString(3, fechaFin); // Puede ser null
+
+			// Ejecutar inserción en la tabla 'alquilado'
+			psInsertAlquilado.executeUpdate();
 
 			// Actualizar el estado del vehiculo en la tabla 'vehiculo' (alquilado = 1)
 			psUpdateVehiculo.setString(1, vehicle.getMatricula());
@@ -158,6 +192,12 @@ public class DatabaseManager {
 		} catch (SQLException e) {
 			System.err.println("Error al introducir el vehículo en la base de datos: " + e.getMessage());
 			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				System.err.println("Error al cerrar la conexión: " + e.getMessage());
+			}
 		}
 	}
 	
@@ -165,6 +205,8 @@ public class DatabaseManager {
 	 * Metodo para imprimir todos los valores de la tabla 'vehiculo' en consola.
 	 */
 	public static void imprimirTablaVehiculo() {
+		Connection con = createDatabase.connect();
+		
 	    String sqlSelect = "SELECT * FROM vehiculo";
 
 	    try (Statement stmt = con.createStatement();
@@ -208,6 +250,12 @@ public class DatabaseManager {
 	    } catch (SQLException e) {
 	        System.err.println("Error al consultar la tabla 'vehiculo': " + e.getMessage());
 	        e.printStackTrace();
+	    } finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				System.err.println("Error al cerrar la conexión: " + e.getMessage());
+			}
 	    }
 	}
 

@@ -69,8 +69,7 @@ public class DevolverView extends JFrame {
 	                long horasTarde = ChronoUnit.DAYS.between(fechaFinEsperadaDt, fechaActual);
 
 	                // Actualizar la base de datos
-	                DatabaseManager d1 =new DatabaseManager();
-	                d1.eliminarVehiculoAlquilado(matricula);
+	                DatabaseManager.eliminarVehiculoAlquilado(matricula);
 
 	                // Mostrar el resultado
 	                if (fechaActual.isAfter(fechaFinEsperadaDt)) {
