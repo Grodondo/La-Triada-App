@@ -13,6 +13,11 @@ import com.models.Vehiculo;
 /**
  * La clase <code>HomeView</code> representa la vista principal de la aplicación de ventas de vehículos.
  * Esta interfaz muestra una ventana maximizada con un banner superior, panel de filtros, y elementos gráficos.
+ *
+ * 
+ * @author Pablo Orozco Carrasco
+ * @version 2.0
+ * @see CustomTitleBar
  */
 public class HomeView extends JFrame {
 	   static   JLabel motoCount = new JLabel("3", SwingConstants.CENTER);
@@ -23,11 +28,13 @@ public class HomeView extends JFrame {
   public HomeView() {
 	  // Crear el marco principal
       
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setMinimumSize(AppConfig.MINIMUM_WINDOW_SIZE);
-	  setSize(AppConfig.sizeWindow);
-	  setExtendedState(JFrame.MAXIMIZED_BOTH);
-	  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setSize(AppConfig.sizeWindow);
+      setDefaultCloseOperation(EXIT_ON_CLOSE);
+      setIconImage(new ImageIcon(AppConfig.RESOURCES_URL + "images\\icon.png").getImage());
+      setLocationRelativeTo(null);
+	  
+	  //setExtendedState(JFrame.MAXIMIZED_BOTH);
       setLayout(new BorderLayout());
       
     
@@ -119,6 +126,10 @@ public class HomeView extends JFrame {
         // Crear el marco principal
        HomeView h1 = new HomeView();
        h1.setVisible(true);
+<<<<<<< HEAD
+=======
+     
+>>>>>>> ef64471959b45fa8284b350597e71c7dd8ef6a99
        
         // Consultar la base de datos para obtener las cantidades
         try {
@@ -135,7 +146,7 @@ public class HomeView extends JFrame {
                     case "moto":
                         motoCount.setText("" + cantidad);
                         break;
-                    case "auto":
+                    case "coche":
                         carCount.setText("" + cantidad);
                         break;
                     case "camion":

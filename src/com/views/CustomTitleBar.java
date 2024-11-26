@@ -3,6 +3,7 @@ package com.views;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -109,10 +110,13 @@ public class CustomTitleBar extends JMenuBar {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							AppConfig.sizeWindow = frame.getSize();
-							frame.dispose();
-							
 							HomeView searchView = new HomeView();
+				       
+							setMaximized(frame, searchView);
+							
+							frame.dispose();
 							searchView.setVisible(true);
+
 						}
 	                           
 	                });
@@ -158,10 +162,13 @@ public class CustomTitleBar extends JMenuBar {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						AppConfig.sizeWindow = frame.getSize();
+						SearchView searchView = new SearchView("car");
+						
+						setMaximized(frame, searchView);
 						frame.dispose();
 						
-						SearchView searchView = new SearchView("car");
 						searchView.setVisible(true);
+						
 					}
                            
                 });
@@ -181,9 +188,11 @@ public class CustomTitleBar extends JMenuBar {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						AppConfig.sizeWindow = frame.getSize();
+						SearchView searchView = new SearchView("bike");
+						
+						setMaximized(frame, searchView);
 						frame.dispose();
 						
-						SearchView searchView = new SearchView("bike");
 						searchView.setVisible(true);
 					}
 	                       
@@ -204,10 +213,12 @@ public class CustomTitleBar extends JMenuBar {
 	                @Override
 	                public void actionPerformed(ActionEvent e) {
 	                	AppConfig.sizeWindow = frame.getSize();
-	                    frame.dispose();
-	                    
-	                    SearchView searchView = new SearchView("truck");
-	                    searchView.setVisible(true);
+						SearchView searchView = new SearchView("truck");
+						
+						setMaximized(frame, searchView);
+						frame.dispose();
+						
+						searchView.setVisible(true);
 	                }
 	            });
 				
@@ -240,10 +251,13 @@ public class CustomTitleBar extends JMenuBar {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							AppConfig.sizeWindow = frame.getSize();
+							SellView sellView = new SellView();
+							
+							setMaximized(frame, sellView);
 							frame.dispose();
 							
-							SellView sellView = new SellView();
 							sellView.setVisible(true);
+							
 						}
 	                           
 	                });
@@ -275,10 +289,13 @@ public class CustomTitleBar extends JMenuBar {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							AppConfig.sizeWindow = frame.getSize();
+							DevolverView devolverView = new DevolverView();
+							
+							setMaximized(frame, devolverView);
 							frame.dispose();
 							
-							DevolverView devolverView = new DevolverView();
 							devolverView.setVisible(true);
+							
 						}
 	                           
 	                });
@@ -308,6 +325,15 @@ public class CustomTitleBar extends JMenuBar {
         gbc.weightx = 0;
         add(mapButton, gbc);		
 
+	}
+	
+	private void setMaximized(JFrame frame, JFrame newFrame) {
+		boolean isMaximized = (frame.getExtendedState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH;
+		
+        if (isMaximized) {
+        	newFrame.setExtendedState(Frame.MAXIMIZED_BOTH);
+        }
+        //newFrame.setVisible(true);
 	}
 
 }
