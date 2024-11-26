@@ -174,8 +174,7 @@ public class Vehiculo {
 	 * @throws Exception    Si ocurre algún error general durante la inserción.
 	 */
 	public static void insertarVehiculo(String matricula, String tipo, String marca, String modelo, String carroceria,
-			String combustible, double consumo, Integer plazas, double kilometros, double precioCompra,
-			boolean alquilado) {
+			String combustible, double consumo, Integer plazas, double kilometros, double precioCompra) {
 		// Directorio base para las imágenes
 		String directorioImagenes = "./La-Triada-App/src/com/database/imagenes/";
 
@@ -202,7 +201,7 @@ public class Vehiculo {
 			pstmt.setDouble(10, precioCompra);
 			pstmt.setDouble(11, precioCompra * 1.33); // Ejemplo: 33% margen sobre el precio de compra
 			pstmt.setDouble(12, (precioCompra * 1.33) / 1000.00);
-			pstmt.setBoolean(13, alquilado);
+			pstmt.setBoolean(13, false);
 			pstmt.setString(14, rutaImagen); // Ruta generada de la imagen
 
 			pstmt.executeUpdate();
