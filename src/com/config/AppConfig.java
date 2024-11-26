@@ -10,6 +10,7 @@ import java.awt.Dimension;
  */
 public class AppConfig {
 	public static Dimension sizeWindow = new Dimension(900, 600);
+	public static boolean isMaximized = false;
 	
 	public final static String PROJECT_PATH = System.getProperty("user.dir");
 	public final static String RESOURCES_URL = System.getProperty("user.dir") + "\\src\\resources\\";
