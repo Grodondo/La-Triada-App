@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.config.AppConfig;
+import com.models.Vehiculo;
 
 /**
  * La clase <code>HomeView</code> representa la vista principal de la aplicación de ventas de vehículos.
@@ -118,7 +119,7 @@ public class HomeView extends JFrame {
         // Crear el marco principal
        HomeView h1 = new HomeView();
        h1.setVisible(true);
-
+       
         // Consultar la base de datos para obtener las cantidades
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");

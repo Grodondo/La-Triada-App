@@ -130,11 +130,15 @@ public class Vehiculo {
 	}
 
 	public static int disponibilidadVehiculos(String tipo) {
-		String sql = "SELECT COUNT(tipo) FROM vehiculo WHERE tipo = " + tipo;
+		String sql = "SELECT COUNT(tipo) FROM vehiculo WHERE tipo = ?";
 		int cantidad = -1; // Valor predeterminado en caso de error
-		try (Connection conn = createDatabase.connect(); Statement stmt = conn.createStatement()) {
+		try (Connection conn = createDatabase.connect(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+			// Establecer el valor del parámetro tipo de manera segura
+			stmt.setString(1, tipo);
+
 			// Ejecutar la consulta y obtener el resultado
-			ResultSet rs = stmt.executeQuery(sql);
+			ResultSet rs = stmt.executeQuery();
 
 			// Si hay resultados, obtener el conteo
 			if (rs.next()) {
@@ -144,6 +148,7 @@ public class Vehiculo {
 			System.out.println(e.getMessage()); // Mostrar el error en caso de excepciones
 		}
 		return cantidad; // Retornar la cantidad obtenida
+
 	}
 
 	/**
