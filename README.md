@@ -1,12 +1,12 @@
-# Trabajo de Interfaces - La Triada
+# Java Swing App - La Triada
 
 ## Description
-Proyecto en Java hecho usando las librerias Swing...
+Proyecto en Java hecho usando las librerias JSwing etc...
 
 ## Setup Instructions
-1. Clona el repositorio en local.
-2. Importa el proyecto en un Workspace de Eclipse: `File > Import > Existing Projects into Workspace`.
-3. Run `App.java` file located in the `src/com/` folder.
+1. Clone repository.
+2. Import proyect on eclipse workspace: `File > Import > Existing Projects into Workspace`.
+3. Run `pom.xml` file located in the `src/com/` folder as 'package', this will auto-install all dependencies.
 
 ## Instrucciones temporales de Git
 git clone https://github.com/Grodondo/La-Triada-App.git  ->  Clona el repositorio github en local
